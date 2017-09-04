@@ -3,6 +3,7 @@ import {RouterModule} from '@angular/router';
 import {States} from './Constants/States';
 import {MainComponent} from './Components/main/main.component';
 import {AuthComponent} from './Components/auth/auth.component';
+import {RegistrationComponent} from './Components/auth/registration-component/registration.component';
 
 
 
@@ -21,6 +22,10 @@ import {AuthComponent} from './Components/auth/auth.component';
             path: States.LOGIN,
             component: AuthComponent
         },
+        {
+            path: States.REGISTRATION,
+            component: RegistrationComponent
+        }
     ])],
     exports: [RouterModule]
 })
