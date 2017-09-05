@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../../Models/User';
+import {UserService} from '../../../Services/user.service';
+import {AuthenticationService} from '../../../Services/authentication.service';
+import {Router} from '@angular/router';
+import {States} from '../../../Constants/States';
 
 @Component({
     selector: 'app-registration',
@@ -11,7 +15,10 @@ export class RegistrationComponent implements OnInit {
     userForm: FormGroup;
     user: User = new User();
 
-    constructor(private fb: FormBuilder) {}
+    constructor( private fb: FormBuilder,
+                 private router: Router,
+                 private userService: UserService,
+                 private authService: AuthenticationService) {}
 
     ngOnInit(): void {
         this.buildForm();
@@ -22,7 +29,7 @@ export class RegistrationComponent implements OnInit {
             'name': [this.user.username, [
                 Validators.required
             ]],
-            'login': [this.user.login, [
+            'email': [this.user.email, [
                 Validators.required
             ]],
             'password': [this.user.password, [
@@ -31,5 +38,16 @@ export class RegistrationComponent implements OnInit {
             'confirm': ['', Validators.required ]
         })
     }
+
+    register() {
+        this.userService.create(this.user).subscribe(
+            data => {
+                this.router.navigate(['/' + States.HOME])
+                this.authService.login(this.user.username, this.user.password)
+            },
+                    error => console.log(error)
+            );
+    }
+
 
 }
