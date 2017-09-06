@@ -1,9 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {States} from './Constants/States';
-import {MainComponent} from './Components/main/main.component';
-import {AuthComponent} from './Components/auth/auth.component';
-import {RegistrationComponent} from './Components/auth/registration-component/registration.component';
+import {States} from './constants/States';
+import {AuthComponent} from './components/auth/auth.component';
+import {RegistrationComponent} from './components/auth/registration-component/registration.component';
 
 
 
@@ -11,12 +10,7 @@ import {RegistrationComponent} from './Components/auth/registration-component/re
     imports: [RouterModule.forRoot([
         {
             path: '',
-            redirectTo: States.HOME,
-            pathMatch: 'full'
-        },
-        {
-            path: States.HOME,
-            component: MainComponent
+            loadChildren: './components/main/main.module#MainModule'
         },
         {
             path: States.LOGIN,

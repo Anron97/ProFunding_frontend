@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import { Router } from '@angular/router'
-import {States} from '../../../Constants/States';
+import {States} from '../../../constants/States';
 
 @Component({
     selector: 'app-header',

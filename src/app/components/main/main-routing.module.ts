@@ -1,19 +1,21 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {States} from '../../Constants/States';
 import {HomeComponent} from './home/home.component';
+import {MainComponent} from './main.component';
+
 
 @NgModule({
     imports: [
         RouterModule.forChild([
             {
                 path: '',
-                redirectTo: States.HOME,
-                pathMatch: 'full'
-            },
-            {
-                path: States.HOME,
-                component: HomeComponent
+                component: MainComponent,
+                children: [
+                    {
+                        path: '',
+                        component: HomeComponent
+                    }
+                ]
             }
         ])
     ],

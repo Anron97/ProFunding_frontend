@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {User} from '../../../Models/User';
-import {UserService} from '../../../Services/user.service';
-import {AuthenticationService} from '../../../Services/authentication.service';
+import {User} from '../../../models/User';
+import {UserService} from '../../../services/user.service';
+import {AuthenticationService} from '../../../services/authentication.service';
 import {Router} from '@angular/router';
-import {States} from '../../../Constants/States';
+import {States} from '../../../constants/States';
 
 @Component({
     selector: 'app-registration',
@@ -42,7 +42,7 @@ export class RegistrationComponent implements OnInit {
     register() {
         this.userService.create(this.user).subscribe(
             data => {
-                this.router.navigate(['/' + States.HOME])
+                this.router.navigate([''])
                 this.authService.login(this.user.username, this.user.password)
             },
                     error => console.log(error)

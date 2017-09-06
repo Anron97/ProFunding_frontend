@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import {User} from '../Models/User';
+import {User} from '../models/User';
 import 'rxjs/add/operator/map';
+import {API_URL} from '../constants/API';
 
 
 
@@ -10,7 +11,7 @@ export class UserService {
     constructor(private http: Http) { }
 
     create(user: User) {
-        return this.http.post('/api/users', user, this.jwt()).map((response: Response) => response.json());
+        return this.http.post(API_URL+'/users', user, this.jwt()).map((response: Response) => response.json());
     }
 
     private jwt() {
