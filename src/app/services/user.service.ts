@@ -11,7 +11,7 @@ export class UserService {
     constructor(private http: Http) { }
 
     create(user: User) {
-        return this.http.post(API_URL+'/users', user, this.jwt()).map((response: Response) => response.json());
+        return this.http.post(API_URL+'/registration', user).map((response: Response) => response.json());
     }
 
     private jwt() {

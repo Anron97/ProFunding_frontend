@@ -12,7 +12,7 @@ import {HttpModule} from '@angular/http';
         BrowserModule,
         AppRoutingModule,
         AuthModule,
-        HttpModule
+        HttpModule,
     ],
     declarations: [
         AppComponent

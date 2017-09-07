@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {MainComponent} from './main.component';
+import {DraftComponent} from './draft-component/draft.component';
 
 
 @NgModule({
@@ -14,6 +15,10 @@ import {MainComponent} from './main.component';
                     {
                         path: '',
                         component: HomeComponent
+                    },
+                    {
+                        path: 'draft',
+                        component: DraftComponent
                     }
                 ]
             }

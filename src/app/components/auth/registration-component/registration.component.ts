@@ -4,7 +4,6 @@ import {User} from '../../../models/User';
 import {UserService} from '../../../services/user.service';
 import {AuthenticationService} from '../../../services/authentication.service';
 import {Router} from '@angular/router';
-import {States} from '../../../constants/States';
 
 @Component({
     selector: 'app-registration',
@@ -40,6 +39,7 @@ export class RegistrationComponent implements OnInit {
     }
 
     register() {
+        console.log(this.user)
         this.userService.create(this.user).subscribe(
             data => {
                 this.router.navigate([''])

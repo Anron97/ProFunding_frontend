@@ -15,6 +15,7 @@
     "lib" : ["es2015", "es2015.iterable", "dom"]
   },
   "files": [
-    "main.ts"
+    "main.ts",
+    "typings.d.ts"
   ]
 }
