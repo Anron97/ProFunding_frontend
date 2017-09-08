@@ -7,6 +7,8 @@ import {HeaderComponent} from './header-component/header.component';
 import {MainRoutingModule} from './main-routing.module';
 import {TinymceModule} from 'angular2-tinymce';
 import {DraftComponent} from './draft-component/draft.component';
+import {InputTextModule} from 'primeng/primeng';
+
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import {DraftComponent} from './draft-component/draft.component';
             skin_url: 'assets/tinymce/skins/lightgray',
             relative_urls : true,
             document_base_url : 'http://localhost:8080/src/'
-        })
+        }),
+        InputTextModule
     ],
     providers: [],
     declarations: [
