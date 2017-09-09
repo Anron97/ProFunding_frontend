@@ -148,3 +148,6 @@ span.round-tab:hover {
 #preview {
     margin-top: 50px;
 }
+[hidden]{
+    display: none;
+}

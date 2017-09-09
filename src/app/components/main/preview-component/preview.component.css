@@ -8,3 +8,9 @@
 .block img{
     width: 100%;
 }
+.block h4{
+    white-space: normal;
+    word-wrap: break-word;
+    margin: 20px;
+    width: 80%;
+}

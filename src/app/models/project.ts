@@ -4,7 +4,7 @@ export class Project {
     title: string
     completionDate: Date = new Date();
     description: string
-    image: string = "/src/assets/img/default-bg.jpg";
+    image: string = "default-bg";
     finansalGoals: FinansalGoal[] = [];
     totalCost: number = 0;
 }

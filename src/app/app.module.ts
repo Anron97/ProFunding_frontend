@@ -7,6 +7,7 @@ import {UserService} from './services/user.service';
 import {AuthenticationService} from './services/authentication.service';
 import {HttpModule} from '@angular/http';
 
+
 @NgModule({
     imports: [
         BrowserModule,

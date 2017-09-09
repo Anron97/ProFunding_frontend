@@ -10,6 +10,9 @@ import {DraftComponent} from './draft-component/draft.component';
 import {InputTextModule} from 'primeng/primeng';
 import {PreviewComponent} from './preview-component/preview.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {Ng2CloudinaryModule} from 'ng2-cloudinary';
+import { FileUploadModule } from 'ng2-file-upload';
+
 
 
 @NgModule({
@@ -24,7 +27,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
             relative_urls : true,
             document_base_url : 'http://localhost:8080/src/'
         }),
-        InputTextModule
+        InputTextModule,
+        Ng2CloudinaryModule,
+        FileUploadModule
     ],
     providers: [],
     declarations: [

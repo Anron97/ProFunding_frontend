@@ -51,7 +51,9 @@
                                 </div>
                                 <div class="block">
                                     <h3>Обложка проекта</h3>
-                                    <img src="/src/assets/img/default-bg.jpg"/>
+                                    <cl-image public-id={{project.image}} cloud-name={{uploader.cloudName}} height="200"></cl-image>
+                                    <input type="file" #fileSelect ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera" hidden="true"  (change)="upload()"/>
+                                    <button class="btn btn-primary" (click)="load()">Download</button>
                                 </div>
 
                             </div>

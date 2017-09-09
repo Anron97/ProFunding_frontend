@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Project} from '../../../models/project';
 
 
+
 @Component({
     selector: 'preview',
     templateUrl: './preview.component.html',
@@ -9,5 +10,6 @@ import {Project} from '../../../models/project';
 })
 export class PreviewComponent {
     @Input() project: Project;
+
 }
 
