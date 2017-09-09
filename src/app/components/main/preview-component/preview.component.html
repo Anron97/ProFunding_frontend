@@ -1,3 +1,7 @@
 <div class="block">
-
+    <img src={{project.image}}>
+    <h4 *ngIf="project.title">{{project.title}}</h4>
+    <h4 *ngIf="!project.title">Название проекта</h4>
+    <p *ngIf="project.description">{{project.description}}</p>
+    <p *ngIf="!project.description">Краткое описание проекта</p>
 </div>

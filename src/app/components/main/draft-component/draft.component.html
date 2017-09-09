@@ -43,11 +43,11 @@
                             <div class="tab-pane active" role="tabpanel" id="step1">
                                 <div class="block">
                                     <h3>Название проекта</h3>
-                                    <input id="float-input" type="text" size="90" placeholder="Title" pInputText>
+                                    <input id="float-input" type="text" size="90" placeholder="Title" pInputText [(ngModel)]="project.title">
                                 </div>
                                 <div class="block">
                                     <h3>Краткое описание проекта</h3>
-                                    <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize"></textarea>
+                                    <textarea [rows]="5" [cols]="30" pInputTextarea [(ngModel)]="project.description" autoResize="autoResize" ></textarea>
                                 </div>
                                 <div class="block">
                                     <h3>Обложка проекта</h3>
@@ -68,7 +68,7 @@
                         </div>
                 </div>
                 <div class="col-xs-4" id="preview">
-                    <div class="block"><h4>Preview</h4></div>
+                    <preview [project]="project"></preview>
                 </div>
             </div>
         </section>

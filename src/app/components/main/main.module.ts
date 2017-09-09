@@ -8,13 +8,16 @@ import {MainRoutingModule} from './main-routing.module';
 import {TinymceModule} from 'angular2-tinymce';
 import {DraftComponent} from './draft-component/draft.component';
 import {InputTextModule} from 'primeng/primeng';
-
+import {PreviewComponent} from './preview-component/preview.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
     imports: [
         CommonModule,
         MainRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
         TinymceModule.withConfig({
             menubar: false,
             skin_url: 'assets/tinymce/skins/lightgray',
@@ -29,7 +32,8 @@ import {InputTextModule} from 'primeng/primeng';
         HomeComponent,
         FooterComponent,
         HeaderComponent,
-        DraftComponent
+        DraftComponent,
+        PreviewComponent
     ],
     exports: [MainComponent]
 })

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Project} from '../../../models/project';
 
 
 @Component({
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
     templateUrl: './preview.component.html',
     styleUrls: ['./preview.component.css']
 })
-export class PreiewComponent {
+export class PreviewComponent {
+    @Input() project: Project;
 }
 
