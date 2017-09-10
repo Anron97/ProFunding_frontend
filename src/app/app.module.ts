@@ -6,6 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {UserService} from './services/user.service';
 import {AuthenticationService} from './services/authentication.service';
 import {HttpModule} from '@angular/http';
+import { FormsModule }   from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {HttpModule} from '@angular/http';
         BrowserModule,
         AppRoutingModule,
         AuthModule,
-        HttpModule
+        HttpModule,
+        FormsModule
     ],
     declarations: [
         AppComponent
