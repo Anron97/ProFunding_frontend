@@ -7,7 +7,7 @@ import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
     templateUrl: './draft.component.html',
     styleUrls: ['./draft.component.css'],
 })
-export class DraftComponent{
+export class DraftComponent {
     @ViewChild('fileSelect') fileSelect: ElementRef;
     project: Project = new Project();
 
@@ -15,7 +15,7 @@ export class DraftComponent{
         new CloudinaryOptions({ cloudName: 'profunding', uploadPreset: 'profunding' })
     );
 
-    constructor(){
+    constructor() {
         this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
             console.log(item);
             let res: any = JSON.parse(response);
@@ -24,11 +24,11 @@ export class DraftComponent{
         };
     }
     load() {
-        console.log("In load!");
+        console.log('In load!');
         this.fileSelect.nativeElement.click();
     }
     upload() {
-        console.log("In upload!");
+        console.log('In upload!');
         this.uploader.uploadAll();
     }
 }

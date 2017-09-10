@@ -39,35 +39,43 @@
                     </ul>
                 </div>
                 <div class="col-xs-8">
-                        <div class="tab-content">
-                            <div class="tab-pane active" role="tabpanel" id="step1">
-                                <div class="block">
-                                    <h3>Название проекта</h3>
-                                    <input id="float-input" type="text" size="90" placeholder="Title" pInputText [(ngModel)]="project.title">
-                                </div>
-                                <div class="block">
-                                    <h3>Краткое описание проекта</h3>
-                                    <textarea [rows]="5" [cols]="30" pInputTextarea [(ngModel)]="project.description" autoResize="autoResize" ></textarea>
-                                </div>
-                                <div class="block">
-                                    <h3>Обложка проекта</h3>
-                                    <cl-image public-id={{project.image}} cloud-name={{uploader.cloudName}} height="200"></cl-image>
-                                    <input type="file" #fileSelect ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera" hidden="true"  (change)="upload()"/>
-                                    <button class="btn btn-primary" (click)="load()">Download</button>
-                                </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" role="tabpanel" id="step1">
+                            <div class="block">
+                                <h3>Название проекта</h3>
+                                <input id="float-input" type="text" style="width: 90%" placeholder="Title" pInputText
+                                       [(ngModel)]="project.title">
+                            </div>
+                            <div class="block">
+                                <h3>Краткое описание проекта</h3>
+                                <textarea [rows]="5" [cols]="30" pInputTextarea [(ngModel)]="project.description"
+                                          autoResize="autoResize"></textarea>
+                            </div>
+                            <div class="block">
+                                <h3>Обложка проекта</h3>
+                                <cl-image public-id={{project.image}} cloud-name={{uploader.cloudName}}
+                                          height="200"></cl-image>
+                                <input type="file" #fileSelect ng2FileSelect [uploader]="uploader"
+                                       accept="image/*;capture=camera" hidden="true" (change)="upload()"/>
+                                <button class="btn btn-primary" (click)="load()">Download</button>
+                            </div>
+                            <div class="block">
+                                    <h3>Icon</h3>
+                                    <p-calendar [showIcon]="true"></p-calendar><span style="width: 50px">{{date3|date}}</span>
+                            </div>
 
-                            </div>
-                            <div class="tab-pane" role="tabpanel" id="step2">
-                                <app-tinymce></app-tinymce>
-                            </div>
-                            <div class="tab-pane" role="tabpanel" id="step3">
-                                <h2>Payway</h2>
-                            </div>
-                            <div class="tab-pane" role="tabpanel" id="complete">
-                                <h2>Success</h2>
-                            </div>
-                            <div class="clearfix"></div>
                         </div>
+                        <div class="tab-pane" role="tabpanel" id="step2">
+                            <app-tinymce></app-tinymce>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="step3">
+                            <h2>Payway</h2>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="complete">
+                            <h2>Success</h2>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
                 </div>
                 <div class="col-xs-4" id="preview">
                     <preview [project]="project"></preview>

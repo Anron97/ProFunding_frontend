@@ -12,8 +12,8 @@ import {PreviewComponent} from './preview-component/preview.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Ng2CloudinaryModule} from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
-
-
+import {CalendarModule} from 'primeng/primeng';
+import { Ng2FileDropModule }  from 'ng2-file-drop'
 
 @NgModule({
     imports: [
@@ -29,7 +29,9 @@ import { FileUploadModule } from 'ng2-file-upload';
         }),
         InputTextModule,
         Ng2CloudinaryModule,
-        FileUploadModule
+        FileUploadModule,
+        CalendarModule,
+        Ng2FileDropModule
     ],
     providers: [],
     declarations: [
