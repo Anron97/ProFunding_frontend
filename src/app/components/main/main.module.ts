@@ -13,7 +13,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Ng2CloudinaryModule} from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
 import {CalendarModule} from 'primeng/primeng';
-import { Ng2FileDropModule }  from 'ng2-file-drop'
+import { Ng2FileDropModule }  from 'ng2-file-drop';
+import {DragAndDropComponent} from "./darg-and-drop-component/drag-and-drop.component";
 
 @NgModule({
     imports: [
@@ -40,7 +41,8 @@ import { Ng2FileDropModule }  from 'ng2-file-drop'
         FooterComponent,
         HeaderComponent,
         DraftComponent,
-        PreviewComponent
+        PreviewComponent,
+        DragAndDropComponent
     ],
     exports: [MainComponent]
 })
