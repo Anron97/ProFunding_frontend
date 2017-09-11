@@ -42,71 +42,27 @@
                     <div class="tab-content">
                         <div class="tab-pane active" role="tabpanel" id="step1">
                             <div class="block">
-                                <h3>Название проекта</h3>
-                                <input id="float-input" type="text" style="width: 90%" placeholder="Title" pInputText
+                                <div class="create-header"><p>Название проекта</p></div>
+                                <input id="float-input" type="text" placeholder="Введите название проекта" pInputText
                                        [(ngModel)]="project.title">
+                                <p class="create-desc">Название должно быть лаконичным, уникальным и запоминающимся. Будьте уверены в том, что название проекта отражает его суть.</p>
                             </div>
                             <div class="block">
-                                <h3>Краткое описание проекта</h3>
-                                <textarea [rows]="5" [cols]="30" pInputTextarea [(ngModel)]="project.description"
-                                          autoResize="autoResize"></textarea>
+                                <div class="create-header"><p>Краткое описание проекта</p></div>
+                                <textarea class="textarea" [rows]="20" [cols]="30" pInputTextarea [(ngModel)]="project.description"
+                                          autoResize="autoResize" placeholder="Коротко расскажите о проекте"></textarea>
+                                <p class="create-desc">Опишите в одном предложении цель вашего проекта.</p>
+                            </div>
+                            <div class="block projectLayout">
+                                <div class="create-header header-image"><p>Обложка проекта</p></div>
+                                <div class="text-center">
+                                    <img src="{{project.image}}" width="100%"/>
+                                </div>
+                                <button type="button" class="btn btn-show-modal" data-toggle="modal" data-target="#myModal">Изменить обложку</button>
                             </div>
                             <div class="block">
-                                <h3>Обложка проекта</h3>
-                                <cl-image public-id={{project.image}} cloud-name={{uploader.cloudName}}
-                                          height="200"></cl-image>
-                                <input type="file" #fileSelect ng2FileSelect [uploader]="uploader"
-                                       accept="image/*;capture=camera" hidden="true" (change)="upload()"/>
-                                <button class="btn btn-primary" (click)="load()">Download</button>
-                            </div>
-                            <div class="block">
-                                    <h3>Icon</h3>
-                                    <p-calendar [showIcon]="true"></p-calendar><span style="width: 50px">{{date3|date}}</span>
-                            </div>
-                            <!--<div class="block">-->
-                                <!--<h3>Финансовые цели</h3>-->
-                                <!--<table class="table">-->
-                                    <!--<thead>-->
-                                    <!--<tr>-->
-                                        <!--<th>Название</th>-->
-                                        <!--<th>Описание</th>-->
-                                        <!--<th>Стоимость</th>-->
-                                        <!--<th></th>-->
-                                    <!--</tr>-->
-                                    <!--</thead>-->
-                                    <!--<tbody>-->
-                                    <!--<tr *ngFor="let g of goals">-->
-                                        <!--<td>{{g.title}}</td>-->
-                                        <!--<td>{{g.description}}</td>-->
-                                        <!--<td>{{g.cost}}</td>-->
-                                        <!--<td><span class="glyphicon glyphicon-remove hvr-grow"></span></td>-->
-                                    <!--</tr>-->
-                                    <!--<tr *ngIf="goals.length == 0">-->
-                                        <!--<td></td>-->
-                                        <!--<td>Добавьте цели</td>-->
-                                        <!--<td></td>-->
-                                    <!--</tr>-->
-                                    <!--</tbody>-->
-                                <!--</table>-->
-                                <!--<div class="form-group goal-inline-block">-->
-                                    <!--<label>Название</label>-->
-                                    <!--<input class="form-control" name="title" [(ngModel)]="goal.title" />-->
-                                <!--</div>-->
-                                <!--<div class="form-group goal-inline-block">-->
-                                    <!--<label>Стоимость</label>-->
-                                    <!--<input type="number" class="form-control" name="price" [(ngModel)]="goal.cost" />-->
-                                <!--</div>-->
-                                <!--<div class="form-group">-->
-                                    <!--<label>Описание</label>-->
-                                    <!--<textarea class="form-control" rows="3" name="description" [(ngModel)]="goal.description"></textarea>-->
-                                    <!--&lt;!&ndash;<input class="form-control" name="description" [(ngModel)]="goal.description" />&ndash;&gt;-->
-                                <!--</div>-->
-                                <!--<div class="form-group">-->
-                                    <!--<button class="btn btn-default" (click)="addGoal()">Добавить</button>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <div class="block">
-                                <drag-and-drop></drag-and-drop>
+                                <div class="create-header"><p>Дата окончания компании</p></div>
+                                    <p-calendar [inputStyle]="{'background-color' : '#f9f9f9','width': '200px'}" [showIcon]="true"></p-calendar><span style="width: 100px">{{date3|date}}</span><br>
                             </div>
                         </div>
                         <div class="tab-pane" role="tabpanel" id="step2">
@@ -122,10 +78,31 @@
                     </div>
                 </div>
                 <div class="col-xs-4" id="preview">
+                    <div class="block">
+                        <a href="#" class="btn  btn_save">Сохранить</a>
+                        <a href="#" class="btn  btn_subscribe">Предпросмотр</a>
+                    </div>
                     <preview [project]="project"></preview>
-                    {{content}}
                 </div>
             </div>
         </section>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" #closeBtn>&times;</button>
+                <h4 class="modal-title">Upload</h4>
+            </div>
+            <div class="modal-body">
+                <drag-and-drop [project]="project" (download)="drop()"></drag-and-drop>
+                <input type="file" #fileSelect ng2FileSelect [uploader]="uploader"
+                       accept="image/*;capture=camera" hidden="true" (change)="upload()"/>
+                <button class="btn btn-show-modal right" (click)="load()" style="margin-left: 40%">Выбрать файл</button>
+            </div>
+
+        </div>
     </div>
 </div>

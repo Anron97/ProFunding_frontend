@@ -1,7 +1,11 @@
 <div class="block">
-    <cl-image public-id={{project.image}} cloud-name='profunding' height="200"></cl-image>
-    <h4 *ngIf="project.title">{{project.title}}</h4>
-    <h4 *ngIf="!project.title">Название проекта</h4>
-    <p *ngIf="project.description">{{project.description}}</p>
-    <p *ngIf="!project.description">Краткое описание проекта</p>
+    <div class="image-preview">
+        <img src="{{project.image}}">
+    </div>
+    <div class="content">
+        <h4 *ngIf="project.title">{{project.title}}</h4>
+        <h4 *ngIf="!project.title">Название проекта</h4>
+        <p *ngIf="project.description">{{project.description}}</p>
+        <p *ngIf="!project.description">Краткое описание проекта</p>
+    </div>
 </div>

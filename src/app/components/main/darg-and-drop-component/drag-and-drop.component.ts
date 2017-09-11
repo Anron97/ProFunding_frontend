@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, Input, ElementRef, Output, EventEmitter} from '@angular/core';
 import {CloudinaryOptions, CloudinaryUploader} from "ng2-cloudinary";
 import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop';
+import {Project} from "../../../models/project";
 
 @Component({
 
@@ -9,7 +10,8 @@ import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop
     styleUrls: ['./drag-and-drop.component.css'],
 })
 export class DragAndDropComponent {
-
+    @Input() project: Project;
+    @Output() download =  new EventEmitter();
     private supportedFileTypes: string[] = ['image/png', 'image/jpeg', 'image/gif']
 
     uploader: CloudinaryUploader = new CloudinaryUploader(
@@ -19,7 +21,9 @@ export class DragAndDropComponent {
         this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
             console.log(item);
             let res: any = JSON.parse(response);
-            console.log('in uploader - onSuccessItem' + res);
+            this.project.image = 'http://res.cloudinary.com/' + this.uploader.cloudName +
+                '/image/upload/v1505121387/' + res.public_id + '.jpg';
+            this.download.emit();
             return { item, response, status, headers };
         };
     }

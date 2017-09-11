@@ -10,6 +10,7 @@ import {FinansalGoal} from '../../../models/finansalGoal';
 })
 export class DraftComponent {
     @ViewChild('fileSelect') fileSelect: ElementRef;
+    @ViewChild('closeBtn') closeBtn: ElementRef;
     project: Project = new Project();
     goal: FinansalGoal = new FinansalGoal("", "", 0);
     goals: FinansalGoal[] = [];
@@ -23,7 +24,8 @@ export class DraftComponent {
         this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
             console.log(item);
             let res: any = JSON.parse(response);
-            this.project.image = res.public_id;
+            this.project.image = 'http://res.cloudinary.com/' + this.uploader.cloudName +
+                '/image/upload/v1505121387/' + res.public_id + '.jpg';
             return { item, response, status, headers };
         };
     }
@@ -37,5 +39,8 @@ export class DraftComponent {
     }
     addGoal() {
         this.goals.push(new FinansalGoal(this.goal.title, this.goal.description, this.goal.cost))
+    }
+    drop() {
+        this.closeBtn.nativeElement.click();
     }
 }

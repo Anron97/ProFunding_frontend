@@ -139,11 +139,15 @@ span.round-tab:hover {
     }
 }
 .block {
-    padding: 30px 20px;
-    background: rgba(229, 229, 229, 0.35);
-    margin: 20px auto;
-    background: #f4f7f8;
-    border-radius: 8px;
+    position: relative;
+    margin-bottom: 9px;
+    border-top: 5px solid transparent;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    color: #333333;
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+    padding: 20px;
 }
 #preview {
     margin-top: 50px;
@@ -172,4 +176,95 @@ span.round-tab:hover {
 .hvr-grow:focus,
 .hvr-grow:active {
     transform: scale(1.3);
+}
+
+.projectLayout {
+    position: relative;
+    padding: 0;
+    padding-top: 30px;
+}
+
+.projectLayout button {
+    position: absolute;
+    left: 40px;
+    bottom: 20px;
+}
+a.btn_subscribe {
+    width: 45%;
+    border: 1px solid rgba(204, 204, 204, 0.3);
+    background-color: transparent;
+    height: 40px;
+    color: #202020;
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 25px;
+}
+a.btn_subscribe:hover {
+    border: 1px solid rgba(204, 204, 204, 1);
+    color: #206ea1;
+}
+a.btn_save {
+    width: 45%;
+    background-color: #9E9E9E;
+    color: #ffffff;
+    height: 40px;
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 25px;
+    margin-right: 10px;
+}
+a.btn_save:hover {
+    background-color: #555555;
+}
+#float-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 11px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    line-height: 1;
+}
+.create-header {
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+.create-desc {
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 0 5px;
+    color: #999999;
+    font-size: 14px;
+    line-height: 20px;
+}
+.textarea {
+    display: block;
+    width: 100%;
+    height: 120px;
+    padding: 13px 11px 10px;
+    resize: none;
+    color: #333333;
+    border: 1px solid #cccccc;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    line-height: 1;
+    overflow: auto;
+}
+.header-image{
+    margin-left: 20px;
+}
+.btn-show-modal {
+    background-color: #16B4C3;
+    color: #ffffff;
+    height: 36px;
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+.btn-show-modal:hover {
+    background-color: #189cc3;
 }

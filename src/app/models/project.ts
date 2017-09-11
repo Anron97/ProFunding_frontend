@@ -4,7 +4,7 @@ export class Project {
     title: string
     completionDate: Date = new Date();
     description: string
-    image: string = "default-bg";
+    image = 'http://res.cloudinary.com/profunding/image/upload/v1504950919/default-bg.jpg';
     finansalGoals: FinansalGoal[] = [];
-    totalCost: number = 0;
+    totalCost = 0;
 }

@@ -5,8 +5,8 @@
 .profile-picture-section-drop-zone {
     margin: 0px auto;
     border-radius: 30px;
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: 200px;
 }
 .profile-picture-section-request-image-group {
     border-style: dashed;

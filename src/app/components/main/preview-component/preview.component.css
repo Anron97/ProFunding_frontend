@@ -1,16 +1,27 @@
 .block {
-    padding: 0px;
-    background: rgba(229, 229, 229, 0.35);
     margin: 20px auto;
     background: #f4f7f8;
     border-radius: 8px;
-}
-.block img{
     width: 100%;
+    padding-top: 180%;
+
 }
 .block h4{
     white-space: normal;
     word-wrap: break-word;
     margin: 20px;
     width: 80%;
+}
+.block .image-preview img {
+    width: 100%;
+}
+.block .image-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.block .content {
+    width: 100%;
+    min-height: 100%;
 }
