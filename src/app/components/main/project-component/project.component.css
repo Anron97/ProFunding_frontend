@@ -1,0 +1,12 @@
+.title {
+    font-size: 40px;
+    word-wrap: break-word;
+    margin-top: 40px;
+}
+.image {
+    margin-top: 40px;
+}
+cl-image {
+    width: 250px;
+    height: auto;
+}

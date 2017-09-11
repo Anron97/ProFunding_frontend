@@ -10,11 +10,11 @@ import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop
 })
 export class DragAndDropComponent {
 
+    private supportedFileTypes: string[] = ['image/png', 'image/jpeg', 'image/gif']
+
     uploader: CloudinaryUploader = new CloudinaryUploader(
         new CloudinaryOptions({ cloudName: 'profunding', uploadPreset: 'profunding' })
     );
-    public hasBaseDropZoneOver = false;
-
     constructor() {
         this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
             console.log(item);
@@ -23,13 +23,8 @@ export class DragAndDropComponent {
             return { item, response, status, headers };
         };
     }
-
-    public fileOverBase(e: any): void {
-        console.log(e);
-        this.hasBaseDropZoneOver = e;
-    }
     public dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile) {
-        console.log(acceptedFile);
+        this.uploader.uploadAll();
     }
 
 }

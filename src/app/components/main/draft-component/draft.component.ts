@@ -13,6 +13,7 @@ export class DraftComponent {
     project: Project = new Project();
     goal: FinansalGoal = new FinansalGoal("", "", 0);
     goals: FinansalGoal[] = [];
+    content: string;
 
     uploader: CloudinaryUploader = new CloudinaryUploader(
         new CloudinaryOptions({ cloudName: 'profunding', uploadPreset: 'profunding' })
