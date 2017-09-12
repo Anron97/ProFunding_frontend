@@ -25,7 +25,7 @@ export class DraftComponent {
             console.log(item);
             let res: any = JSON.parse(response);
             this.project.image = 'http://res.cloudinary.com/' + this.uploader.cloudName +
-                '/image/upload/v1505121387/' + res.public_id + '.jpg';
+                '/image/upload/w_800,h_450,c_crop/v1505121387/' + res.public_id + '.jpg';
             return { item, response, status, headers };
         };
     }

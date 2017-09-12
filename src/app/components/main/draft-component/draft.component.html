@@ -43,14 +43,14 @@
                         <div class="tab-pane active" role="tabpanel" id="step1">
                             <div class="block">
                                 <div class="create-header"><p>Название проекта</p></div>
-                                <input id="float-input" type="text" placeholder="Введите название проекта" pInputText
+                                <input id="float-input" type="text" placeholder="Введите название проекта" pInputText maxlength="70"
                                        [(ngModel)]="project.title">
                                 <p class="create-desc">Название должно быть лаконичным, уникальным и запоминающимся. Будьте уверены в том, что название проекта отражает его суть.</p>
                             </div>
                             <div class="block">
                                 <div class="create-header"><p>Краткое описание проекта</p></div>
                                 <textarea class="textarea" [rows]="20" [cols]="30" pInputTextarea [(ngModel)]="project.description"
-                                          autoResize="autoResize" placeholder="Коротко расскажите о проекте"></textarea>
+                                          autoResize="autoResize" placeholder="Коротко расскажите о проекте" maxlength="160"></textarea>
                                 <p class="create-desc">Опишите в одном предложении цель вашего проекта.</p>
                             </div>
                             <div class="block projectLayout">
