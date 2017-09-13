@@ -44,7 +44,7 @@
                             <div class="block">
                                 <div class="create-header"><p>Название проекта</p></div>
                                 <input id="float-input" type="text" placeholder="Введите название проекта" pInputText maxlength="70"
-                                       [(ngModel)]="project.title">
+                                       [(ngModel)]="project.title" class="error"><span></span>
                                 <p class="create-desc">Название должно быть лаконичным, уникальным и запоминающимся. Будьте уверены в том, что название проекта отражает его суть.</p>
                             </div>
                             <div class="block">
@@ -63,6 +63,33 @@
                             <div class="block">
                                 <div class="create-header"><p>Дата окончания компании</p></div>
                                     <p-calendar [inputStyle]="{'background-color' : '#f9f9f9','width': '200px'}" [showIcon]="true"></p-calendar><span style="width: 100px">{{date3|date}}</span><br>
+                            </div>
+                            <div class="block">
+                                <div class="create-header"><p>Финансовая цель</p></div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <input id="finansal-input" type="text" placeholder="Введите название цели" pInputText maxlength="70">
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <input id="finansal-input" type="number" placeholder="Введите сумму цели" pInputText>
+                                        <span class="currency">BYN</span>
+                                        <a href="#" class="btn  btn_subscribe btn_add">Добавить</a>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="create-desc">Вы можете создавать несколько целей. Общая сумма проекта будет состоять из суммы всех целей</p>
+                            </div>
+                            <div class="block">
+                                <div class="create-header"><p>Тэги проекта</p></div>
+                                <tag-input theme='minimal'
+                                           [(ngModel)]="tags"
+                                           [maxItems]='5'
+                                           [validators]="validators"
+                                           [errorMessages]="errorMessages"
+                                           placeholder="Enter tags"
+                                           secondaryPlaceholder="Enter tags">
+                                </tag-input>
+                                <p class="create-desc">Название должно быть лаконичным, уникальным и запоминающимся. Будьте уверены в том, что название проекта отражает его суть.</p>
                             </div>
                         </div>
                         <div class="tab-pane" role="tabpanel" id="step2">
@@ -83,6 +110,12 @@
                         <a href="#" class="btn  btn_subscribe">Предпросмотр</a>
                     </div>
                     <preview [project]="project"></preview>
+                    <div>
+                        <div class="create-header finansal-header">Финансовые цели</div>
+                        <finansal-goal *ngFor="let goal of finansalGoals" [finansalGoal]="goal"></finansal-goal>
+
+                    </div>
+
                 </div>
             </div>
         </section>

@@ -16,6 +16,10 @@ import { Ng2FileDropModule }  from 'ng2-file-drop';
 import {DragAndDropComponent} from "./darg-and-drop-component/drag-and-drop.component";
 import {EditorModule} from 'primeng/primeng';
 import {ProjectComponent} from "./project-component/project.component";
+import { TagInputModule } from 'ng2-tag-input';
+import {FinansalGoalComponent} from "./finansal-goal-component/finansal-goal.component";
+
+
 
 @NgModule({
     imports: [
@@ -28,7 +32,8 @@ import {ProjectComponent} from "./project-component/project.component";
         FileUploadModule,
         CalendarModule,
         Ng2FileDropModule,
-        EditorModule
+        EditorModule,
+        TagInputModule
     ],
     providers: [],
     declarations: [
@@ -39,7 +44,8 @@ import {ProjectComponent} from "./project-component/project.component";
         DraftComponent,
         PreviewComponent,
         DragAndDropComponent,
-        ProjectComponent
+        ProjectComponent,
+        FinansalGoalComponent
     ],
     exports: [MainComponent]
 })
