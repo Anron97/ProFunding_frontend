@@ -18,6 +18,8 @@ import {EditorModule} from 'primeng/primeng';
 import {ProjectComponent} from "./project-component/project.component";
 import { TagInputModule } from 'ng2-tag-input';
 import {FinansalGoalComponent} from "./finansal-goal-component/finansal-goal.component";
+import {GeneralInfoComponent} from "./draft-component/general-info-component/general-info.component";
+import {DescriptionComponent} from "./draft-component/description-component/description.component";
 
 
 
@@ -45,7 +47,9 @@ import {FinansalGoalComponent} from "./finansal-goal-component/finansal-goal.com
         PreviewComponent,
         DragAndDropComponent,
         ProjectComponent,
-        FinansalGoalComponent
+        FinansalGoalComponent,
+        GeneralInfoComponent,
+        DescriptionComponent
     ],
     exports: [MainComponent]
 })

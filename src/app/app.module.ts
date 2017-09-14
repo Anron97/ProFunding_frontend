@@ -7,6 +7,7 @@ import {UserService} from './services/user.service';
 import {AuthenticationService} from './services/authentication.service';
 import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ProjectService} from "./services/project.service";
 
 
 
@@ -24,7 +25,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ],
     providers: [
         UserService,
-        AuthenticationService
+        AuthenticationService,
+        ProjectService
     ],
     bootstrap: [ AppComponent ]
 })
