@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FinansalGoal} from "../../../models/finansalGoal";
 
 @Component({
@@ -8,4 +8,10 @@ import {FinansalGoal} from "../../../models/finansalGoal";
 })
 export class FinansalGoalComponent {
     @Input() finansalGoal: FinansalGoal;
+    @Output() removeFinansalGoal = new EventEmitter<FinansalGoal>()
+
+    deleteGoal() {
+        this.removeFinansalGoal.emit(this.finansalGoal);
+    }
+
 }
