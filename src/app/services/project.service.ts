@@ -1,9 +1,19 @@
 import {Injectable} from '@angular/core';
 import {Project} from "../models/project";
+import {Http, Response} from "@angular/http";
+import {API_URL} from "../constants/API";
+import {UserService} from "./user.service";
+import {User} from "../models/user";
+import 'rxjs/add/operator/map';
 
 
 @Injectable()
 export class ProjectService {
+
+    constructor(private http: Http,
+                private userService: UserService) {
+    }
+
     saveDraft(project: Project) {
         localStorage.setItem('draft', JSON.stringify(project));
     }
@@ -34,4 +44,13 @@ export class ProjectService {
         return true;
     }
 
+    create(project: Project) {
+        console.log("request: " + project);
+        let currentUser: User = this.userService.getCurrentUser();
+        if (currentUser.role === "ROLE_PROOFED_USER" || currentUser.role === "ROLE_ADMIN") {
+            project.userId = currentUser.id;
+            return this.http.post(API_URL + '/projects/create', {project}, this.userService.jwt())
+                .map((response: Response) => response.json());
+        }
+    }
 }

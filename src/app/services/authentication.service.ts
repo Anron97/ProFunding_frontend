@@ -8,13 +8,13 @@ export class AuthenticationService {
     constructor(private http: Http) { }
 
     login(username: string, password: string) {
-        return this.http.post(API_URL + '/login', JSON.stringify({ username: username, password: password }))
+        return this.http.post(API_URL + '/login', { username, password })
             .map((response: Response) => {
                 let user = response.json();
                 if (user && user.token) {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
-            });
+            }).subscribe();
     }
 
     logout() {

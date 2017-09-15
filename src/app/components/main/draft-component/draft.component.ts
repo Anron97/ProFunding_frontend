@@ -40,7 +40,13 @@ export class DraftComponent {
             this.saveDraft();
             this.begin.nativeElement.click();
         } else {
-            console.log('OK');
+            this.projectService.create(this.project).subscribe(
+                data => {
+                    console.log("OK");
+                    console.log(data);
+                },
+                error => console.log(error)
+            );
         }
 
     }

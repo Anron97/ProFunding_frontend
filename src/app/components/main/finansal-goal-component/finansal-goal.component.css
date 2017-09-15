@@ -8,46 +8,39 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     color: #333333;
     font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
-    height: 60px;
+    vertical-align: middle;
+    text-align: center;
 }
+
 .title {
     font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
     font-size: 17px;
     font-weight: 500;
     overflow: hidden;
 }
-.col {
-    height: 52px;
-}
+
 .cost {
     font-size: 17px;
     font-weight: 600;
     height: 100%;
     vertical-align: middle;
 }
-.row {
-    vertical-align: middle;
-}
+
 .glyphicon.glyphicon-bookmark {
     font-size: 15px;
     line-height: 20px;
     color: #fe3b3b;
-    margin-top: 15px;
 }
 
-.btn.btn-danger.btn-xs {
+.block a {
     display: none;
-    margin: 0;
-
+    position: absolute;
+    top: 2px;
+    left: 90%;
+    color: #b9b8b8;
 }
 
-.block:hover .btn.btn-danger.btn-xs {
+.block:hover a {
     display: block;
-}
-
-.col-btn {
-    padding: 13px 0 0px 2%;
-    text-align: center;
-    padding-left: 2%;
 }
 

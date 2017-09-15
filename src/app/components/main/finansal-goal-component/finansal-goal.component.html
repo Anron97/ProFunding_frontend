@@ -1,20 +1,6 @@
 <div class="block">
-    <div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-1 col">
-            <div class="glyphicon glyphicon-bookmark"></div>
-        </div>
-        <div class="col-xs-5 title col">
-            <div style="word-wrap: break-word">{{finansalGoal.title}}</div>
-        </div>
-        <div class="col-xs-4 col">
-            <div class="cost">{{finansalGoal.cost}} BYN</div>
-        </div>
-        <div class="col-xs-2 col col-btn">
-            <button class="btn btn-danger btn-xs" >
-                <span class="glyphicon glyphicon-trash" (click)="deleteGoal()"></span>
-            </button>
-        </div>
-    </div>
-    </div>
+    <div class="glyphicon glyphicon-bookmark"></div>
+    <div style="overflow: hidden">{{finansalGoal.title}}</div>
+    <div class="cost">{{finansalGoal.cost}} BYN</div>
+    <a (click)="deleteGoal()"><span class="glyphicon glyphicon-remove-circle"></span></a>
 </div>

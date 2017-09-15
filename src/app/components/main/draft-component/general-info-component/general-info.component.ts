@@ -16,6 +16,7 @@ export class GeneralInfoComponent implements OnInit {
     @ViewChild('closeBtn') closeBtn: ElementRef;
     projectForm: FormGroup;
     finansalGoalForm: FormGroup;
+    timeNow = new Date();
 
     public errorMessages = {
         'addTag': 'Your tag can have max 25 symbols',

@@ -40,6 +40,7 @@
                     [readonlyInput]="true"
                     [(ngModel)]="project.completionDate"
                     [ngModelOptions]="{standalone: true}"
+                    [minDate]="timeNow"
                     >
         </p-calendar>
         <span style="width: 100px">{{date3|date}}</span><br>
@@ -86,6 +87,8 @@
 </form>
 <div class="block">
     <div class="create-header"><p>Тэги проекта</p></div>
+    <i  *ngIf="!project.tags.length && invalid"
+        class="fa fa-exclamation-triangle error-triangle error-triangle-tags"></i>
     <tag-input theme='minimal'
                [maxItems]='5'
                [validators]="validators"
