@@ -20,6 +20,7 @@ import { TagInputModule } from 'ng2-tag-input';
 import {FinansalGoalComponent} from "./finansal-goal-component/finansal-goal.component";
 import {GeneralInfoComponent} from "./draft-component/general-info-component/general-info.component";
 import {DescriptionComponent} from "./draft-component/description-component/description.component";
+import {ProfileComponent} from "./profile-component/profile.component";
 
 
 
@@ -49,7 +50,8 @@ import {DescriptionComponent} from "./draft-component/description-component/desc
         ProjectComponent,
         FinansalGoalComponent,
         GeneralInfoComponent,
-        DescriptionComponent
+        DescriptionComponent,
+        ProfileComponent
     ],
     exports: [MainComponent]
 })

@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import { Router } from '@angular/router'
 import {States} from '../../../constants/States';
+import {UserService} from "../../../services/user.service";
+import {User} from "../../../models/user";
+import {AuthenticationService} from "../../../services/authentication.service";
 
 @Component({
     selector: 'app-header',
@@ -8,10 +11,12 @@ import {States} from '../../../constants/States';
     styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-    brand = 'ProFunding';
-    constructor(private router: Router) {}
-
-    SignUp(): void {
-        this.router.navigate([ '/' + States.LOGIN ]);
+    user: User;
+    constructor(private userService: UserService,
+                private authService: AuthenticationService) {
+        this.user = userService.getCurrentUser();
+    }
+    logOut() {
+        this.authService.logout();
     }
 }

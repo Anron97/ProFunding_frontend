@@ -1,0 +1,223 @@
+.container-fluid {
+    position: relative;
+}
+
+.row.backgroundPlate {
+    box-sizing: border-box;
+    height: 650px;
+    margin-top: -3%;
+    background-color: #534f60;
+    background-image: url("/src/assets/images/profileBG.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 -110px;
+    z-index: -1;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+    margin-top: -200px;
+    padding-top: 230px;
+    z-index: 10;
+    background-color: #e5e5e5;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.profileMain {
+    position: relative;
+    margin-top: -450px;
+    z-index: 40;
+}
+
+.profileImage {
+    margin-bottom: -10%;
+}
+
+.info {
+    box-sizing: border-box;
+    height: 300px;
+    padding-top: 10%;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.imageBG{
+    margin: 0 auto;
+}
+
+.info .name strong {
+    font-size: 35px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: #333333;
+}
+
+.otherInfo {
+    display: inline-block;
+}
+
+.round {
+    border-radius: 50%;
+    width: 250px;
+}
+
+.registrationDate {
+    color: #979797;
+}
+.hover {
+    display: none;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #dcdfe5;
+    top: 200px;
+    left: 46%;
+}
+
+.profileImage:hover .hover {
+    display: block;
+}
+
+tabbable-panel {
+    padding: 10px;
+}
+
+/* Default mode */
+.tabbable-line > .nav-tabs {
+    border: none;
+    margin: 0px;
+}
+
+.tabbable-line > .nav-tabs > li {
+    margin-right: 2px;
+}
+
+.tabbable-line > .nav-tabs > li > a {
+    border: 0;
+    margin-right: 0;
+    color: #333333;
+    font-family: 'Roboto Condensed', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 24px;
+}
+
+.tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+    border-bottom: 2px solid #2b93aa;
+}
+
+.tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+    border: 0;
+    background: none !important;
+    color: #333333;
+}
+
+.tabbable-line > .nav-tabs > li.open > a > i, .tabbable-line > .nav-tabs > li:hover > a > i {
+    color: #a6a6a6;
+}
+
+.tabbable-line > .nav-tabs > li.open .dropdown-menu, .tabbable-line > .nav-tabs > li:hover .dropdown-menu {
+    margin-top: 0px;
+}
+
+.tabbable-line > .nav-tabs > li.active {
+    border-bottom: 4px solid #16b4c3;
+    position: relative;
+}
+
+.tabbable-line > .nav-tabs > li.active > a {
+    border: 0;
+    color: #333333;
+}
+
+.tabbable-line > .nav-tabs > li.active > a > i {
+    color: #404040;
+}
+
+.tabbable-line > .tab-content {
+    background-color: #fff;
+    border: 0;
+    border-top: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.portlet .tabbable-line > .tab-content {
+    padding-bottom: 0;
+}
+
+/* Below tabs mode */
+
+.tabbable-line.tabs-below > .nav-tabs > li {
+    border-top: 4px solid transparent;
+}
+
+.tabbable-line.tabs-below > .nav-tabs > li > a {
+    margin-top: 0;
+}
+
+.tabbable-line.tabs-below > .nav-tabs > li:hover {
+    border-bottom: 0;
+    border-top: 4px solid #fbcdcf;
+}
+
+.tabbable-line.tabs-below > .nav-tabs > li.active {
+    margin-bottom: -2px;
+    border-bottom: 0;
+    border-top: 4px solid #f3565d;
+}
+
+.tabbable-line.tabs-below > .tab-content {
+    margin-top: -10px;
+    border-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+@media (min-width: 1101px) {
+    .row.backgroundPlate {
+        background-position: -90px -90px;
+    }
+}
+
+@media (min-width: 980px) and (max-width: 1100px) {
+    .row.backgroundPlate {
+        background-position: -100px -110px;
+    }
+}
+
+@media (min-width: 850px) and (max-width: 979px) {
+    .row.backgroundPlate {
+        background-position: -250px -110px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 849px) {
+    .row.backgroundPlate {
+        background-position: -310px -60px;
+    }
+}
+
+@media (min-width: 685px) and (max-width: 767px) {
+    .row.backgroundPlate {
+        background-position: -400px -90px;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 684px) {
+    .row.backgroundPlate {
+        background-position: -520px -90px;
+    }
+}
+
+@media (min-width: 450px) and (max-width: 549px) {
+    .row.backgroundPlate {
+        background-position: -620px -90px;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 449px) {
+    .row.backgroundPlate {
+        background-position: -760px -90px;
+    }
+}
