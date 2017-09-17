@@ -1,0 +1,104 @@
+header.head {
+    z-index: 10;
+    position: relative;
+    top: 0;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.logo img {
+    margin-top: 10px;
+    width: 80px;
+    vertical-align: top;
+}
+.left {
+    display: block;
+    color: #333333;
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.right {
+    position: relative;
+    display: block;
+    color: #333333;
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+    white-space: nowrap;
+    line-height: 99px;
+    margin-right: 15%;
+    text-align: right;
+    position: relative;
+}
+.head_nav {
+    margin-left: 15px;
+    float: left;
+    display: block;
+    color: #333333;
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.head_item {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 99px;
+}
+.head_link {
+    margin: 0 11px 0 14px;
+    white-space: nowrap;
+    color: #333333;
+}
+.welcome-text {
+    margin-right: 9px;
+    color: #cccccc;
+    font-weight: 300;
+    font-size: 20px;
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.head_username {
+    margin-right: 12px;
+    color: #333333;
+    font-size: 20px;
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.profile img {
+    box-sizing: border-box;
+    width: 52px;
+    border-radius: 50%;
+    border: 0px solid #2b93aa;
+}
+.profile img:hover {
+    border-width: 1px;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 85px;
+    left: 60%;
+    width: 250px;
+    border-radius: 5px;
+    padding-top: 20px;
+}
+.dropdown-menu li a{
+    color: #9a9191;
+}
+.dropdown-menu li {
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    padding-left: 30px;
+    padding-bottom: 5px;
+}
+.dropdown-menu li a:hover {
+    background: none;
+    color: #0077aa;
+}
+.dropdown-menu li .exit:hover {
+    color: #fe3b3b;
+}
+.right a.login {
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+    border: 1px solid #9a9191;
+    text-decoration: none;
+    padding: 3px 20px;
+    font-size: 20px;
+    color: #9a9191;
+    border-radius: 2px;
+}
+.right a.login:hover {
+    color: #333333;
+    border-color: #333333;
+}

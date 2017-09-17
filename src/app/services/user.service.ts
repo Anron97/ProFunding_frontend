@@ -29,7 +29,7 @@ export class UserService {
     public jwt() {
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser.token) {
-            let headers = new Headers({'authorization': currentUser.token});
+            let headers = new Headers({'authentication': currentUser.token});
             return new RequestOptions({headers: headers});
         }
     }

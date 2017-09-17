@@ -15,7 +15,6 @@ export class HeaderComponent {
     constructor(private userService: UserService,
                 private authService: AuthenticationService) {
         this.user = userService.getCurrentUser();
-        console.log(this.user)
     }
     logOut() {
         this.authService.logout();

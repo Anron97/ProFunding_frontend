@@ -1,26 +1,36 @@
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">WebSiteName</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><a [routerLink]="['/draft']">Home</a></li>
-            <li><a [routerLink]="['/project']">Page 2</a></li>
-        </ul>
-        <ul *ngIf="user" class=" nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a style="color: #fff;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.login}}  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a asp-area="" routerLink="profile/{{user.id}}">Profile</a></li>
-                    <li><hr style="margin-top: 3px; margin-bottom: 3px;" /></li>
-                    <li style="padding-left: 3px;">
-                        <button style="background-color: #fff; margin-left: 5px;" (click)="logOut()" class="btn"><span class="glyphicon glyphicon-log-in"></span> LogOut</button>
+<header class="head">
+    <div class="row">
+        <div class="col-xs-6 left">
+
+            <nav class="head_nav">
+                <ul>
+                    <li class="head_item">
+                        <a href="/" class="logo">
+                            <img src="/src/assets/images/logo.png" />
+                        </a>
                     </li>
+                    <li class="head_item"><a href="#" class="head_link">Проекты</a></li>
+                    <li class="head_item"><a href="#" class="head_link">Создать проект</a></li>
+                    <li class="head_item"><a href="#" class="head_link">Проекты</a></li>
                 </ul>
-            </li>
-        </ul>
-        <ul *ngIf="!user" class="nav navbar-nav navbar-right">
-            <li><a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
+            </nav>
+        </div>
+        <div class="col-xs-6" >
+            <div *ngIf="user" class="right">
+                <span class="welcome-text">Привет</span>
+                <span class="head_username">{{user.username}}</span>
+                <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{user.image}}"/></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Профиль</a></li>
+                    <li><a class="exit">Выход</a></li>
+                </ul>
+            </div>
+            <div *ngIf="!user" class="right">
+                <div class="row">
+                    <a routerLink="/login" class="login">Вход</a>
+                </div>
+
+            </div>
+        </div>
     </div>
-</nav>
+</header>

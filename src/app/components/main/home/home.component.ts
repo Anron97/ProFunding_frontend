@@ -8,4 +8,5 @@ import {Project} from "../../../models/project";
 })
 export class HomeComponent {
     project: Project = new Project();
+    projects: Project[] = [this.project, this.project, this.project, this.project]
 }

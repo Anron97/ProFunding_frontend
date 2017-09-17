@@ -46,11 +46,11 @@ export class RegistrationComponent implements OnInit {
             this.invalid = true;
             return;
         }
+        console.log(this.user)
         this.userService.create(this.user).subscribe(
             data => {
-                console.log("Registred OK " + data)
-                this.authService.login(this.user.username, this.user.password)
-                // this.router.navigate([''])
+                console.log(data)
+                this.router.navigate(['/login'])
             },
                     error => {console.log(error);
                         this.error = true}

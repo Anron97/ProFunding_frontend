@@ -15,12 +15,15 @@ export class LoginComponent implements OnInit {
     invalid = false;
 
     constructor(
+        private router: Router,
         private fb: FormBuilder,
         private authService: AuthenticationService
     ) {}
 
     ngOnInit(): void {
         this.buildForm();
+        this.userForm.controls['login'].setValue("");
+        this.userForm.controls['password'].setValue("");
     }
 
     buildForm(): void {
@@ -36,8 +39,8 @@ export class LoginComponent implements OnInit {
             return
         }
         this.authService.login(this.userForm.value.login, this.userForm.value.password).subscribe(
-            data => console.log("Data:" + data),
-                 error => console.log("error: " + error)
+            data => this.router.navigate(['']),
+                 error => console.log(error)
         )
     }
 }
