@@ -16,7 +16,13 @@ export class UserService {
 
     getCurrentUser(): User {
         if (typeof localStorage !== 'undefined') {
-            return  JSON.parse(localStorage.getItem('currentUser') || null)
+            return JSON.parse(localStorage.getItem('currentUser') || null)
+        }
+    }
+
+    saveUser(user: User) {
+        if (user) {
+            localStorage.setItem('currentUser', JSON.stringify(User));
         }
     }
 

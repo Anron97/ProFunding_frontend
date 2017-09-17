@@ -12,9 +12,9 @@ import {AuthenticationService} from '../../../services/authentication.service';
 export class LoginComponent implements OnInit {
     userForm: FormGroup;
     user: User = new User();
+    invalid = false;
 
     constructor(
-        private router: Router,
         private fb: FormBuilder,
         private authService: AuthenticationService
     ) {}
@@ -31,7 +31,13 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        console.log(this.userForm.value.login + ", " + this.userForm.value.password)
-        this.authService.login(this.userForm.value.login, this.userForm.value.password)
+        if (this.userForm.invalid) {
+            this.invalid = true;
+            return
+        }
+        this.authService.login(this.userForm.value.login, this.userForm.value.password).subscribe(
+            data => console.log("Data:" + data),
+                 error => console.log("error: " + error)
+        )
     }
 }

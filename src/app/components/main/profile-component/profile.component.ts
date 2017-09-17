@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
-import {Http} from '@angular/http';
 import {ActivatedRoute} from '@angular/router';
-import {CloudinaryOptions, CloudinaryUploader, CloudinaryImageComponent} from 'ng2-cloudinary';
+import {CloudinaryOptions, CloudinaryUploader} from 'ng2-cloudinary';
 import {Subscription} from 'rxjs/Subscription';
 import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
@@ -33,6 +32,7 @@ export class ProfileComponent {
             this.user.image = "https://res.cloudinary.com/" + this.uploader.cloudName
                 + "/image/upload/w_250,h_250,c_thumb,r_max/v1505121387/"
                 + res.public_id + ".jpg";
+            this.userService.saveUser(this.user);
             return {item, response, status, headers};
         };
     }

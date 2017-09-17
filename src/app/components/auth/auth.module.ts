@@ -5,12 +5,14 @@ import {LoginComponent} from './login-component/login.component';
 import {RegistrationComponent} from './registration-component/registration.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {InputTextModule} from "primeng/primeng";
 
 @NgModule({
     imports: [
         ReactiveFormsModule,
         CommonModule,
-        RouterModule
+        RouterModule,
+        InputTextModule
     ],
     providers: [],
     declarations: [AuthComponent, LoginComponent, RegistrationComponent],

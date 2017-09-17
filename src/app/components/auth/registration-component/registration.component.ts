@@ -13,11 +13,14 @@ import {Router} from '@angular/router';
 export class RegistrationComponent implements OnInit {
     userForm: FormGroup;
     user: User = new User();
+    invalid = false;
+    error = false;
 
-    constructor( private fb: FormBuilder,
-                 private router: Router,
-                 private userService: UserService,
-                 private authService: AuthenticationService) {}
+    constructor(private fb: FormBuilder,
+                private router: Router,
+                private userService: UserService,
+                private authService: AuthenticationService) {
+    }
 
     ngOnInit(): void {
         this.buildForm();
@@ -29,23 +32,28 @@ export class RegistrationComponent implements OnInit {
                 Validators.required
             ]],
             'email': [this.user.email, [
-                Validators.required
+                Validators.required,
+                Validators.email
             ]],
             'password': [this.user.password, [
-                    Validators.required
-            ]],
-            'confirm': ['', Validators.required ]
+                Validators.required
+            ]]
         })
     }
 
     register() {
-        console.log(this.user)
+        if (!this.userForm.valid) {
+            this.invalid = true;
+            return;
+        }
         this.userService.create(this.user).subscribe(
             data => {
-                this.router.navigate([''])
+                console.log("Registred OK " + data)
                 this.authService.login(this.user.username, this.user.password)
+                // this.router.navigate([''])
             },
-                    error => console.log(error)
+                    error => {console.log(error);
+                        this.error = true}
             );
     }
 

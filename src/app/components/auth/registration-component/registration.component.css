@@ -1,11 +1,3 @@
-
-body, html{
-    height: 100%;
-    background-repeat: no-repeat;
-    background-color: #d3d3d3;
-    font-family: 'Oxygen', sans-serif;
-}
-
 .main{
     margin-top: 70px;
 }
@@ -23,6 +15,7 @@ hr{
 
 .form-group{
     margin-bottom: 15px;
+    position: relative;
 }
 
 label{
@@ -62,4 +55,20 @@ input::-webkit-input-placeholder {
 .login-register{
     font-size: 11px;
     text-align: center;
+}
+.error {
+    border: 1px solid #fe3b3b;
+}
+.error-triangle {
+    position: absolute;
+    color: #fe3b3b;
+    top: 35px;
+    right: 10px;
+    z-index: 10;
+}
+.error-message {
+    color: #fe3b3b;
+    font-size: 12px;
+    height: 27px;
+    margin-bottom: 2px;
 }
