@@ -3,6 +3,7 @@ import {RouterModule} from '@angular/router';
 import {States} from './constants/States';
 import {AuthComponent} from './components/auth/auth.component';
 import {RegistrationComponent} from './components/auth/registration-component/registration.component';
+import {EmailConfirmComponent} from "./components/auth/email-confirm-component/email-confirm.component";
 
 
 
@@ -19,6 +20,10 @@ import {RegistrationComponent} from './components/auth/registration-component/re
         {
             path: States.REGISTRATION,
             component: RegistrationComponent
+        },
+        {
+            path: States.CONFIRM,
+            component: EmailConfirmComponent
         }
     ])],
     exports: [RouterModule]

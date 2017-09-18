@@ -6,6 +6,7 @@ import {RegistrationComponent} from './registration-component/registration.compo
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {InputTextModule} from "primeng/primeng";
+import {EmailConfirmComponent} from "./email-confirm-component/email-confirm.component";
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import {InputTextModule} from "primeng/primeng";
         InputTextModule
     ],
     providers: [],
-    declarations: [AuthComponent, LoginComponent, RegistrationComponent],
+    declarations: [AuthComponent, LoginComponent, RegistrationComponent, EmailConfirmComponent],
     exports: [AuthComponent]
 })
 export class AuthModule {
