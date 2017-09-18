@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CloudinaryOptions, CloudinaryUploader} from 'ng2-cloudinary';
 import {Subscription} from 'rxjs/Subscription';
@@ -11,9 +11,9 @@ import {UserService} from "../../../services/user.service";
     templateUrl: './profile.component.html',
     styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit{
     private id: number;
-    private user: User = new User();
+    private user: User = new User;
     private subscription: Subscription;
     uploader: CloudinaryUploader = new CloudinaryUploader(
         new CloudinaryOptions({cloudName: 'profunding', uploadPreset: 'profunding'})
@@ -23,10 +23,8 @@ export class ProfileComponent {
     constructor(private activateRoute: ActivatedRoute,
                 private userService: UserService) {
         this.subscription = activateRoute.params.subscribe(params => this.id = params['id']);
-        let currentUser = userService.getCurrentUser();
-        if (currentUser && currentUser.id === this.id) {
-            this.user = currentUser;
-        }
+        console.log(this.id);
+
         this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
             let res: any = JSON.parse(response);
             this.user.image = "https://res.cloudinary.com/" + this.uploader.cloudName
@@ -35,6 +33,19 @@ export class ProfileComponent {
             this.userService.saveUser(this.user);
             return {item, response, status, headers};
         };
+    }
+
+    ngOnInit() {
+        let currentUser = this.userService.getCurrentUser();
+        if (currentUser && currentUser.id === this.id) {
+            this.user = currentUser;
+        }
+        this.userService.getUserById(this.id).subscribe(
+            data => {
+                console.log(data)
+            },
+            error => console.log(error)
+        )
     }
 
     onChange() {

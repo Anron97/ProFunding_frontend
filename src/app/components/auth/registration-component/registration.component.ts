@@ -52,8 +52,9 @@ export class RegistrationComponent implements OnInit {
                 console.log(data)
                 this.router.navigate(['/login'])
             },
-                    error => {console.log(error);
-                        this.error = true}
+                    error => {
+                        this.error = true
+            }
             );
     }
 

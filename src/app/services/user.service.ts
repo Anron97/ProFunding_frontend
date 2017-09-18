@@ -25,6 +25,11 @@ export class UserService {
             localStorage.setItem('currentUser', JSON.stringify(User));
         }
     }
+    getUserById(id: number) {
+        console.log("in service");
+        console.log(API_URL + '/profile/' + id)
+        return this.http.get(API_URL + '/profile/' + id).map((response: Response) => response.json());
+    }
 
     public jwt() {
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));

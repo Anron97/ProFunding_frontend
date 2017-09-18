@@ -13,12 +13,12 @@ export class LoginComponent implements OnInit {
     userForm: FormGroup;
     user: User = new User();
     invalid = false;
+    notConfirmEmail = false;
 
-    constructor(
-        private router: Router,
-        private fb: FormBuilder,
-        private authService: AuthenticationService
-    ) {}
+    constructor(private router: Router,
+                private fb: FormBuilder,
+                private authService: AuthenticationService) {
+    }
 
     ngOnInit(): void {
         this.buildForm();
@@ -40,7 +40,15 @@ export class LoginComponent implements OnInit {
         }
         this.authService.login(this.userForm.value.login, this.userForm.value.password).subscribe(
             data => this.router.navigate(['']),
-                 error => console.log(error)
+            error => {
+                if (error.status === 401) {
+                    this.invalid = false;
+                    this.notConfirmEmail = true;
+                }else {
+                    this.notConfirmEmail = false;
+                    this.invalid = true;
+                }
+            }
         )
     }
 }
