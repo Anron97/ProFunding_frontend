@@ -17,6 +17,7 @@ export class DraftComponent {
 
     constructor(private projectService: ProjectService) {
         this.project = projectService.getDraft();
+        console.log(this.project)
     }
 
     deleteGoal(goal: FinansalGoal) {
@@ -27,6 +28,7 @@ export class DraftComponent {
     }
 
     saveDraft() {
+        console.log(this.project);
         this.projectService.saveDraft(this.project);
     }
 

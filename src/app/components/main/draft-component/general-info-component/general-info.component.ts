@@ -18,6 +18,7 @@ export class GeneralInfoComponent implements OnInit {
     finansalGoalForm: FormGroup;
     timeNow = new Date();
 
+
     public errorMessages = {
         'addTag': 'Your tag can have max 25 symbols',
     };

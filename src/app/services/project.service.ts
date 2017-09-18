@@ -15,11 +15,16 @@ export class ProjectService {
     }
 
     saveDraft(project: Project) {
+        localStorage.setItem('completionDate', JSON.stringify(project.completionDate))
         localStorage.setItem('draft', JSON.stringify(project));
     }
 
     getDraft() {
+        let completionDate = JSON.parse(localStorage.getItem('completionDate') || null)
         let project = JSON.parse(localStorage.getItem('draft'));
+        if (completionDate) {
+            project.completionDate = new Date(completionDate);
+        }
         return project ? project : new Project();
     }
 

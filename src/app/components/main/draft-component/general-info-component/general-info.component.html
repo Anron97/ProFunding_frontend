@@ -41,7 +41,7 @@
                     [(ngModel)]="project.completionDate"
                     [ngModelOptions]="{standalone: true}"
                     [minDate]="timeNow"
-                    >
+        >
         </p-calendar>
         <span style="width: 100px">{{date3|date}}</span><br>
         <i  *ngIf="!project.completionDate && invalid"
