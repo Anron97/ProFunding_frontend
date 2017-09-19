@@ -1,7 +1,7 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Project} from "../../../../models/project";
-import {FinansalGoal} from "../../../../models/finansalGoal";
+import {FinancialGoal} from "../../../../models/financialGoal";
 import {CloudinaryOptions, CloudinaryUploader} from "ng2-cloudinary";
 
 @Component({
@@ -15,7 +15,7 @@ export class GeneralInfoComponent implements OnInit {
     @ViewChild('fileSelect') fileSelect: ElementRef;
     @ViewChild('closeBtn') closeBtn: ElementRef;
     projectForm: FormGroup;
-    finansalGoalForm: FormGroup;
+    financialGoalForm: FormGroup;
     timeNow = new Date();
 
 
@@ -44,7 +44,7 @@ export class GeneralInfoComponent implements OnInit {
             'title': [this.project.title, Validators.required],
             'description': [this.project.description, Validators.required]
         });
-        this.finansalGoalForm = this.fb.group({
+        this.financialGoalForm = this.fb.group({
             'title': ['', Validators.required],
             'cost': ['', Validators.required]
         });
@@ -75,8 +75,8 @@ export class GeneralInfoComponent implements OnInit {
 
     addGoal(form: FormGroup) {
         if (!form.valid) return;
-        let goal: FinansalGoal = form.value;
-        this.project.finansalGoals.push(goal);
+        let goal: FinancialGoal = form.value;
+        this.project.financialGoals.push(goal);
         form.controls['title'].setValue("");
         form.controls['cost'].setValue("");
     }

@@ -22,7 +22,7 @@ export class ProjectService {
     getDraft() {
         let completionDate = JSON.parse(localStorage.getItem('completionDate') || null)
         let project = JSON.parse(localStorage.getItem('draft'));
-        if (completionDate) {
+        if (completionDate && project) {
             project.completionDate = new Date(completionDate);
         }
         return project ? project : new Project();
@@ -31,6 +31,7 @@ export class ProjectService {
     removeDraft() {
         if (localStorage.getItem('draft')) {
             localStorage.removeItem('draft');
+            localStorage.removeItem('completionDate');
         }
     }
 
@@ -40,7 +41,7 @@ export class ProjectService {
             project.title === "" ||
             typeof project.description === "undefined" ||
             project.description === "" ||
-            project.finansalGoals.length === 0 ||
+            project.financialGoals.length === 0 ||
             project.tags.length === 0 ||
             typeof project.completionDate === "undefined" ||
             project.completionDate < now) {

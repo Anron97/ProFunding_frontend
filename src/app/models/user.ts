@@ -6,7 +6,8 @@ export class User {
     email: string;
     password: string;
     role: string;
+    token: string;
     image =  'http://res.cloudinary.com/profunding/image/upload/v1505580510/default-user-image.jpg';
-    projects: Project[];
-    followedProjects: Project[];
+    projects: Project[] = [];
+    followedProjects: Project[] = [];
 }

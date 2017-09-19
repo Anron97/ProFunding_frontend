@@ -1,4 +1,4 @@
-export class FinansalGoal {
+export class FinancialGoal {
     title: string;
     cost: number;
 

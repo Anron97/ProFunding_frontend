@@ -14,7 +14,7 @@ export class HeaderComponent {
     user: User;
     constructor(private userService: UserService,
                 private authService: AuthenticationService) {
-        this.user = userService.getCurrentUser();
+        this.userService.currentUser.subscribe(user => this.user = user)
     }
     logOut() {
         this.authService.logout();

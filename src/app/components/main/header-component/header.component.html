@@ -21,7 +21,7 @@
                 <span class="head_username">{{user.username}}</span>
                 <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{user.image}}"/></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Профиль</a></li>
+                    <li><a routerLink="/profile/{{user.id}}">Профиль</a></li>
                     <li><a href="#" class="exit" (click)="logOut()">Выход</a></li>
                 </ul>
             </div>

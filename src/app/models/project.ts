@@ -1,4 +1,4 @@
-import {FinansalGoal} from './finansalGoal';
+import {FinancialGoal} from './financialGoal';
 
 
 export class Project {
@@ -8,7 +8,7 @@ export class Project {
     description: string;
     content = "";
     image = 'http://res.cloudinary.com/profunding/image/upload/v1504950919/default-bg.jpg';
-    finansalGoals: FinansalGoal[] = [];
+    financialGoals: FinancialGoal[] = [];
     totalCost = 0;
     userId: number;
     tags: string[] = []

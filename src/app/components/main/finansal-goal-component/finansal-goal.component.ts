@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FinansalGoal} from "../../../models/finansalGoal";
+import {FinancialGoal} from "../../../models/financialGoal";
 
 @Component({
     selector: 'finansal-goal',
@@ -7,8 +7,8 @@ import {FinansalGoal} from "../../../models/finansalGoal";
     styleUrls: ['./finansal-goal.component.css']
 })
 export class FinansalGoalComponent {
-    @Input() finansalGoal: FinansalGoal;
-    @Output() removeFinansalGoal = new EventEmitter<FinansalGoal>()
+    @Input() finansalGoal: FinancialGoal;
+    @Output() removeFinansalGoal = new EventEmitter<FinancialGoal>()
 
     deleteGoal() {
         this.removeFinansalGoal.emit(this.finansalGoal);

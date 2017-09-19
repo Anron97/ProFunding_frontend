@@ -49,7 +49,7 @@
 
     </div>
     <div class="block">
-        <form [formGroup]="finansalGoalForm">
+        <form [formGroup]="financialGoalForm">
             <div class="create-header"><p>Финансовая цель</p></div>
             <div class="row">
                 <div class="col-xs-6">
@@ -73,11 +73,11 @@
             </div>
             <div class="row">
                 <div  class="col-xs-6">
-                    <div *ngIf="!project.finansalGoals.length && invalid" class="error-message">Проект должен содержать хотя бы одну финансовую цель</div>
+                    <div *ngIf="!project.financialGoals.length && invalid" class="error-message">Проект должен содержать хотя бы одну финансовую цель</div>
                 </div>
                 <div class="col-xs-6">
                     <a  class="btn  btn_subscribe btn_add"
-                        (click)="addGoal(finansalGoalForm)">Добавить</a>
+                        (click)="addGoal(financialGoalForm)">Добавить</a>
                 </div>
             </div>
         </form>

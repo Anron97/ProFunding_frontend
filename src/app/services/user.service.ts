@@ -3,11 +3,24 @@ import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import {User} from '../models/user';
 import 'rxjs/add/operator/map';
 import {API_URL} from '../constants/API';
+import { BehaviorSubject} from "rxjs/BehaviorSubject";
 
 
 @Injectable()
 export class UserService {
+
+    private userSource = new BehaviorSubject<User>(this.getCurrentUser());
+    currentUser = this.userSource.asObservable();
+
     constructor(private http: Http) {
+    }
+
+    downloadUserFromLocalStorage() {
+        this.setUser(this.getCurrentUser());
+    }
+
+    setUser(user: User) {
+        this.userSource.next(user)
     }
 
     create(user: User) {
@@ -16,20 +29,29 @@ export class UserService {
 
     getCurrentUser(): User {
         if (typeof localStorage !== 'undefined') {
-            return JSON.parse(localStorage.getItem('currentUser') || null)
+            return JSON.parse(localStorage.getItem('currentUser'))
         }
     }
 
     saveUser(user: User) {
         if (user) {
-            localStorage.setItem('currentUser', JSON.stringify(User));
+            localStorage.setItem('currentUser', JSON.stringify(user));
         }
     }
+
+    removeUser() {
+        localStorage.removeItem('currentUser');
+    }
+
     getUserById(id: number) {
-        console.log("in service");
         console.log(API_URL + '/profile/' + id)
         return this.http.get(API_URL + '/profile/' + id).map((response: Response) => response.json());
     }
+    updateProfile(user: User) {
+        this.http.post(API_URL + '/users/update', user).subscribe();
+    }
+
+
 
     public jwt() {
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));

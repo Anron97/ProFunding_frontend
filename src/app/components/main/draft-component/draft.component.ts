@@ -1,6 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {Project} from '../../../models/project';
-import {FinansalGoal} from "../../../models/finansalGoal";
+import {FinancialGoal} from "../../../models/financialGoal";
 import {ProjectService} from "../../../services/project.service";
 import {Router} from "@angular/router";
 
@@ -20,10 +20,10 @@ export class DraftComponent {
         console.log(this.project)
     }
 
-    deleteGoal(goal: FinansalGoal) {
-        for (let i = 0; i < this.project.finansalGoals.length; i++) {
-            if (this.project.finansalGoals[i].title === goal.title && this.project.finansalGoals[i].cost === goal.cost)
-                this.project.finansalGoals.splice(i, 1);
+    deleteGoal(goal: FinancialGoal) {
+        for (let i = 0; i < this.project.financialGoals.length; i++) {
+            if (this.project.financialGoals[i].title === goal.title && this.project.financialGoals[i].cost === goal.cost)
+                this.project.financialGoals.splice(i, 1);
         }
     }
 
