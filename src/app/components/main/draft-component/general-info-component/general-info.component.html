@@ -41,6 +41,8 @@
                     [(ngModel)]="project.completionDate"
                     [ngModelOptions]="{standalone: true}"
                     [minDate]="timeNow"
+                    (onSelect)="setDate()"
+                    dateFormat="dd.mm.yy"
         >
         </p-calendar>
         <span style="width: 100px">{{date3|date}}</span><br>

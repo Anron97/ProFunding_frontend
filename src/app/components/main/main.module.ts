@@ -23,6 +23,9 @@ import {DescriptionComponent} from "./draft-component/description-component/desc
 import {ProfileComponent} from "./profile-component/profile.component";
 import {ProjectsBlockComponent} from "./projects-block-component/projects-block.component";
 import {RatingModule} from "ng2-rating";
+import {ProjectService} from "../../services/project.service";
+import {DateService} from "../../services/date.service";
+import {TagsService} from "../../services/tags.service";
 
 
 
@@ -41,7 +44,11 @@ import {RatingModule} from "ng2-rating";
         TagInputModule,
         RatingModule
     ],
-    providers: [],
+    providers: [
+        ProjectService,
+        DateService,
+        TagsService
+    ],
     declarations: [
         MainComponent,
         HomeComponent,

@@ -12,7 +12,12 @@ export class DateService {
         let years: String = '' + yyyy;
         if (dd < 10) days = '0' + dd;
         if (+mm < 10) mounth = '0' + mm;
-
         return days + '.' + mounth + '.' + years;
+    }
+
+    leftDate(date: Date): number {
+        let timeNow = new Date();
+        if (date.getTime() <= timeNow.getTime()) return 0;
+        return new Date(date.getTime() - timeNow.getTime()).getDate()
     }
 }

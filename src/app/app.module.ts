@@ -7,10 +7,6 @@ import {UserService} from './services/user.service';
 import {AuthenticationService} from './services/authentication.service';
 import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ProjectService} from "./services/project.service";
-import {DateService} from "./services/date.service";
-
-
 
 
 @NgModule({
@@ -26,9 +22,7 @@ import {DateService} from "./services/date.service";
     ],
     providers: [
         UserService,
-        AuthenticationService,
-        ProjectService,
-        DateService
+        AuthenticationService
     ],
     bootstrap: [ AppComponent ]
 })

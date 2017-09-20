@@ -33,5 +33,13 @@
                 <a [routerLink]="['/projects/new']" class="divider_btn">Все новые проекты</a>
             </div>
         </div>
+        <div class="section">
+            <div class="section-inner">
+                <div class="header"><p>Тэги</p></div>
+                <div class="content">
+                    <a *ngFor="let tag of tags">#{{tag.value}}  </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

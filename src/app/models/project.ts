@@ -12,5 +12,6 @@ export class Project {
     totalCost = 0;
     userId: number;
     rating = 0;
+    leftDays = 0;
     tags: string[] = []
 }

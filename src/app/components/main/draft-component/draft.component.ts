@@ -18,7 +18,6 @@ export class DraftComponent {
     constructor(private projectService: ProjectService,
                 private router: Router) {
         this.project = projectService.getDraft();
-        console.log(this.project)
     }
 
     deleteGoal(goal: FinancialGoal) {

@@ -5,13 +5,16 @@ import {API_URL} from "../constants/API";
 import {UserService} from "./user.service";
 import {User} from "../models/user";
 import 'rxjs/add/operator/map';
+import {DateService} from "./date.service";
+import {Observable} from "rxjs/Observable";
 
 
 @Injectable()
 export class ProjectService {
 
     constructor(private http: Http,
-                private userService: UserService) {
+                private userService: UserService,
+                private dateService: DateService) {
     }
 
     saveDraft(project: Project) {
@@ -57,10 +60,10 @@ export class ProjectService {
         return true;
     }
 
-    create(project: Project) {
+    create(project: Project): Observable<any> {
         console.log("request: " + project);
         let currentUser: User = this.userService.getCurrentUser();
-        if (currentUser.role === "ROLE_PROOFED_USER" || currentUser.role === "ROLE_ADMIN") {
+        /*if (currentUser.role === "ROLE_PROOFED_USER" || currentUser.role === "ROLE_ADMIN")*/ {
             project.userId = currentUser.id;
             return this.http.post(API_URL + '/projects/create', JSON.stringify(project), this.userService.jwt())
                 .map((response: Response) => response.json());
@@ -81,6 +84,7 @@ export class ProjectService {
         if (!project.title) project.title = "Название проекта";
         if (!project.description) project.description = "Краткое описание проекта";
         if (!project.completionDate) project.completionDate = new Date();
+
         return project;
     }    
 }

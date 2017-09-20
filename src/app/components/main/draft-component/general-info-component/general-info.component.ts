@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Project} from "../../../../models/project";
 import {FinancialGoal} from "../../../../models/financialGoal";
 import {CloudinaryOptions, CloudinaryUploader} from "ng2-cloudinary";
+import {DateService} from "../../../../services/date.service";
 
 @Component({
     selector: 'general-info',
@@ -29,9 +30,9 @@ export class GeneralInfoComponent implements OnInit {
         new CloudinaryOptions({cloudName: 'profunding', uploadPreset: 'profunding'})
     );
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: FormBuilder,
+                private dateService: DateService) {
         this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
-            console.log(item);
             let res: any = JSON.parse(response);
             this.project.image = 'http://res.cloudinary.com/' + this.uploader.cloudName +
                 '/image/upload/w_800,h_450,c_crop/v1505121387/' + res.public_id + '.jpg';
@@ -60,13 +61,12 @@ export class GeneralInfoComponent implements OnInit {
     }
 
     load() {
-        console.log('In load!');
         this.fileSelect.nativeElement.click();
     }
 
     upload() {
-        console.log('In upload!');
         this.uploader.uploadAll();
+        this.closeBtn.nativeElement.click();
     }
 
     drop() {
@@ -80,5 +80,9 @@ export class GeneralInfoComponent implements OnInit {
         this.project.totalCost += goal.cost;
         form.controls['title'].setValue("");
         form.controls['cost'].setValue("");
+    }
+    setDate() {
+        console.log(this.project.completionDate)
+        this.project.leftDays = this.dateService.leftDate(this.project.completionDate)
     }
 }
