@@ -77,6 +77,7 @@ export class GeneralInfoComponent implements OnInit {
         if (!form.valid) return;
         let goal: FinancialGoal = form.value;
         this.project.financialGoals.push(goal);
+        this.project.totalCost += goal.cost;
         form.controls['title'].setValue("");
         form.controls['cost'].setValue("");
     }

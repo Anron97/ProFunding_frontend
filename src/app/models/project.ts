@@ -11,5 +11,6 @@ export class Project {
     financialGoals: FinancialGoal[] = [];
     totalCost = 0;
     userId: number;
+    rating = 0;
     tags: string[] = []
 }

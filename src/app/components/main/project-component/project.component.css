@@ -109,7 +109,16 @@ a.btn_subscribe:hover {
     font-size: 23px;
     font-weight: 300;
     line-height: 1.5556;
-    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.rating {
+    vertical-align: middle;
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 10px;
+
 }
 /**/
 .tabbable-panel {

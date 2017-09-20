@@ -22,6 +22,7 @@ import {GeneralInfoComponent} from "./draft-component/general-info-component/gen
 import {DescriptionComponent} from "./draft-component/description-component/description.component";
 import {ProfileComponent} from "./profile-component/profile.component";
 import {ProjectsBlockComponent} from "./projects-block-component/projects-block.component";
+import {RatingModule} from "ng2-rating";
 
 
 
@@ -37,7 +38,8 @@ import {ProjectsBlockComponent} from "./projects-block-component/projects-block.
         CalendarModule,
         Ng2FileDropModule,
         EditorModule,
-        TagInputModule
+        TagInputModule,
+        RatingModule
     ],
     providers: [],
     declarations: [
