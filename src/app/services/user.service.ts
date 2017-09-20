@@ -57,6 +57,7 @@ export class UserService {
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser.token) {
             let headers = new Headers({'authentication': currentUser.token});
+            headers.append("Content-Type", "application/json");
             return new RequestOptions({headers: headers});
         }
     }
