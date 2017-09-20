@@ -48,6 +48,7 @@ span.round-tab {
     left: 0;
     text-align: center;
     font-size: 25px;
+    cursor: pointer;
 }
 span.round-tab i{
     color:#555555;

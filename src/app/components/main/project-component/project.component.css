@@ -202,11 +202,8 @@ a.btn_subscribe:hover {
     white-space: pre-wrap;
     word-wrap: break-word
 }
-.tab-pane .inner img{
-    max-width: 100%;
-}
-img {
-    width: 100%;
+#content p img{
+    max-width: 100px;
 }
 
 
