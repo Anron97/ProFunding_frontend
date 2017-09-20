@@ -71,10 +71,15 @@ export class ProjectService {
         return this.http.get(API_URL + '/projects/main_page', this.userService.jwt())
             .map((response: Response) => response.json());
     }
+    
+    getProjectNextPage(path: string) {
+        return this.http.get(API_URL + path)
+            .map((response: Response) => response.json());
+    }
 
     verifyProject(project: Project): Project {
-        if (!project.title) project.title = "Название проекта"
-        if (!project.description) project.description = "Краткое описание проекта"
+        if (!project.title) project.title = "Название проекта";
+        if (!project.description) project.description = "Краткое описание проекта";
         if (!project.completionDate) project.completionDate = new Date();
         return project;
     }    
