@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Project} from "../../../models/project";
+import {ProjectService} from "../../../services/project.service";
 
 @Component({
     selector: 'app-home',
@@ -7,6 +8,18 @@ import {Project} from "../../../models/project";
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-    project: Project = new Project();
-    projects: Project[] = [this.project, this.project, this.project, this.project]
+
+    successProjects: Project[];
+    newProjects: Project[];
+
+    constructor(private projectService: ProjectService) {
+        projectService.getMainPageContent().subscribe(
+            data => {
+                this.newProjects = data.newProjects;
+                this.successProjects = data.successProjects;
+            }
+        );
+    }
+
+
 }
