@@ -62,6 +62,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+
+        new webpack.ProvidePlugin({ Quill: "Quill" })
     ]
 };

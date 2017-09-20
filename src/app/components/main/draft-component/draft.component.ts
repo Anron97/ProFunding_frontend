@@ -12,10 +12,11 @@ import {Router} from "@angular/router";
 })
 export class DraftComponent {
     @ViewChild('begin') begin: ElementRef;
-    project: Project;
-    invalid = false;
+    private project: Project;
+    private invalid = false;
 
-    constructor(private projectService: ProjectService) {
+    constructor(private projectService: ProjectService,
+                private router: Router) {
         this.project = projectService.getDraft();
         console.log(this.project)
     }
@@ -50,6 +51,11 @@ export class DraftComponent {
                 error => console.log(error)
             );
         }
+    }
 
+    previewDraft() {
+        console.log("Save: ");
+        this.saveDraft();
+        this.router.navigate(['/project/0'])
     }
 }

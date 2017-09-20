@@ -15,12 +15,19 @@ export class ProjectService {
     }
 
     saveDraft(project: Project) {
-        localStorage.setItem('completionDate', JSON.stringify(project.completionDate))
+        console.log(project);
+        console.log(project.completionDate);
+        if (project.completionDate) {
+            localStorage.setItem('completionDate', JSON.stringify(project.completionDate))
+        }
         localStorage.setItem('draft', JSON.stringify(project));
     }
 
     getDraft() {
-        let completionDate = JSON.parse(localStorage.getItem('completionDate') || null)
+        let completionDate;
+        if (localStorage.getItem('completionDate')) {
+            completionDate = JSON.parse(localStorage.getItem('completionDate'))
+        }
         let project = JSON.parse(localStorage.getItem('draft'));
         if (completionDate && project) {
             project.completionDate = new Date(completionDate);
@@ -58,5 +65,12 @@ export class ProjectService {
             return this.http.post(API_URL + '/projects/create', {project}, this.userService.jwt())
                 .map((response: Response) => response.json());
         }
+    }
+
+    verifyProject(project: Project): Project {
+        if (!project.title) project.title = "Название проекта"
+        if (!project.description) project.description = "Краткое описание проекта"
+        if (!project.completionDate) project.completionDate = new Date();
+        return project;
     }
 }

@@ -23,7 +23,7 @@ import {ProfileComponent} from "./profile-component/profile.component";
                         component: DraftComponent
                     },
                     {
-                        path: 'project',
+                        path: 'project/:id',
                         component: ProjectComponent
                     },
                     {
