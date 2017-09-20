@@ -4,6 +4,7 @@ import {User} from '../models/user';
 import 'rxjs/add/operator/map';
 import {API_URL} from '../constants/API';
 import { BehaviorSubject} from "rxjs/BehaviorSubject";
+import {ProjectService} from "./project.service";
 
 
 @Injectable()
@@ -35,8 +36,21 @@ export class UserService {
 
     saveUser(user: User) {
         if (user) {
-            localStorage.setItem('currentUser', JSON.stringify(user));
+            if (this.verifyUserProjects(user)) {
+                localStorage.setItem('currentUser', JSON.stringify(user));
+            } else {
+               this.getUserById(user.id).subscribe(
+                   data => {
+                       user = data;
+                   },
+                   error => console.log(error)
+               );
+            }
         }
+    }
+
+    verifyUserProjects(user: User) {
+        return user.projects && user.followedProjects;
     }
 
     removeUser() {
