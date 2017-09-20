@@ -62,9 +62,14 @@ export class ProjectService {
         let currentUser: User = this.userService.getCurrentUser();
         if (currentUser.role === "ROLE_PROOFED_USER" || currentUser.role === "ROLE_ADMIN") {
             project.userId = currentUser.id;
-            return this.http.post(API_URL + '/projects/create', {project}, this.userService.jwt())
+            return this.http.post(API_URL + '/projects/create', JSON.stringify(project), this.userService.jwt())
                 .map((response: Response) => response.json());
         }
+    }
+
+    getMainPageContent() {
+        return this.http.get(API_URL + '/projects/main_page', this.userService.jwt())
+            .map((response: Response) => response.json());
     }
 
     verifyProject(project: Project): Project {
@@ -72,5 +77,5 @@ export class ProjectService {
         if (!project.description) project.description = "Краткое описание проекта"
         if (!project.completionDate) project.completionDate = new Date();
         return project;
-    }
+    }    
 }
