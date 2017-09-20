@@ -34,6 +34,10 @@ import {ProjectsBlockComponent} from "./projects-block-component/projects-block.
                     {
                         path: 'projects/success',
                         component: ProjectsBlockComponent
+                    },
+                    {
+                        path: 'projects/new',
+                        component: ProjectsBlockComponent
                     }
                 ]
             }
