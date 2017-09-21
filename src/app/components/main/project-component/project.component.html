@@ -80,10 +80,10 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div [innerHTML]="project.content" class="tab-pane  ql-editor " id="content">
+                    <div [innerHTML]="project.content" class="tab-pane active ql-editor " id="content">
                     </div>
-                    <div class="tab-pane active" id="comments">
-                        <comments-component></comments-component>
+                    <div class="tab-pane" id="comments">
+                        <comments-component [comments]="project.comments" [user]="currentUser"></comments-component>
                     </div>
                 </div>
             </div>

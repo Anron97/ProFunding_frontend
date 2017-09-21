@@ -1,11 +1,11 @@
 <div class="block">
     <div class="image-preview">
-        <img src="{{project.image}}">
+        <a routerLink="/project/{{project.id}}" routerLinkActive="active"><img src="{{project.image}}"></a>
     </div>
     <div class="content">
         <div class="title">
-            <p *ngIf="project.title">{{project.title}}</p>
-            <p *ngIf="!project.title">Название проекта</p>
+            <a *ngIf="project.title" routerLink="/project/{{project.id}}" routerLinkActive="active"><p>{{project.title}}</p></a>
+            <a *ngIf="!project.title" routerLink="/project/{{project.id}}" routerLinkActive="active"><p >Название проекта</p></a>
         </div>
         <div class="description">
             <p *ngIf="project.description">{{project.description}}</p>

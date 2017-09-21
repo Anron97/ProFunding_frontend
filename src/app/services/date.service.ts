@@ -3,7 +3,7 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class DateService {
 
-    formatDate(date: Date) {
+    formatDate(date: Date): String {
         let dd: number = date.getDate();
         let mm: number = date.getMonth() + 1;
         let yyyy = date.getFullYear();

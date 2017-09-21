@@ -56,7 +56,6 @@ export class UserService {
     addProjectToCurrentUser(project: Project) {
         let user = this.getCurrentUser();
         user.projects.push(project);
-        console.log(user);
         this.saveUser(user);
     }
 

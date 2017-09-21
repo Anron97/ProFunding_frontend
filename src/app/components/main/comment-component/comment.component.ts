@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
 import {Comment} from "../../../models/comment";
@@ -11,10 +11,11 @@ import {Comment} from "../../../models/comment";
 })
 
 export class CommentComponent implements OnInit {
-
-    comment: Comment = new Comment();
-    comments: Comment[] = [];
+    @Input()
+    comments: Comment[];
+    @Input()
     user: User;
+    comment: Comment = new Comment();
 
     constructor(private userService: UserService) {
 

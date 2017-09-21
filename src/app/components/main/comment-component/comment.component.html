@@ -20,7 +20,7 @@
                 </div>
             </div>
             <hr>
-            <div class="newComment">
+            <div *ngIf="user" class="newComment">
                 <fieldset>
                     <div class="row">
                         <div class="form-group col-xs-12 col-sm-12 col-lg-12">
@@ -41,6 +41,9 @@
                     </div>
                 </fieldset>
                 <button type="submit" (click)="addComment()" class="btn btn-normal btn-success pull-right">Добавить</button>
+            </div>
+            <div *ngIf="!user" class="no-authenticate">
+                <p>Чтобы оставлять комментарии необходимо <a>войти в систему</a></p>
             </div>
         </div>
     </div>

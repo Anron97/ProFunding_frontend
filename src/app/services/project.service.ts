@@ -60,11 +60,14 @@ export class ProjectService {
         return true;
     }
 
+    getProjectById(id: number) {
+        return this.http.get(API_URL + '/projects/' + id).map((responce: Response) => responce.json() as Project);
+    }
+
     create(project: Project): Observable<any> {
-        console.log("request: ");
-        console.log(project);
         let currentUser: User = this.userService.getCurrentUser();
-        /*if (currentUser.role === "ROLE_PROOFED_USER" || currentUser.role === "ROLE_ADMIN")*/ {
+        /*if (currentUser.role === "ROLE_PROOFED_USER" || currentUser.role === "ROLE_ADMIN")*/
+        {
             project.userId = currentUser.id;
             return this.http.post(API_URL + '/projects/create', JSON.stringify(project), this.userService.jwt())
                 .map((response: Response) => response.json());
@@ -75,7 +78,7 @@ export class ProjectService {
         return this.http.get(API_URL + '/projects/main_page', this.userService.jwt())
             .map((response: Response) => response.json());
     }
-    
+
     getProjectNextPage(property: string, type: string, value: string) {
         console.log(API_URL + '/projects/' + property + type + value);
         return this.http.get(API_URL + '/projects/' + property + type + value)
