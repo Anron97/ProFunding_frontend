@@ -73,6 +73,35 @@
     border: 1px solid rgba(154, 145, 145, 1);
 }
 
+a.tag {
+    font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+    display: inline-block;
+    max-width: 100px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 .5em;
+    background-color: transparent;
+    border: 1px solid rgba(204, 204, 204, 0.3);
+    border-radius: 5px;
+    margin: 0 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #202020;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+a.tag:hover {
+    border: 1px solid rgba(204, 204, 204, 1);
+    color: #206ea1;
+    cursor: pointer;
+}
+
+
 @media (min-width: 980px) and (max-width: 1100px) {
     .row.backgroundPlate {
         background-position: -100px -100px;

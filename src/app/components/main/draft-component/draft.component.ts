@@ -24,9 +24,10 @@ export class DraftComponent {
 
     deleteGoal(goal: FinancialGoal) {
         for (let i = 0; i < this.project.financialGoals.length; i++) {
-            if (this.project.financialGoals[i].title === goal.title && this.project.financialGoals[i].cost === goal.cost)
+            if (this.project.financialGoals[i].title === goal.title && this.project.financialGoals[i].cost === goal.cost) {
                 this.project.totalCost -= goal.cost;
                 this.project.financialGoals.splice(i, 1);
+            }
         }
     }
 

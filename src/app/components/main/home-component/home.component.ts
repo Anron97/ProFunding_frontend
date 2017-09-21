@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit{
                 private tagService: TagsService) {
         projectService.getMainPageContent().subscribe(
             data => {
+                console.log(data);
                 this.newProjects = data.newProjects;
                 this.successProjects = data.successProjects;
             }

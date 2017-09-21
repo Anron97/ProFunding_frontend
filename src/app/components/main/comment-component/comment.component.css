@@ -1,7 +1,3 @@
-body {
-    margin-top: 20px;
-}
-
 .content-item {
     padding: 30px 0;
 }
@@ -73,7 +69,7 @@ body {
 
 #comments .media {
     border-top: 1px dashed #DDDDDD;
-    padding: 20px 0;
+    padding: 20px 0 25px;
     margin: 0;
 }
 
@@ -125,9 +121,6 @@ body {
     margin-right: 10px;
 }
 
-.like:hover {
-    font-size: medium;
-}
 
 #MainComment {
     background-color: white;

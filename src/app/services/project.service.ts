@@ -61,7 +61,8 @@ export class ProjectService {
     }
 
     create(project: Project): Observable<any> {
-        console.log("request: " + project);
+        console.log("request: ");
+        console.log(project);
         let currentUser: User = this.userService.getCurrentUser();
         /*if (currentUser.role === "ROLE_PROOFED_USER" || currentUser.role === "ROLE_ADMIN")*/ {
             project.userId = currentUser.id;
@@ -87,5 +88,6 @@ export class ProjectService {
         if (!project.completionDate) project.completionDate = new Date();
 
         return project;
-    }    
+    }
+
 }

@@ -63,7 +63,7 @@
             </rating>
         </div>
         <div class="col-xs-8">
-            <a *ngFor="let tag of project.tags">#{{tag.value}}</a>
+            <a class="tag" *ngFor="let tag of project.tags">{{tag.value}}</a>
         </div>
     </div>
     <div class="row">
@@ -80,10 +80,10 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div [innerHTML]="project.content" class="tab-pane active ql-editor " id="content">
+                    <div [innerHTML]="project.content" class="tab-pane  ql-editor " id="content">
                     </div>
-                    <div class="tab-pane" id="comments">
-
+                    <div class="tab-pane active" id="comments">
+                        <comments-component></comments-component>
                     </div>
                 </div>
             </div>

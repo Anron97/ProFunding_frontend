@@ -1,14 +1,31 @@
-<div class="container">
+<div class="content-item" id="comments">
+    <div class="container">
+        <div class="col-sm-8" id="MainComment">
+            <h3>{{comments.length}} Комментарий</h3>
 
-    <div class="col-sm-8" id="MainComment">
-        <div class="newComment">
-            <h3 class="pull-left">New Comment</h3>
+            <div *ngFor="let comment of comments; let i = index">
+                <div class="media">
+                    <div class="pull-right" *ngIf="checkRoleForDeleteComment(i)">
+                        <span title="Delete" (click)="deleteComment(i)" class="glyphicon glyphicon-trash"  ></span>
+                    </div>
+                    <a class="pull-left"><img class="media-object img-circle" style="height:100px" src={{comment.user.image}}></a>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{comment.user.username}}</h4>
 
-            <fieldset>
-                <div class="row">
-                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                        <p-editor>
-                            <p-header>
+                        <div [innerHTML]="comment.content" style="word-wrap:break-word;"></div>
+                        <ul class="list-unstyled list-inline media-detail pull-left">
+                            <li><i class="fa fa-calendar"></i>{{comment.dateCreated | date:'shortDate' }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="newComment">
+                <fieldset>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                            <p-editor [(ngModel)]="comment.content" [style]="{'min-height':'150px'}">
+                                <p-header>
                                 <span class="ql-formats">
                                     <select class="ql-header">
                                         <option value="2">Subheading</option>
@@ -18,30 +35,12 @@
                                     <button class="ql-italic" aria-label="Italic"></button>
                                     <button class="ql-underline" aria-label="Underline"></button>
                                 </span>
-                            </p-header>
-                        </p-editor>
+                                </p-header>
+                            </p-editor>
+                        </div>
                     </div>
-                </div>
-            </fieldset>
-            <button type="submit"  class="btn btn-normal pull-right">Add</button>
-        </div>
-
-        <h3>Number Comments</h3>
-
-        <div>
-            <div class="media">
-                <div class="pull-right">
-                    <span title="Delete"  class="glyphicon glyphicon-trash "></span>
-                </div>
-                <a class="pull-left"><img class="media-object img-circle" style="height:100px"></a>
-                <div class="media-body">
-                    <h4 class="media-heading"></h4>
-
-                    <div  style="word-wrap:break-word;"></div>
-                    <ul class="list-unstyled list-inline media-detail pull-left">
-                        <li><i class="fa fa-calendar"></i></li>
-                    </ul>
-                </div>
+                </fieldset>
+                <button type="submit" (click)="addComment()" class="btn btn-normal btn-success pull-right">Добавить</button>
             </div>
         </div>
     </div>
