@@ -75,8 +75,9 @@ export class ProjectService {
             .map((response: Response) => response.json());
     }
     
-    getProjectNextPage(path: string) {
-        return this.http.get(API_URL + path)
+    getProjectNextPage(property: string, type: string, value: string) {
+        console.log(API_URL + '/projects/' + property + type + value);
+        return this.http.get(API_URL + '/projects/' + property + type + value)
             .map((response: Response) => response.json());
     }
 

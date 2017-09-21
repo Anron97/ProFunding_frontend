@@ -3,6 +3,7 @@ import {Project} from '../../../models/project';
 import {FinancialGoal} from "../../../models/financialGoal";
 import {ProjectService} from "../../../services/project.service";
 import {Router} from "@angular/router";
+import {UserService} from "../../../services/user.service";
 
 
 @Component({
@@ -16,7 +17,8 @@ export class DraftComponent {
     private invalid = false;
 
     constructor(private projectService: ProjectService,
-                private router: Router) {
+                private router: Router,
+                private userService: UserService) {
         this.project = projectService.getDraft();
     }
 
@@ -45,8 +47,7 @@ export class DraftComponent {
         } else {
             this.projectService.create(this.project).subscribe(
                 data => {
-                    console.log("OK");
-                    console.log(data);
+                    this.userService.addProjectToCurrentUser(this.project);
                 },
                 error => console.log(error)
             );

@@ -42,7 +42,10 @@ export class ProfileComponent implements OnInit{
     ngOnInit(): void {
         let currentUser = this.userService.getCurrentUser();
         if (currentUser && currentUser.id === +this.id) {
-            this.userService.currentUser.subscribe(user => this.user = user);
+            this.userService.currentUser.subscribe(user => {
+                this.user = user
+                console.log(user);
+            });
             this.myProfile = true;
         } else {
             this.userService.getUserById(this.id).subscribe(

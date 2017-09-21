@@ -14,16 +14,39 @@ import {type} from "os";
 export class ProjectsBlockComponent implements OnInit {
     projects: Project[] = [];
     private isLastPage = false;
+    private subscription: Subscription;
+    private property: string;
+    private type: string;
+    private value: string
+
 
     constructor(private projectService: ProjectService,
-                private router: Router) {
+                private router: Router,
+                private activateRoute: ActivatedRoute) {
+        this.subscription = this.activateRoute.params.subscribe(params => {
+            this.property = params['property'];
+            this.type = params['type'];
+            this.value = params['value'];
+            if (this.property === null) {
+                this.property = 'all';
+            }
+            if (this.type) {
+                this.type = '/' + this.type;
+            }else {
+                this.type = ""
+            }
+            if (this.value) {
+                this.value = '/' + this.value;
+            }else {
+                this.value = ""
+            }
+        })
     }
+
     ngOnInit() {
-        const path = this.router.routerState.snapshot.url;
-        this.projectService.getProjectNextPage(path).subscribe(
+        this.projectService.getProjectNextPage(this.property, this.type, this.value).subscribe(
             data => {
                 console.log(data);
-                console.log(typeof data);
                 if (data.last && data.last === true) {
                     this.isLastPage = true;
                 }

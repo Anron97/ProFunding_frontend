@@ -18,6 +18,6 @@ export class DateService {
     leftDate(date: Date): number {
         let timeNow = new Date();
         if (date.getTime() <= timeNow.getTime()) return 0;
-        return new Date(date.getTime() - timeNow.getTime()).getDate()
+        return Math.round((date.getTime() - timeNow.getTime()) / 1000 / 60 / 60 / 24);
     }
 }

@@ -4,6 +4,7 @@ import {User} from '../models/user';
 import 'rxjs/add/operator/map';
 import {API_URL} from '../constants/API';
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Project} from "../models/project";
 
 
 @Injectable()
@@ -50,6 +51,12 @@ export class UserService {
 
     updateProfile(user: User) {
         this.http.post(API_URL + '/users/update', user).subscribe();
+    }
+
+    addProjectToCurrentUser(project: Project) {
+        let user = this.getCurrentUser();
+        user.projects.push(project);
+        this.saveUser(user);
     }
 
 
