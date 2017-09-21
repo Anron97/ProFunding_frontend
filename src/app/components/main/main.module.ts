@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MainComponent} from './main.component';
-import {HomeComponent} from './home/home.component';
+import {HomeComponent} from './home-component/home.component';
 import {FooterComponent} from './footer-component/footer.component';
 import {HeaderComponent} from './header-component/header.component';
 import {MainRoutingModule} from './main-routing.module';
@@ -26,6 +26,7 @@ import {RatingModule} from "ng2-rating";
 import {ProjectService} from "../../services/project.service";
 import {DateService} from "../../services/date.service";
 import {TagsService} from "../../services/tags.service";
+import {CommentComponent} from "./comment-component/comment.component";
 
 
 
@@ -62,7 +63,8 @@ import {TagsService} from "../../services/tags.service";
         GeneralInfoComponent,
         DescriptionComponent,
         ProfileComponent,
-        ProjectsBlockComponent
+        ProjectsBlockComponent,
+        CommentComponent
     ],
     exports: [MainComponent]
 })
