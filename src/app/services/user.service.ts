@@ -3,7 +3,7 @@ import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import {User} from '../models/user';
 import 'rxjs/add/operator/map';
 import {API_URL} from '../constants/API';
-import { BehaviorSubject} from "rxjs/BehaviorSubject";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 
 @Injectable()
@@ -47,10 +47,10 @@ export class UserService {
         console.log(API_URL + '/profile/' + id)
         return this.http.get(API_URL + '/profile/' + id).map((response: Response) => response.json());
     }
+
     updateProfile(user: User) {
         this.http.post(API_URL + '/users/update', user).subscribe();
     }
-
 
 
     public jwt() {

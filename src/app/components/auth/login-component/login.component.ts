@@ -39,16 +39,18 @@ export class LoginComponent implements OnInit {
             return
         }
         this.authService.login(this.userForm.value.login, this.userForm.value.password).subscribe(
-            data => this.router.navigate(['']),
-            error => {
-                if (error.status === 401) {
-                    this.invalid = false;
-                    this.notConfirmEmail = true;
-                }else {
-                    this.notConfirmEmail = false;
-                    this.invalid = true;
-                }
-            }
+            data => {
+                this.router.navigate([''])
+            },
+                    error => {
+                        if (error.status === 401) {
+                            this.invalid = false;
+                            this.notConfirmEmail = true;
+                        }else {
+                            this.notConfirmEmail = false;
+                            this.invalid = true;
+                        }
+                    }
         )
     }
 }

@@ -15,6 +15,14 @@ export class AuthenticationService {
             .map((response: Response) => {
                 let user = response.json();
                 if (user && user.token) {
+                    this.userService.getUserById(user.id).subscribe(
+                        data => {
+                            user.projects = data.projects;
+                            user.followedProjects = data.followedProjects;
+                            this.userService.saveUser(user);
+                        },
+                        error => console.log(error)
+                    )
                     this.userService.saveUser(user);
                     this.userService.downloadUserFromLocalStorage();
                 }

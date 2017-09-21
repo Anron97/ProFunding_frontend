@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CloudinaryOptions, CloudinaryUploader} from 'ng2-cloudinary';
 import {Subscription} from 'rxjs/Subscription';
@@ -11,7 +11,8 @@ import {UserService} from "../../../services/user.service";
     templateUrl: './profile.component.html',
     styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit{
+
     private id: number;
     private user: User;
     private subscription: Subscription;
@@ -25,16 +26,7 @@ export class ProfileComponent {
                 private userService: UserService) {
         this.subscription = activateRoute.params.subscribe(params => this.id = params['id']);
 
-        let currentUser = this.userService.getCurrentUser();
-        if (currentUser && currentUser.id === +this.id) {
-            this.userService.currentUser.subscribe(user => this.user = user);
-            this.myProfile = true;
-        } else {
-            this.userService.getUserById(this.id).subscribe(
-                data => this.user = data,
-                error => console.log(error)
-            )
-        }
+
         this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
             let res: any = JSON.parse(response);
             this.user.image = "https://res.cloudinary.com/" + this.uploader.cloudName
@@ -45,6 +37,19 @@ export class ProfileComponent {
             this.userService.setUser(this.user);
             return {item, response, status, headers};
         };
+    }
+
+    ngOnInit(): void {
+        let currentUser = this.userService.getCurrentUser();
+        if (currentUser && currentUser.id === +this.id) {
+            this.userService.currentUser.subscribe(user => this.user = user);
+            this.myProfile = true;
+        } else {
+            this.userService.getUserById(this.id).subscribe(
+                data => this.user = data,
+                error => console.log(error)
+            )
+        }
     }
 
     onChange() {
