@@ -63,5 +63,4 @@ export class ProjectComponent implements OnInit, OnDestroy {
         this.projectService.saveAsEditProject(this.project);
         this.router.navigate(['/draft'], { queryParams: {edit: true}});
     }
-
 }

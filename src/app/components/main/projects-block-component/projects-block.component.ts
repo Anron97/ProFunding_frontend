@@ -17,7 +17,7 @@ export class ProjectsBlockComponent implements OnInit {
     private subscription: Subscription;
     private property: string;
     private type: string;
-    private value: string
+    private value: string;
 
 
     constructor(private projectService: ProjectService,
@@ -44,6 +44,9 @@ export class ProjectsBlockComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log(this.property);
+        console.log(this.type);
+        console.log(this.value);
         this.projectService.getProjectNextPage(this.property, this.type, this.value).subscribe(
             data => {
                 console.log(data);

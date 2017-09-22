@@ -25,6 +25,8 @@ export class ProjectService {
     }
 
     saveAsEditProject(project: Project) {
+        console.log("Save as editProject");
+        console.log(project);
         localStorage.setItem('editProject', JSON.stringify(project));
     }
 
