@@ -27,6 +27,7 @@ import {ProjectService} from "../../services/project.service";
 import {DateService} from "../../services/date.service";
 import {TagsService} from "../../services/tags.service";
 import {CommentComponent} from "./comment-component/comment.component";
+import {PayWayComponent} from "./draft-component/payway-component/payway.component";
 
 
 
@@ -64,7 +65,8 @@ import {CommentComponent} from "./comment-component/comment.component";
         DescriptionComponent,
         ProfileComponent,
         ProjectsBlockComponent,
-        CommentComponent
+        CommentComponent,
+        PayWayComponent
     ],
     exports: [MainComponent]
 })

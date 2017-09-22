@@ -18,12 +18,22 @@ export class ProjectService {
     }
 
     saveDraft(project: Project) {
-        console.log(project);
-        console.log(project.completionDate);
         if (project.completionDate) {
             localStorage.setItem('completionDate', JSON.stringify(project.completionDate))
         }
         localStorage.setItem('draft', JSON.stringify(project));
+    }
+
+    saveAsEditProject(project: Project) {
+        localStorage.setItem('editProject', JSON.stringify(project));
+    }
+
+    getEditProject() {
+        let project = JSON.parse(localStorage.getItem('editProject'));
+        if (project) {
+            project.completionDate = new Date(project.completionDate);
+        }
+        return project;
     }
 
     getDraft() {

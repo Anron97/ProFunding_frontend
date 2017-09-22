@@ -40,7 +40,7 @@
                     </p>
                     <a *ngIf="!myProject" href="#" class="btn  btn_subscribe">Подписаться</a>
                     <a *ngIf="!myProject" href="#" class="btn  btn_support">Поддержать</a>
-                    <a *ngIf="myProject" routerLink="/draft" class="btn  btn_subscribe">Редактировать</a>
+                    <a *ngIf="myProject" (click)="navigate()" class="btn  btn_subscribe">Редактировать</a>
                 </div>
             </div>
         </div>

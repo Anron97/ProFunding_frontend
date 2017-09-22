@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Project} from "../../../models/project";
 import {Subscription} from "rxjs/Subscription";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ProjectService} from "../../../services/project.service";
 import {DateService} from "../../../services/date.service";
 import {UserService} from "../../../services/user.service";
@@ -22,7 +22,8 @@ export class ProjectComponent implements OnInit {
     constructor(private activateRoute: ActivatedRoute,
                 private projectService: ProjectService,
                 private dateService: DateService,
-                private userService: UserService) {
+                private userService: UserService,
+                private router: Router) {
         this.subscription = activateRoute.params.subscribe(params => this.id = +params['id']);
     }
 
@@ -47,6 +48,11 @@ export class ProjectComponent implements OnInit {
             )
         }
         this.currentUser = this.userService.getCurrentUser();
+    }
+
+    navigate() {
+        this.projectService.saveAsEditProject(this.project);
+        this.router.navigate(['/draft']);
     }
 
 }

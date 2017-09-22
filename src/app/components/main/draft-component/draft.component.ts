@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Project} from '../../../models/project';
 import {FinancialGoal} from "../../../models/financialGoal";
 import {ProjectService} from "../../../services/project.service";
@@ -11,15 +11,24 @@ import {UserService} from "../../../services/user.service";
     templateUrl: './draft.component.html',
     styleUrls: ['./draft.component.css'],
 })
-export class DraftComponent {
+export class DraftComponent implements OnInit {
+
     @ViewChild('begin') begin: ElementRef;
     private project: Project;
     private invalid = false;
+    private editProject = true;
 
     constructor(private projectService: ProjectService,
                 private router: Router,
                 private userService: UserService) {
-        this.project = projectService.getDraft();
+    }
+
+    ngOnInit(): void {
+        this.project = this.projectService.getEditProject();
+        if (!this.project) {
+            this.project = this.projectService.getDraft();
+            this.editProject = false;
+        }
     }
 
     deleteGoal(goal: FinancialGoal) {
@@ -55,9 +64,12 @@ export class DraftComponent {
         }
     }
 
-    previewDraft() {
+    preview() {
         console.log("Save: ");
-        this.saveDraft();
-        this.router.navigate(['/project/0'])
+        if (!this.editProject) {
+            this.saveDraft();
+            this.router.navigate(['/project/0'])
+        }
+
     }
 }
