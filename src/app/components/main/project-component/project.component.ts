@@ -6,6 +6,8 @@ import {ProjectService} from "../../../services/project.service";
 import {DateService} from "../../../services/date.service";
 import {UserService} from "../../../services/user.service";
 import {TagsService} from "../../../services/tags.service";
+import {CommentService} from "../../../services/comment.service";
+import {Comment} from "../../../models/comment";
 
 @Component({
     selector: 'project',
@@ -26,7 +28,8 @@ export class ProjectComponent implements OnInit, OnDestroy {
                 private dateService: DateService,
                 private tagService: TagsService,
                 private userService: UserService,
-                private router: Router) {
+                private router: Router,
+                private commentService: CommentService) {
     }
 
     ngOnInit(): void {
@@ -62,6 +65,11 @@ export class ProjectComponent implements OnInit, OnDestroy {
     navigate() {
         this.projectService.saveAsEditProject(this.project);
         this.router.navigate(['/draft'], { queryParams: {edit: true}});
+    }
+
+    addComment(comment: Comment) {
+        comment.projectId = this.project.id;
+        console.log(comment);
     }
 
 }

@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit{
         let currentUser = this.userService.getCurrentUser();
         if (currentUser && currentUser.id === +this.id) {
             this.userService.currentUser.subscribe(user => {
-                this.user = user
+                this.user = user;
                 console.log(user);
             });
             this.myProfile = true;

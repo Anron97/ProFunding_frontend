@@ -83,7 +83,7 @@
                     <div [innerHTML]="project.content" class="tab-pane active ql-editor " id="content">
                     </div>
                     <div class="tab-pane" id="comments">
-                        <comments-component [comments]="project.comments" [user]="currentUser"></comments-component>
+                        <comments-component [comments]="project.comments" [user]="currentUser" (addComment)="addComment($event)"></comments-component>
                     </div>
                 </div>
             </div>

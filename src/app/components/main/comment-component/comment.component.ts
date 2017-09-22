@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
 import {Comment} from "../../../models/comment";
+
 
 
 @Component({
@@ -11,10 +12,10 @@ import {Comment} from "../../../models/comment";
 })
 
 export class CommentComponent implements OnInit {
-    @Input()
-    comments: Comment[];
-    @Input()
-    user: User;
+    @Input() comments: Comment[];
+    @Input() user: User;
+    @Output() addComment = new EventEmitter<Comment>();
+
     comment: Comment = new Comment();
 
     constructor(private userService: UserService) {
@@ -26,8 +27,10 @@ export class CommentComponent implements OnInit {
         this.comment.user = this.user;
     }
 
-    addComment() {
+    sendComment() {
+        this.comment.dateCreated = new Date();
         this.comments.push(this.comment);
+        this.addComment.emit(this.comment);
     }
 
     public checkRoleForDeleteComment(i: number): boolean {
