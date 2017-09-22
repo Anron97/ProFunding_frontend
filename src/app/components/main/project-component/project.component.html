@@ -63,7 +63,7 @@
             </rating>
         </div>
         <div class="col-xs-8">
-            <a class="tag" *ngFor="let tag of project.tags">{{tag.value}}</a>
+            <a class="tag" routerLink="/projects/tag/{{tag.value}}" *ngFor="let tag of project.tags">{{tag.value}}</a>
         </div>
     </div>
     <div class="row">

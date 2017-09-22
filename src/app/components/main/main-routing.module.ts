@@ -32,13 +32,19 @@ import {ProjectsBlockComponent} from "./projects-block-component/projects-block.
                         component: ProfileComponent
                     },
                     {
-                        path: 'projects',
+                        path: 'projects/:property/:value',
                         component: ProjectsBlockComponent
                     },
                     {
                         path: 'projects/:property',
                         component: ProjectsBlockComponent
+                    },
+                    {
+                        path: 'projects',
+                        component: ProjectsBlockComponent
                     }
+
+
                 ]
             }
         ])

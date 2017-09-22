@@ -17,7 +17,7 @@ export class DraftComponent implements OnInit, OnDestroy {
     @ViewChild('begin') begin: ElementRef;
     private project: Project;
     private invalid = false;
-    private editProject = false;
+    private editProject;
     private subscription: Subscription;
 
     constructor(private projectService: ProjectService,
@@ -31,10 +31,9 @@ export class DraftComponent implements OnInit, OnDestroy {
             .queryParams
             .subscribe(params => {
                 let edit = params['edit']
-                if (edit) this.editProject = false;
+                if (edit === 'false') this.editProject = false;
+                if (edit === 'true') this.editProject = true;
             })
-        console.log(typeof this.editProject);
-        console.log(this.editProject)
         if (this.editProject) {
             console.log('Download edit project');
             this.project = this.projectService.getEditProject();
@@ -93,4 +92,5 @@ export class DraftComponent implements OnInit, OnDestroy {
             this.router.navigate(['/project/' + this.project.id])
         }
     }
+
 }

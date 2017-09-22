@@ -71,5 +71,4 @@ export class ProjectComponent implements OnInit, OnDestroy {
         comment.projectId = this.project.id;
         console.log(comment);
     }
-
 }
