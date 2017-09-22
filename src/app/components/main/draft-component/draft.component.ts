@@ -1,9 +1,10 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Project} from '../../../models/project';
 import {FinancialGoal} from "../../../models/financialGoal";
 import {ProjectService} from "../../../services/project.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../../services/user.service";
+import {Subscription} from "rxjs/Subscription";
 
 
 @Component({
@@ -11,24 +12,41 @@ import {UserService} from "../../../services/user.service";
     templateUrl: './draft.component.html',
     styleUrls: ['./draft.component.css'],
 })
-export class DraftComponent implements OnInit {
+export class DraftComponent implements OnInit, OnDestroy {
 
     @ViewChild('begin') begin: ElementRef;
     private project: Project;
     private invalid = false;
-    private editProject = true;
+    private editProject = false;
+    private subscription: Subscription;
 
     constructor(private projectService: ProjectService,
                 private router: Router,
-                private userService: UserService) {
+                private userService: UserService,
+                private activatedRoute: ActivatedRoute) {
     }
 
     ngOnInit(): void {
-        this.project = this.projectService.getEditProject();
-        if (!this.project) {
+        this.subscription = this.activatedRoute
+            .queryParams
+            .subscribe(params => {
+                let edit = params['edit']
+                if (edit) this.editProject = false;
+            })
+        console.log(typeof this.editProject);
+        console.log(this.editProject)
+        if (this.editProject) {
+            console.log('Download edit project');
+            this.project = this.projectService.getEditProject();
+        } else {
             this.project = this.projectService.getDraft();
-            this.editProject = false;
         }
+
+        console.log(this.project);
+    }
+
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
     }
 
     deleteGoal(goal: FinancialGoal) {
@@ -40,9 +58,11 @@ export class DraftComponent implements OnInit {
         }
     }
 
-    saveDraft() {
-        console.log(this.project);
-        this.projectService.saveDraft(this.project);
+    save() {
+        if (!this.editProject) {
+            this.projectService.saveDraft(this.project);
+        }
+
     }
 
     removeDraft() {
@@ -52,7 +72,7 @@ export class DraftComponent implements OnInit {
     send() {
         if (!this.projectService.isValid(this.project)) {
             this.invalid = true;
-            this.saveDraft();
+            this.save();
             this.begin.nativeElement.click();
         } else {
             this.projectService.create(this.project).subscribe(
@@ -67,9 +87,10 @@ export class DraftComponent implements OnInit {
     preview() {
         console.log("Save: ");
         if (!this.editProject) {
-            this.saveDraft();
+            this.save();
             this.router.navigate(['/project/0'])
+        } else {
+            this.router.navigate(['/project/' + this.project.id])
         }
-
     }
 }

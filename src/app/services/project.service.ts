@@ -28,6 +28,10 @@ export class ProjectService {
         localStorage.setItem('editProject', JSON.stringify(project));
     }
 
+    removeEditProject() {
+        localStorage.removeItem('editProject');
+    }
+
     getEditProject() {
         let project = JSON.parse(localStorage.getItem('editProject'));
         if (project) {
@@ -75,6 +79,7 @@ export class ProjectService {
     }
 
     create(project: Project): Observable<any> {
+        console.log(project);
         let currentUser: User = this.userService.getCurrentUser();
         /*if (currentUser.role === "ROLE_PROOFED_USER" || currentUser.role === "ROLE_ADMIN")*/
         {

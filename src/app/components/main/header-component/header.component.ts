@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import { Router } from '@angular/router'
-import {States} from '../../../constants/States';
 import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
 import {AuthenticationService} from "../../../services/authentication.service";

@@ -7,9 +7,16 @@ import {Observable} from "rxjs/Observable";
 @Injectable()
 export class TagsService {
 
-    constructor(private http: Http) {}
+    constructor(private http: Http) {
+    }
 
     getAllTags(): Observable<any> {
         return this.http.get(API_URL + '/tags/all').map((response: Response) => response.json())
+    }
+
+    verifyTags(tags: any[]) {
+        for (let tag of tags) {
+            tag.display = tag.value;
+        }
     }
 }
