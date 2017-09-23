@@ -60,6 +60,8 @@ export class DraftComponent implements OnInit, OnDestroy {
     save() {
         if (!this.editProject) {
             this.projectService.saveDraft(this.project);
+        } else {
+            this.projectService.updateProject(this.project);
         }
 
     }

@@ -3,13 +3,15 @@
         <a routerLink="/project/{{project.id}}" routerLinkActive="active"><img src="{{project.image}}"></a>
     </div>
     <div class="content">
-        <div class="title">
-            <a *ngIf="project.title" routerLink="/project/{{project.id}}" routerLinkActive="active"><p>{{project.title}}</p></a>
-            <a *ngIf="!project.title" routerLink="/project/{{project.id}}" routerLinkActive="active"><p >Название проекта</p></a>
-        </div>
-        <div class="description">
-            <p *ngIf="project.description">{{project.description}}</p>
-            <p *ngIf="!project.description">Краткое описание проекта</p>
+        <div class="fluid">
+            <div class="title">
+                <a *ngIf="project.title" routerLink="/project/{{project.id}}" routerLinkActive="active"><p>{{project.title}}</p></a>
+                <a *ngIf="!project.title" routerLink="/project/{{project.id}}" routerLinkActive="active"><p >Название проекта</p></a>
+            </div>
+            <div class="description">
+                <p *ngIf="project.description">{{project.description}}</p>
+                <p *ngIf="!project.description">Краткое описание проекта</p>
+            </div>
         </div>
         <div class="total-progress">
             <div class="progress">

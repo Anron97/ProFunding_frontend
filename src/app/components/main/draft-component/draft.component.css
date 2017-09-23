@@ -349,3 +349,6 @@ input::-webkit-inner-spin-button {
     line-height: 25px;
     margin-right: 10px;
 }
+.center-block {
+    text-align: center;
+}

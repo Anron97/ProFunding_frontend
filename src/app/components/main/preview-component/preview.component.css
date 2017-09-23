@@ -10,7 +10,14 @@
     padding: 0px;
     width: 100%;
 }
-.block .content .title{
+
+
+.block .content .fluid {
+    height: 250px;
+    max-height: 250px;
+}
+
+.block .content .fluid .title{
     white-space: normal;
     word-wrap: break-word;
     padding: 20px 20px 0 20px;
@@ -19,7 +26,8 @@
     font-size: 20px;
     font-weight: 600;
 }
-.block .content .description {
+
+.block .content .fluid .description {
     white-space: normal;
     word-wrap: break-word;
     padding: 0 20px;
@@ -30,6 +38,13 @@
     color: #666666;
     font-size: 16px;
     font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+    height: 100px;
+    text-overflow: ellipsis;
+}
+.block .content .fluid .description p {
+    height: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .block .image-preview img {
     width: 100%;

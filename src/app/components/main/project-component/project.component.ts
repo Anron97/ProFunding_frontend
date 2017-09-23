@@ -15,7 +15,7 @@ import {TagsService} from "../../../services/tags.service";
 export class ProjectComponent implements OnInit, OnDestroy {
 
     private id: number;
-    private project: Project = new Project();
+    private project: Project;
     private completionDate: String;
     private subscription: Subscription;
     private myProject = false;
