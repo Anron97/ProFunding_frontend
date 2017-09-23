@@ -29,6 +29,7 @@ import {TagsService} from "../../services/tags.service";
 import {CommentComponent} from "./comment-component/comment.component";
 import {PayWayComponent} from "./draft-component/payway-component/payway.component";
 import {CommentService} from "../../services/comment.service";
+import {RatingService} from "../../services/rating.service";
 
 
 
@@ -51,7 +52,8 @@ import {CommentService} from "../../services/comment.service";
         ProjectService,
         DateService,
         TagsService,
-        CommentService
+        CommentService,
+        RatingService
     ],
     declarations: [
         MainComponent,

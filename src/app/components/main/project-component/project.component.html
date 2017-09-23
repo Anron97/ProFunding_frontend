@@ -56,11 +56,16 @@
     </div>
     <div class="row">
         <div class="col-xs-4">
-            <p class="rating">Рейтинг: </p>
-            <rating
-                [(ngModel)]="rating"
-                [float]="true">
+            <p class="rating" style="padding-bottom: 1%;">Рейтинг: </p>
+            <rating (click)="addRating()"
+                [(ngModel)]="project.rating"
+                [float]="true"
+                [readonly]="project.isRated"
+                >
             </rating>
+            <span class="rating" style="padding-bottom: 3%;padding-left: 10px;">
+                {{project.rating}}
+            </span>
         </div>
         <div class="col-xs-8">
             <a class="tag" routerLink="/projects/tag/{{tag.value}}" *ngFor="let tag of project.tags">{{tag.value}}</a>

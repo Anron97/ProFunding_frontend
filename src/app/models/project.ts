@@ -14,6 +14,7 @@ export class Project {
     currentSum = 0;
     userId: number;
     rating = 0;
+    isRated = true;
     status: string;
     leftDays = 0;
     tags: string[] = [];

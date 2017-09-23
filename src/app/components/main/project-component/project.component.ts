@@ -8,6 +8,8 @@ import {UserService} from "../../../services/user.service";
 import {TagsService} from "../../../services/tags.service";
 import {CommentService} from "../../../services/comment.service";
 import {Comment} from "../../../models/comment";
+import {Rating} from "../../../models/Rating";
+import {RatingService} from "../../../services/rating.service";
 
 @Component({
     selector: 'project',
@@ -29,6 +31,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
                 private tagService: TagsService,
                 private userService: UserService,
                 private router: Router,
+                private ratingService: RatingService,
                 private commentService: CommentService) {
     }
 
@@ -36,7 +39,6 @@ export class ProjectComponent implements OnInit, OnDestroy {
         this.subscription = this.activateRoute.params.subscribe(params => this.id = +params['id']);
         if (this.id === 0) {
             this.project = this.projectService.getDraft();
-
             this.project = this.projectService.verifyProject(this.project);
             this.completionDate = this.dateService.formatDate(this.project.completionDate);
             this.myProject = true;
@@ -48,12 +50,24 @@ export class ProjectComponent implements OnInit, OnDestroy {
                     this.project.completionDate = new Date(this.project.completionDate);
                     this.tagService.verifyTags(this.project.tags);
                     this.completionDate = this.dateService.formatDate(this.project.completionDate);
+                    this.ratingService.checkEnable(this.id).subscribe(
+                        response => {
+                            this.project.isRated = !response;
+                            console.log(response);
+                        },
+                        error => {
+                            console.log(error);
+                            this.project.isRated = true;
+                        }
+                    )
                     if (this.currentUser && this.currentUser.id === this.project.userId) {
                         this.myProject = true;
+                        this.project.isRated = true;
                     }
                 },
                 error => console.log()
             )
+
         }
         this.currentUser = this.userService.getCurrentUser();
     }
@@ -64,11 +78,29 @@ export class ProjectComponent implements OnInit, OnDestroy {
 
     navigate() {
         this.projectService.saveAsEditProject(this.project);
-        this.router.navigate(['/draft'], { queryParams: {edit: true}});
+        this.router.navigate(['/draft'], {queryParams: {edit: true}});
     }
 
     addComment(comment: Comment) {
         comment.projectId = this.project.id;
         console.log(comment);
+    }
+
+    addRating() {
+        if (!this.project.isRated) {
+            console.log(this.project.rating);
+            let rating = new Rating();
+            rating.amount = this.project.rating;
+            rating.userId = this.currentUser.id;
+            rating.projectId = this.project.id;
+            this.projectService.rate(rating).subscribe(response => {
+                    this.project.rating = response.totalRating;
+                    this.project.isRated = true;
+                    console.log(response);
+                },
+                error => {
+                    console.log(error);
+                });
+        }
     }
 }
