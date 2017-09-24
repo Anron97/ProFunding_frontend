@@ -41,6 +41,15 @@ export class CommentComponent implements OnInit {
     }
 
     deleteComment(i: number): void {
-        this.comments.splice(i, 1);
+        console.log(this.comments[i]);
+        this.commentService.deleteComment(this.comments[i]).subscribe(
+            responce => {
+                if (responce) {
+                    this.comments.splice(i, 1);
+                }
+            },
+            error => {
+                console.log(error);
+            });
     }
 }

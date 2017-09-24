@@ -17,4 +17,8 @@ export class CommentService {
             .map((response: Response) => response.json());
     }
 
+    deleteComment(comment: Comment) {
+        return this.http.post(API_URL + '/comments/delete', comment, this.userService.jwt())
+            .map((response: Response) => response.json());
+    }
 }
