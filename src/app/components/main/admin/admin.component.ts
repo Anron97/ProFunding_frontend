@@ -25,7 +25,12 @@ export class AdminComponent implements OnInit {
     }
 
     ngOnInit(): void {
-         this.users = this.userService.getAllUsers();
+        this.adminService.getUsers().subscribe(
+            response => {
+                this.users = response;
+            },
+            error => console.log(error)
+        );
         this.roles = [];
         this.roles.push({label: "ALL ROLES", value: null})
         this.roles.push({label: 'ADMIN', value: 'ADMIN'});
@@ -47,11 +52,19 @@ export class AdminComponent implements OnInit {
     }
 
     blockUsers() {
-        this.adminService.blockUsers(this.selectedUsers)
+        this.adminService.blockUsers(this.selectedUsers).subscribe(
+            response => {
+                console.log(response);
+            }
+        );
     }
 
     unblockUsers() {
-        this.adminService.unblockUsers(this.selectedUsers)
+        this.adminService.unblockUsers(this.selectedUsers).subscribe(
+            response => {
+                console.log(response);
+            }
+        );
     }
 
     showConfirmWindow(user: User) {

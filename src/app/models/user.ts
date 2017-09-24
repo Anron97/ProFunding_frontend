@@ -8,6 +8,7 @@ export class User {
     role: string;
     token: string;
     image =  'http://res.cloudinary.com/profunding/image/upload/v1505580510/default-user-image.jpg';
+    scanOfPassport: string;
     isSendConfirm: boolean;
     isBlocked: boolean;
     projects: Project[];
