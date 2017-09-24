@@ -62,7 +62,7 @@ export class UserService {
     }
 
     getAllUsers() {
-
+        return [];
     }
 
     ChangeRoles(role: string, fromServerToAdmin: boolean) {
