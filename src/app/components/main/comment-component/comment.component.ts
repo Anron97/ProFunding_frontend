@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
 import {Comment} from "../../../models/comment";
+import {CommentService} from "../../../services/comment.service";
 
 
 
@@ -18,7 +19,8 @@ export class CommentComponent implements OnInit {
 
     comment: Comment = new Comment();
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService,
+                private commentService: CommentService) {
 
     }
 
@@ -29,6 +31,7 @@ export class CommentComponent implements OnInit {
 
     sendComment() {
         this.comment.dateCreated = new Date();
+        console.log(this.comment);
         this.comments.push(this.comment);
         this.addComment.emit(this.comment);
     }

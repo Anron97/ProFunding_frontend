@@ -13,7 +13,8 @@ export class CommentService {
     }
 
     saveComment(comment: Comment) {
-        this.http.post(API_URL + '/create', comment, this.userService.jwt()).map((response: Response) => response.json());
+        return this.http.post(API_URL + '/comments/create', comment, this.userService.jwt())
+            .map((response: Response) => response.json());
     }
 
 }

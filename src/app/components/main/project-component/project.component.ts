@@ -84,6 +84,20 @@ export class ProjectComponent implements OnInit, OnDestroy {
     addComment(comment: Comment) {
         comment.projectId = this.project.id;
         console.log(comment);
+        this.commentService.saveComment(comment).subscribe(
+            responce => {
+                if (!responce) {
+                    for (let i = this.project.comments.length; i >= 0; ++i) {
+                        if (this.project.comments[i].comment.content === comment.content) {
+                            this.project.comments.splice(i, 1);
+                        }
+                    }
+                }
+            },
+            error => {
+                console.log(error);
+            }
+        );
     }
 
     addRating() {
