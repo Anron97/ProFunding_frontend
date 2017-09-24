@@ -6,7 +6,7 @@ import {FooterComponent} from './footer-component/footer.component';
 import {HeaderComponent} from './header-component/header.component';
 import {MainRoutingModule} from './main-routing.module';
 import {DraftComponent} from './draft-component/draft.component';
-import {InputTextModule} from 'primeng/primeng';
+import {GrowlModule, InputTextModule} from 'primeng/primeng';
 import {PreviewComponent} from './preview-component/preview.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Ng2CloudinaryModule} from 'ng2-cloudinary';
@@ -31,6 +31,8 @@ import {PayWayComponent} from "./draft-component/payway-component/payway.compone
 import {CommentService} from "../../services/comment.service";
 import {RatingService} from "../../services/rating.service";
 import {AdminModule} from "./admin/admin.module";
+import {SearchComponent} from "./search-component/search.component";
+
 
 
 
@@ -48,7 +50,8 @@ import {AdminModule} from "./admin/admin.module";
         EditorModule,
         TagInputModule,
         RatingModule,
-        AdminModule
+        AdminModule,
+        GrowlModule
     ],
     providers: [
         ProjectService,
@@ -72,7 +75,8 @@ import {AdminModule} from "./admin/admin.module";
         ProfileComponent,
         ProjectsBlockComponent,
         CommentComponent,
-        PayWayComponent
+        PayWayComponent,
+        SearchComponent
     ],
     exports: [MainComponent]
 })

@@ -1,5 +1,6 @@
 import {FinancialGoal} from './financialGoal';
 import {CommentComponent} from "../components/main/comment-component/comment.component";
+import {Payment} from "./payment";
 
 
 export class Project {

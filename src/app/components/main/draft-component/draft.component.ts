@@ -5,6 +5,7 @@ import {ProjectService} from "../../../services/project.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../../services/user.service";
 import {Subscription} from "rxjs/Subscription";
+import {Message} from 'primeng/components/common/api';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class DraftComponent implements OnInit, OnDestroy {
     private invalid = false;
     private editProject;
     private subscription: Subscription;
+    private msgs: Message[] = [];
 
     constructor(private projectService: ProjectService,
                 private router: Router,
@@ -63,7 +65,8 @@ export class DraftComponent implements OnInit, OnDestroy {
         } else {
             this.projectService.updateProject(this.project);
         }
-
+        this.msgs = [];
+        this.msgs.push({severity: 'success', summary: 'Success', detail: 'Saved success'})
     }
 
     removeDraft() {

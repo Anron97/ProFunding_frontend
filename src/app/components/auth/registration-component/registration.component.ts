@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../../models/user';
 import {UserService} from '../../../services/user.service';
-import {AuthenticationService} from '../../../services/authentication.service';
 import {Router} from '@angular/router';
+import {Message} from 'primeng/components/common/api';
 
 @Component({
     selector: 'app-registration',
@@ -15,11 +15,11 @@ export class RegistrationComponent implements OnInit {
     user: User = new User();
     invalid = false;
     error = false;
+    msgs: Message[] = [];
 
     constructor(private fb: FormBuilder,
                 private router: Router,
-                private userService: UserService,
-                private authService: AuthenticationService) {
+                private userService: UserService) {
     }
 
     ngOnInit(): void {
@@ -46,14 +46,14 @@ export class RegistrationComponent implements OnInit {
             this.invalid = true;
             return;
         }
-        console.log(this.user)
         this.userService.create(this.user).subscribe(
             data => {
-                console.log(data)
                 this.router.navigate(['/login'])
             },
                     error => {
-                        this.error = true
+                        this.msgs = [];
+                        this.msgs.push({severity: 'error', summary: 'Error',
+                            detail: 'Пользователь с таким именем уже зарегестрирован'})
             }
             );
     }

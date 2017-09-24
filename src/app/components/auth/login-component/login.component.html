@@ -1,3 +1,4 @@
+<p-growl [(value)]="msgs"></p-growl>
 <div class="container">
     <div class="row main">
         <div class="panel-heading">
@@ -43,10 +44,6 @@
                     <i *ngIf="userForm.controls['password'].hasError('required')
                            && (userForm.controls['password'].touched || invalid )"
                        class="fa fa-exclamation-triangle error-triangle"></i>
-                </div>
-                <div class="error-message">
-                    <p *ngIf="invalid">Неправильный логин или пароль</p>
-                    <p *ngIf="notConfirmEmail">Подтвердите свой Email</p>
                 </div>
                 <div class="form-group">
                     <button type="button"

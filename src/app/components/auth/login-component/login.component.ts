@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../../models/user';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../../services/authentication.service';
+import {Message} from 'primeng/components/common/api';
+
+
 
 @Component({
     selector: 'app-login',
@@ -14,6 +17,7 @@ export class LoginComponent implements OnInit {
     user: User = new User();
     invalid = false;
     notConfirmEmail = false;
+    msgs: Message[] = [];
 
     constructor(private router: Router,
                 private fb: FormBuilder,
@@ -45,10 +49,13 @@ export class LoginComponent implements OnInit {
                     error => {
                         if (error.status === 401) {
                             this.invalid = false;
-                            this.notConfirmEmail = true;
+                            this.msgs = [];
+                            this.msgs.push({severity: 'error', summary: 'Error', detail: 'Confirm email'})
                         }else {
                             this.notConfirmEmail = false;
                             this.invalid = true;
+                            this.msgs = [];
+                            this.msgs.push({severity: 'error', summary: 'Error', detail: 'Invalid login or password'})
                         }
                     }
         )
