@@ -28,6 +28,7 @@ import {DateService} from "../../services/date.service";
 import {TagsService} from "../../services/tags.service";
 import {CommentComponent} from "./comment-component/comment.component";
 import {PayWayComponent} from "./draft-component/payway-component/payway.component";
+import {AdminModule} from "./admin/admin.module";
 
 
 
@@ -44,7 +45,8 @@ import {PayWayComponent} from "./draft-component/payway-component/payway.compone
         Ng2FileDropModule,
         EditorModule,
         TagInputModule,
-        RatingModule
+        RatingModule,
+        AdminModule
     ],
     providers: [
         ProjectService,

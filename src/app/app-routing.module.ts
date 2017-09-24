@@ -25,11 +25,6 @@ import {EmailConfirmComponent} from "./components/auth/email-confirm-component/e
         {
             path: States.CONFIRM,
             component: EmailConfirmComponent
-        },
-        {
-            path: States.ADMIN,
-            loadChildren: './components/admin/admin.module#AdminModule',
-            data: {preload: true}
         }
     ],
         {preloadingStrategy: PreloadAllModules})],
