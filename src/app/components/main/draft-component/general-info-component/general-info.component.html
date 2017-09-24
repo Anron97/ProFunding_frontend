@@ -4,7 +4,7 @@
         <input id="float-input" type="text"
                placeholder="Введите название проекта"
                pInputText
-               maxlength="70"
+               maxlength="40"
                formControlName="title"
                [ngClass]="{'error' : projectForm.controls['title'].hasError('required') && (projectForm.controls['title'].touched || invalid ) }"
                [(ngModel)]="project.title"

@@ -91,6 +91,10 @@ export class ProjectService {
         }
     }
 
+    updateProject(project: Project) {
+        this.http.post(API_URL + '/projects/update', project, this.userService.jwt()).subscribe();
+    }
+
     getMainPageContent() {
         return this.http.get(API_URL + '/projects/main_page', this.userService.jwt())
             .map((response: Response) => response.json());

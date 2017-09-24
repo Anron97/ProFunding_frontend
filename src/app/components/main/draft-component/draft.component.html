@@ -51,12 +51,16 @@
                                 <payway-component [project]="project"></payway-component>
                             </div>
                             <div class="tab-pane" role="tabpanel" id="complete">
-                                <div class="block">
-                                    <div class="create-header">
+                                <div class="block center-block">
+                                    <div *ngIf="!editProject" class="create-header">
                                         Вы успешно создали проект, нажмите кнопку "Отправить" для проверки введенных данных и публикации вашего проекта
                                     </div>
+                                    <div *ngIf="editProject" class="create-header">
+                                       Чтобы применить изменения нажмите Сохранить
+                                    </div>
                                     <div class="row" style="text-align: center">
-                                        <a class="btn btn_send" (click)="send()" >Отправить <i style="margin-left: 10px" class="fa fa-check"></i></a>
+                                        <a *ngIf="!editProject" class="btn btn_send" (click)="send()" >Отправить <i style="margin-left: 10px" class="fa fa-check"></i></a>
+                                        <a *ngIf="editProject" class="btn btn_send" (click)="save()" >Сохранить <i style="margin-left: 10px" class="fa fa-check"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +70,7 @@
                     <div class="col-xs-4" id="preview">
                         <div class="block" style="text-align: center">
                             <a  class="btn  btn_save" (click)="save()">Сохранить</a>
-                            <a  class="btn  btn_subscribe" (click)="preview()">Предпросмотр</a>
+                            <a  *ngIf="!editProject" class="btn  btn_subscribe" (click)="preview()">Предпросмотр</a>
                         </div>
                         <preview [project]="project"></preview>
                         <div>
@@ -80,7 +84,7 @@
                 </div>
                 <div class="row main remove">
                     <hr>
-                    <a  class="btn btn_remove" (click)="removeDraft()">Удалить черновик</a>
+                    <a  *ngIf="!editProject" class="btn btn_remove" (click)="removeDraft()">Удалить черновик</a>
                 </div>
             </div>
         </section>

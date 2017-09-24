@@ -5,6 +5,8 @@ import 'rxjs/add/operator/map';
 import {API_URL} from '../constants/API';
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Project} from "../models/project";
+import {Observable} from "rxjs/Observable";
+import {ADMIN_ROLES, SERVER_ROLES} from "../constants/Roles";
 
 
 @Injectable()
@@ -57,6 +59,30 @@ export class UserService {
         let user = this.getCurrentUser();
         user.projects.push(project);
         this.saveUser(user);
+    }
+
+    getAllUsers() {
+        let confirm = true;
+        let users: User[] = []
+        let usernames = ['Коля Иванов', 'Константин Богданович', 'Сергей Комзолов', 'Vasilii Pidorov', 'Conchita Malich']
+        for (let username of usernames) {
+            let user = new User();
+            user.username = username;
+            user.isSendConfirm = confirm;
+            user.role = this.ChangeRoles(user.role, true);
+            confirm = !confirm;
+            users.push(user);
+
+        }
+        return users;
+    }
+
+    ChangeRoles(role: string, fromServerToAdmin: boolean) {
+        if (fromServerToAdmin) {
+            return ADMIN_ROLES[SERVER_ROLES.indexOf(role)]
+        } else {
+            return SERVER_ROLES[ADMIN_ROLES.indexOf(role)]
+        }
     }
 
 

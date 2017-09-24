@@ -6,6 +6,7 @@ import {DraftComponent} from './draft-component/draft.component';
 import {ProjectComponent} from "./project-component/project.component";
 import {ProfileComponent} from "./profile-component/profile.component";
 import {ProjectsBlockComponent} from "./projects-block-component/projects-block.component";
+import {AdminComponent} from "./admin/admin.component";
 
 
 @NgModule({
@@ -25,23 +26,32 @@ import {ProjectsBlockComponent} from "./projects-block-component/projects-block.
                     },
                     {
                         path: 'project/:id',
-                        component: ProjectComponent
+                        component: ProjectComponent,
+                        data: {preload: true}
                     },
                     {
                         path: 'profile/:id',
-                        component: ProfileComponent
+                        component: ProfileComponent,
+                        data: {preload: true}
                     },
                     {
                         path: 'projects/:property/:value',
-                        component: ProjectsBlockComponent
+                        component: ProjectsBlockComponent,
+                        data: {preload: true}
                     },
                     {
                         path: 'projects/:property',
-                        component: ProjectsBlockComponent
+                        component: ProjectsBlockComponent,
+                        data: {preload: true}
                     },
                     {
                         path: 'projects',
-                        component: ProjectsBlockComponent
+                        component: ProjectsBlockComponent,
+                        data: {preload: true}
+                    },
+                    {
+                        path: 'admin',
+                        component: AdminComponent
                     }
 
 
