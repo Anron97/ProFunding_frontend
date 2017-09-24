@@ -62,19 +62,7 @@ export class UserService {
     }
 
     getAllUsers() {
-        let confirm = true;
-        let users: User[] = []
-        let usernames = ['Коля Иванов', 'Константин Богданович', 'Сергей Комзолов', 'Vasilii Pidorov', 'Conchita Malich']
-        for (let username of usernames) {
-            let user = new User();
-            user.username = username;
-            user.isSendConfirm = confirm;
-            user.role = this.ChangeRoles(user.role, true);
-            confirm = !confirm;
-            users.push(user);
-
-        }
-        return users;
+        return [];
     }
 
     ChangeRoles(role: string, fromServerToAdmin: boolean) {
