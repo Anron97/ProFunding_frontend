@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../../services/user.service";
 import {Subscription} from "rxjs/Subscription";
 import {Message} from 'primeng/components/common/api';
+import {User} from "../../../models/user";
 
 
 @Component({
@@ -19,6 +20,7 @@ export class DraftComponent implements OnInit, OnDestroy {
     private project: Project;
     private invalid = false;
     private editProject;
+    private currentUser: User;
     private subscription: Subscription;
     private msgs: Message[] = [];
 
@@ -37,13 +39,16 @@ export class DraftComponent implements OnInit, OnDestroy {
                 if (edit === 'true') this.editProject = true;
             })
         if (this.editProject) {
-            console.log('Download edit project');
             this.project = this.projectService.getEditProject();
         } else {
             this.project = this.projectService.getDraft();
         }
+        this.userService.currentUser.subscribe(user => this.currentUser = user);
+    }
 
-        console.log(this.project);
+    checkRole(): boolean {
+        if (this.currentUser.role === "ROLE_PROOFED_USER" || this.currentUser.role === "ROLE_ADMIN") return true;
+        return false;
     }
 
     ngOnDestroy(): void {

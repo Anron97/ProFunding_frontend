@@ -7,6 +7,7 @@ import {UserService} from './services/user.service';
 import {AuthenticationService} from './services/authentication.service';
 import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TranslationModule} from "angular-l10n";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         BrowserAnimationsModule,
         AppRoutingModule,
         AuthModule,
-        HttpModule
+        HttpModule,
+        TranslationModule.forRoot(),
     ],
     declarations: [
         AppComponent

@@ -7,7 +7,7 @@ import {User} from "../models/user";
 import 'rxjs/add/operator/map';
 import {DateService} from "./date.service";
 import {Observable} from "rxjs/Observable";
-import {Rating} from "../models/Rating";
+import {Rating} from "../models/rating";
 
 
 @Injectable()

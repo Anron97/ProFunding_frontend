@@ -8,7 +8,7 @@ import {UserService} from "../../../services/user.service";
 import {TagsService} from "../../../services/tags.service";
 import {CommentService} from "../../../services/comment.service";
 import {Comment} from "../../../models/comment";
-import {Rating} from "../../../models/Rating";
+import {Rating} from "../../../models/rating";
 import {RatingService} from "../../../services/rating.service";
 
 @Component({
