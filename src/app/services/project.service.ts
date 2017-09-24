@@ -7,6 +7,7 @@ import {User} from "../models/user";
 import 'rxjs/add/operator/map';
 import {DateService} from "./date.service";
 import {Observable} from "rxjs/Observable";
+import {Rating} from "../models/Rating";
 
 
 @Injectable()
@@ -83,8 +84,7 @@ export class ProjectService {
     create(project: Project): Observable<any> {
         console.log(project);
         let currentUser: User = this.userService.getCurrentUser();
-        /*if (currentUser.role === "ROLE_PROOFED_USER" || currentUser.role === "ROLE_ADMIN")*/
-        {
+        if (currentUser && (currentUser.role === "ROLE_PROOFED_USER" || currentUser.role === "ROLE_ADMIN") ) {
             project.userId = currentUser.id;
             return this.http.post(API_URL + '/projects/create', JSON.stringify(project), this.userService.jwt())
                 .map((response: Response) => response.json());
@@ -114,4 +114,8 @@ export class ProjectService {
         return project;
     }
 
+    rate(rating: Rating) {
+        return this.http.post(API_URL + "/rating/rate", rating, this.userService.jwt())
+            .map(responce => responce.json());
+    }
 }

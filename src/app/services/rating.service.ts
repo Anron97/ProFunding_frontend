@@ -1,20 +1,18 @@
 import {Injectable} from "@angular/core";
 import {Http, Response} from "@angular/http";
-import {API_URL} from "../constants/API";
 import {UserService} from "./user.service";
-import {Comment} from "../models/comment";
+import {API_URL} from "../constants/API";
 
 @Injectable()
-export class CommentService {
+export class RatingService {
 
     constructor(private http: Http,
                 private userService: UserService) {
 
     }
 
-    saveComment(comment: Comment) {
-        return this.http.post(API_URL + '/comments/create', comment, this.userService.jwt())
+    checkEnable(projectId: number) {
+        return this.http.get(API_URL + "/rating/check/" + projectId, this.userService.jwt())
             .map((response: Response) => response.json());
     }
-
 }
