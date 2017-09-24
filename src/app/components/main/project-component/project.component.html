@@ -18,7 +18,7 @@
             <div class="stats">
                 <div class="stats-item">
                     <strong class="stats-item_strong">0</strong>
-                        <div class="stats-item_caption">спонсоров</div>
+                        <div class="stats-item_caption">{{'displayProject.sponsors' | translate:lang }}</div>
                 </div>
                 <div class="stats-item">
                     <span class="stats-item_sum">
@@ -26,21 +26,21 @@
                         <span class="stats-item_currency">BYN</span>
                         <sup class="stats-item_percentage">0%</sup>
                     </span>
-                    <div class="stats-item_caption">Необходимо {{project.totalCost}} BYN</div>
+                    <div class="stats-item_caption">{{'displayProject.required' | translate:lang }} {{project.totalCost}} BYN</div>
                 </div>
                 <div class="stats-item">
                     <strong class="stats-item_strong">{{project.leftDays}}</strong>
-                    <div class="stats-item_caption">Осталось дней</div>
+                    <div class="stats-item_caption">{{'displayProject.leftover' | translate:lang }}</div>
                 </div>
                 <div class="stats-item">
                     <p class="stats-item_info">
-                        Цель проекта — минимум {{project.totalCost}} BYN
+                        {{'displayProject.projectGoal' | translate:lang }} {{project.totalCost}} BYN
                         <br>
-                        Срок — {{completionDate}}
+                        {{'displayProject.time' | translate:lang }} — {{completionDate}}
                     </p>
-                    <a *ngIf="!myProject" href="#" class="btn  btn_subscribe">Подписаться</a>
-                    <a *ngIf="!myProject" href="#" class="btn  btn_support">Поддержать</a>
-                    <a *ngIf="myProject" (click)="navigate()" class="btn  btn_subscribe">Редактировать</a>
+                    <a *ngIf="!myProject" href="#" class="btn  btn_subscribe">{{'displayProject.follow' | translate:lang }}</a>
+                    <a *ngIf="!myProject" href="#" class="btn  btn_support">{{'displayProject.subscribe' | translate:lang }}</a>
+                    <a *ngIf="myProject" (click)="navigate()" class="btn  btn_subscribe">{{'displayProject.edit' | translate:lang }}</a>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
     </div>
     <div class="row">
         <div class="col-xs-4">
-            <p class="rating" style="padding-bottom: 1%;">Рейтинг: </p>
+            <p class="rating" style="padding-bottom: 1%;">{{'displayProject.rating' | translate:lang }}: </p>
             <rating (click)="addRating()"
                 [(ngModel)]="project.rating"
                 [float]="true"
@@ -77,11 +77,11 @@
                 <ul class="nav nav-tabs ">
                     <li class="active">
                         <a href="#content" data-toggle="tab">
-                            О проекте</a>
+                            {{'displayProject.about' | translate:lang }}</a>
                     </li>
                     <li>
                         <a href="#comments" data-toggle="tab">
-                            Комментарии</a>
+                            {{'displayProject.comments' | translate:lang }}</a>
                     </li>
                 </ul>
                 <div class="tab-content">

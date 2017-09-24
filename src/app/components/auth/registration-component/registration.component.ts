@@ -4,6 +4,7 @@ import {User} from '../../../models/user';
 import {UserService} from '../../../services/user.service';
 import {Router} from '@angular/router';
 import {Message} from 'primeng/components/common/api';
+import {Language} from "angular-l10n";
 
 @Component({
     selector: 'app-registration',
@@ -11,6 +12,7 @@ import {Message} from 'primeng/components/common/api';
     styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent implements OnInit {
+    @Language() lang;
     userForm: FormGroup;
     user: User = new User();
     invalid = false;

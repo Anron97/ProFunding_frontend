@@ -5,6 +5,7 @@ import {Project} from "../../../models/project";
 import {ProjectService} from "../../../services/project.service";
 import {isUndefined} from "util";
 import {type} from "os";
+import {Language} from "angular-l10n";
 
 @Component({
     selector: 'projects-block',
@@ -12,6 +13,7 @@ import {type} from "os";
     styleUrls: ['./projects-block.component.css']
 })
 export class ProjectsBlockComponent implements OnInit {
+    @Language() lang;
     projects: Project[] = [];
     private isLastPage = false;
     private subscription: Subscription;

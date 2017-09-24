@@ -7,6 +7,7 @@ import {ProjectComponent} from "./project-component/project.component";
 import {ProfileComponent} from "./profile-component/profile.component";
 import {ProjectsBlockComponent} from "./projects-block-component/projects-block.component";
 import {AdminComponent} from "./admin/admin.component";
+import {ConfirmationComponent} from "./confirm-component/confirmation.component";
 
 
 @NgModule({
@@ -52,6 +53,10 @@ import {AdminComponent} from "./admin/admin.component";
                     {
                         path: 'admin',
                         component: AdminComponent
+                    },
+                    {
+                        path: 'confirm',
+                        component: ConfirmationComponent
                     }
 
 

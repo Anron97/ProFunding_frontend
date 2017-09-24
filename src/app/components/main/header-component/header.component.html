@@ -15,7 +15,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="col-xs-6" >
+        <div class="col-xs-6 right-col" >
             <div *ngIf="user" class="right">
                 <span class="welcome-text">Привет</span>
                 <span class="head_username">{{user.username}}</span>
@@ -30,7 +30,9 @@
                 <div class="row">
                     <a routerLink="/login" class="login">Вход</a>
                 </div>
-
+            </div>
+            <div class="language">
+                <i (click)="changeLanguage()" class="fa fa-globe" aria-hidden="true"></i><span>{{language}}</span>
             </div>
         </div>
     </div>

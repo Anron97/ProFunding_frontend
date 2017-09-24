@@ -1,0 +1,12 @@
+app-main {
+    min-height: 100%;
+}
+.body-content {
+    position: relative;
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+app-footer,
+.push {
+    height: 50px;
+}

@@ -10,6 +10,7 @@ import {CommentService} from "../../../services/comment.service";
 import {Comment} from "../../../models/comment";
 import {Rating} from "../../../models/rating";
 import {RatingService} from "../../../services/rating.service";
+import {Language} from "angular-l10n";
 
 @Component({
     selector: 'project',
@@ -17,7 +18,7 @@ import {RatingService} from "../../../services/rating.service";
     styleUrls: ['./project.component.css']
 })
 export class ProjectComponent implements OnInit, OnDestroy {
-
+    @Language() lang;
     private id: number;
     private project: Project;
     private completionDate: String;

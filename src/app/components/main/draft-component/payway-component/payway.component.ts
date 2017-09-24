@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Project} from "../../../../models/project";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Payment} from "../../../../models/payment";
+import {Language} from "angular-l10n";
 
 
 @Component({
@@ -10,6 +11,7 @@ import {Payment} from "../../../../models/payment";
     styleUrls: ['./payway.component.css'],
 })
 export class PayWayComponent implements OnInit {
+    @Language() lang;
     @Input() project: Project;
     checking = false;
     paywayForm: FormGroup;

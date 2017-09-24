@@ -2,6 +2,7 @@ import {Component, Input, ElementRef, Output, EventEmitter} from '@angular/core'
 import {CloudinaryOptions, CloudinaryUploader} from "ng2-cloudinary";
 import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop';
 import {Project} from "../../../models/project";
+import {Language} from "angular-l10n";
 
 @Component({
 
@@ -10,6 +11,7 @@ import {Project} from "../../../models/project";
     styleUrls: ['./drag-and-drop.component.css'],
 })
 export class DragAndDropComponent {
+    @Language() lang;
     @Input() project: Project;
     @Output() download =  new EventEmitter();
     private supportedFileTypes: string[] = ['image/png', 'image/jpeg', 'image/gif']

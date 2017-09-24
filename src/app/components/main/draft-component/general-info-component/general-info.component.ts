@@ -4,6 +4,7 @@ import {Project} from "../../../../models/project";
 import {FinancialGoal} from "../../../../models/financialGoal";
 import {CloudinaryOptions, CloudinaryUploader} from "ng2-cloudinary";
 import {DateService} from "../../../../services/date.service";
+import {Language} from "angular-l10n";
 
 @Component({
     selector: 'general-info',
@@ -11,6 +12,7 @@ import {DateService} from "../../../../services/date.service";
     styleUrls: ['./general-info.component.css']
 })
 export class GeneralInfoComponent implements OnInit {
+    @Language() lang;
     @Input() project: Project;
     @Input() invalid: boolean;
     @ViewChild('fileSelect') fileSelect: ElementRef;

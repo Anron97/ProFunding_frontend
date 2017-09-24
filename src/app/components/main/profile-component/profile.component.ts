@@ -4,6 +4,7 @@ import {CloudinaryOptions, CloudinaryUploader} from 'ng2-cloudinary';
 import {Subscription} from 'rxjs/Subscription';
 import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
+import {Language} from "angular-l10n";
 
 
 @Component({
@@ -12,7 +13,7 @@ import {UserService} from "../../../services/user.service";
     styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
-
+    @Language() lang;
     private id: number;
     private user: User;
     private subscription: Subscription;

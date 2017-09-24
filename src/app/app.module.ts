@@ -7,7 +7,7 @@ import {UserService} from './services/user.service';
 import {AuthenticationService} from './services/authentication.service';
 import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslationModule} from "angular-l10n";
+import {LocaleService, TranslationModule, TranslationService} from "angular-l10n";
 
 
 @NgModule({
@@ -28,4 +28,15 @@ import {TranslationModule} from "angular-l10n";
     ],
     bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+    constructor(public locale: LocaleService, public translation: TranslationService) {
+        this.locale.addConfiguration()
+            .addLanguages(['en', 'rus'])
+            .setCookieExpiration(30)
+            .defineLanguage('en');
+
+        this.translation.addConfiguration()
+            .addProvider('/src/assets/locale-');
+        this.translation.init();
+    }
+}

@@ -2,15 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {Project} from "../../../models/project";
 import {ProjectService} from "../../../services/project.service";
 import {TagsService} from "../../../services/tags.service";
-import {error} from "util";
+import {Language} from "angular-l10n";
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit{
-
+export class HomeComponent implements OnInit {
+    @Language() lang;
     tags: any[]
     successProjects: Project[];
     newProjects: Project[];

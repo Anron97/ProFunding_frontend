@@ -7,6 +7,7 @@ import {UserService} from "../../../services/user.service";
 import {Subscription} from "rxjs/Subscription";
 import {Message} from 'primeng/components/common/api';
 import {User} from "../../../models/user";
+import {Language} from "angular-l10n";
 
 
 @Component({
@@ -15,7 +16,7 @@ import {User} from "../../../models/user";
     styleUrls: ['./draft.component.css'],
 })
 export class DraftComponent implements OnInit, OnDestroy {
-
+    @Language() lang;
     @ViewChild('begin') begin: ElementRef;
     private project: Project;
     private invalid = false;
@@ -31,6 +32,7 @@ export class DraftComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        this.userService.currentUser.subscribe(user => this.currentUser = user);
         this.subscription = this.activatedRoute
             .queryParams
             .subscribe(params => {
@@ -43,12 +45,7 @@ export class DraftComponent implements OnInit, OnDestroy {
         } else {
             this.project = this.projectService.getDraft();
         }
-        this.userService.currentUser.subscribe(user => this.currentUser = user);
-    }
 
-    checkRole(): boolean {
-        if (this.currentUser.role === "ROLE_PROOFED_USER" || this.currentUser.role === "ROLE_ADMIN") return true;
-        return false;
     }
 
     ngOnDestroy(): void {

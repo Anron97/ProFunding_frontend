@@ -3,7 +3,7 @@
     <div class="container">
         <div class="section">
             <div class="section-inner">
-                <div class="header"><p>Успешные проекты</p></div>
+                <div class="header"><p>{{ 'Home.successfulProjects' | translate:lang }}</p></div>
                 <div class="content">
                     <div class="row">
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let project of successProjects">
@@ -14,12 +14,12 @@
             </div>
             <div class="promo_divider">
                 <hr />
-                <a [routerLink]="['/projects/success']" class="divider_btn">Все успешные проекты</a>
+                <a [routerLink]="['/projects/success']" class="divider_btn">{{ 'Home.allSuccessful' | translate:lang }}</a>
             </div>
         </div>
         <div class="section">
             <div class="section-inner">
-                <div class="header"><p>Новые проекты</p></div>
+                <div class="header"><p>{{ 'Home.newProjects' | translate:lang }}</p></div>
                 <div class="content">
                     <div class="row">
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let project of newProjects">
@@ -35,7 +35,7 @@
         </div>
         <div class="section">
             <div class="section-inner">
-                <div class="header"><p>Тэги</p></div>
+                <div class="header"><p>{{ 'Home.tags' | translate:lang }}</p></div>
                 <div class="content">
                     <a class="tag" routerLink="/projects/tag/{{tag.value}}" *ngFor="let tag of tags">{{tag.value}}</a>
                 </div>

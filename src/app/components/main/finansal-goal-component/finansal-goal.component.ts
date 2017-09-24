@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FinancialGoal} from "../../../models/financialGoal";
+import {Language} from "angular-l10n";
 
 @Component({
     selector: 'finansal-goal',
@@ -7,6 +8,7 @@ import {FinancialGoal} from "../../../models/financialGoal";
     styleUrls: ['./finansal-goal.component.css']
 })
 export class FinansalGoalComponent {
+    @Language() lang;
     @Input() finansalGoal: FinancialGoal;
     @Input() editable: Boolean;
     @Output() removeFinansalGoal = new EventEmitter<FinancialGoal>()

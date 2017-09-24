@@ -4,6 +4,7 @@ import {User} from '../../../models/user';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../../services/authentication.service';
 import {Message} from 'primeng/components/common/api';
+import {Language} from "angular-l10n";
 
 
 
@@ -13,6 +14,7 @@ import {Message} from 'primeng/components/common/api';
     styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+    @Language() lang;
     userForm: FormGroup;
     user: User = new User();
     invalid = false;

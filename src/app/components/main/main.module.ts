@@ -32,6 +32,8 @@ import {CommentService} from "../../services/comment.service";
 import {RatingService} from "../../services/rating.service";
 import {AdminModule} from "./admin/admin.module";
 import {SearchComponent} from "./search-component/search.component";
+import {ConfirmationComponent} from "./confirm-component/confirmation.component";
+import {LocaleService, TranslationModule, TranslationService} from "angular-l10n";
 
 
 
@@ -51,7 +53,8 @@ import {SearchComponent} from "./search-component/search.component";
         TagInputModule,
         RatingModule,
         AdminModule,
-        GrowlModule
+        GrowlModule,
+        TranslationModule.forChild()
     ],
     providers: [
         ProjectService,
@@ -76,9 +79,20 @@ import {SearchComponent} from "./search-component/search.component";
         ProjectsBlockComponent,
         CommentComponent,
         PayWayComponent,
-        SearchComponent
+        SearchComponent,
+        ConfirmationComponent
     ],
     exports: [MainComponent]
 })
 export class MainModule {
+    constructor(public locale: LocaleService, public translation: TranslationService) {
+        this.locale.addConfiguration()
+            .addLanguages(['en', 'rus'])
+            .setCookieExpiration(30)
+            .defineLanguage('en');
+
+        this.translation.addConfiguration()
+            .addProvider('/src/assets/locale-');
+        this.translation.init();
+    }
 }

@@ -54,13 +54,13 @@
                             <div class="tab-pane" role="tabpanel" id="complete">
                                 <div class="block center-block">
                                     <div *ngIf="!editProject" class="create-header">
-                                        Вы успешно создали проект, нажмите кнопку "Отправить" для проверки введенных данных и публикации вашего проекта
+                                        {{ 'successfullyCreateProject' | translate:lang }}
                                     </div>
                                     <div *ngIf="editProject" class="create-header">
                                        Чтобы применить изменения нажмите Сохранить
                                     </div>
                                     <div class="row" style="text-align: center">
-                                        <a *ngIf="!editProject" class="btn btn_send" (click)="send()" >Отправить <i style="margin-left: 10px" class="fa fa-check"></i></a>
+                                        <a *ngIf="!editProject" class="btn btn_send" (click)="send()" >{{ 'send' | translate:lang }}<i style="margin-left: 10px" class="fa fa-check"></i></a>
                                         <a *ngIf="editProject" class="btn btn_send" (click)="save()" >Сохранить <i style="margin-left: 10px" class="fa fa-check"></i></a>
                                     </div>
                                 </div>
@@ -70,12 +70,12 @@
                     </div>
                     <div class="col-xs-4" id="preview">
                         <div class="block" style="text-align: center">
-                            <a  class="btn  btn_save" (click)="save()">Сохранить</a>
-                            <a  *ngIf="!editProject" class="btn  btn_subscribe" (click)="preview()">Предпросмотр</a>
+                            <a  class="btn  btn_save" (click)="save()">{{ 'save' | translate:lang }}</a>
+                            <a  *ngIf="!editProject" class="btn  btn_subscribe" (click)="preview()">{{ 'preview' | translate:lang }}</a>
                         </div>
                         <preview [project]="project"></preview>
                         <div>
-                            <div class="create-header finansal-header">Финансовые цели</div>
+                            <div class="create-header finansal-header">{{ 'finansialGoals' | translate:lang }}</div>
                             <finansal-goal *ngFor="let goal of project.financialGoals"
                                            [finansalGoal]="goal"
                                            [editable]="true"
@@ -85,7 +85,7 @@
                 </div>
                 <div class="row main remove">
                     <hr>
-                    <a  *ngIf="!editProject" class="btn btn_remove" (click)="removeDraft()">Удалить черновик</a>
+                    <a  *ngIf="!editProject" class="btn btn_remove" (click)="removeDraft()">{{ 'deletedraft' | translate:lang }}</a>
                 </div>
             </div>
         </section>

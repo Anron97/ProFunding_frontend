@@ -7,6 +7,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {GrowlModule, InputTextModule} from "primeng/primeng";
 import {EmailConfirmComponent} from "./email-confirm-component/email-confirm.component";
+import {LocaleService, TranslationModule, TranslationService} from "angular-l10n";
 
 
 
@@ -17,11 +18,22 @@ import {EmailConfirmComponent} from "./email-confirm-component/email-confirm.com
         CommonModule,
         RouterModule,
         InputTextModule,
-        GrowlModule
+        GrowlModule,
+        TranslationModule.forChild()
     ],
     providers: [],
     declarations: [AuthComponent, LoginComponent, RegistrationComponent, EmailConfirmComponent],
     exports: [AuthComponent]
 })
 export class AuthModule {
+    constructor(public locale: LocaleService, public translation: TranslationService) {
+        this.locale.addConfiguration()
+            .addLanguages(['en', 'rus'])
+            .setCookieExpiration(30)
+            .defineLanguage('en');
+
+        this.translation.addConfiguration()
+            .addProvider('/src/assets/locale-');
+        this.translation.init();
+    }
 }

@@ -1,8 +1,8 @@
 <form [formGroup]="projectForm">
     <div class="block">
-        <div class="create-header"><p>Название проекта</p></div>
+        <div class="create-header"><p>{{'generalInfo.projectName' | translate:lang}}</p></div>
         <input id="float-input" type="text"
-               placeholder="Введите название проекта"
+               placeholder="{{'generalInfo.inputProjectName' | translate:lang}}"
                pInputText
                maxlength="40"
                formControlName="title"
@@ -11,12 +11,12 @@
         >
         <i *ngIf="projectForm.controls['title'].hasError('required') && ( projectForm.controls['title'].touched || invalid )"
            class="fa fa-exclamation-triangle error-triangle"></i>
-        <p class="create-desc">Название должно быть лаконичным, уникальным и запоминающимся. Будьте уверены в том, что название проекта отражает его суть.</p>
+        <p class="create-desc">{{'generalInfo.projectNameDesc' | translate:lang}}</p>
     </div>
     <div class="block">
-        <div class="create-header"><p>Краткое описание проекта</p></div>
+        <div class="create-header"><p>{{'generalInfo.shortDesc' | translate:lang}}</p></div>
         <textarea class="textarea" [rows]="20" [cols]="30" pInputTextarea
-                  autoResize="autoResize" placeholder="Коротко расскажите о проекте" maxlength="160"
+                  autoResize="autoResize" placeholder="{{'generalInfo.inputShortDesc' | translate:lang}}" maxlength="160"
                   formControlName="description"
                   [ngClass]="{'error' : projectForm.controls['description'].hasError('required') && ( projectForm.controls['description'].touched || invalid ) }"
                   [(ngModel)]="project.description"
@@ -24,17 +24,17 @@
                                         </textarea>
         <i *ngIf="projectForm.controls['description'].hasError('required') && ( projectForm.controls['description'].touched || invalid )"
            class="fa fa-exclamation-triangle error-triangle"></i>
-        <p class="create-desc">Опишите в одном предложении цель вашего проекта.</p>
+        <p class="create-desc">{{'generalInfo.shortDescDesc' | translate:lang}}</p>
     </div>
     <div class="block projectLayout">
-        <div class="create-header header-image"><p>Обложка проекта</p></div>
+        <div class="create-header header-image"><p>{{'generalInfo.projectCover' | translate:lang}}</p></div>
         <div class="text-center">
             <img src="{{project.image}}" width="100%"/>
         </div>
         <button type="button" class="btn btn-show-modal" data-toggle="modal" data-target="#myModal">Изменить обложку</button>
     </div>
     <div class="block">
-        <div class="create-header"><p>Дата окончания компании</p></div>
+        <div class="create-header"><p>{{'generalInfo.dateEnd' | translate:lang}}</p></div>
         <p-calendar [inputStyle]="{'background-color' : '#f9f9f9','width': '200px'}"
                     [showIcon]="true"
                     [readonlyInput]="true"
@@ -52,13 +52,13 @@
     </div>
     <div class="block">
         <form [formGroup]="financialGoalForm">
-            <div class="create-header"><p>Финансовая цель</p></div>
+            <div class="create-header"><p>{{'generalInfo.finanсialGoal' | translate:lang}}</p></div>
             <div class="row">
                 <div class="col-xs-6">
                     <input id="finansal-input-title"
                            class="finansal"
                            type="text"
-                           placeholder="Введите название цели"
+                           placeholder="{{'generalInfo.inputGoalName' | translate:lang}}"
                            pInputText
                            maxlength="20"
                            formControlName="title">
@@ -67,7 +67,7 @@
                     <input id="finansal-input-cost"
                            class="finansal"
                            type="number"
-                           placeholder="Введите сумму цели"
+                           placeholder="{{'generalInfo.inputGoalCost' | translate:lang}}"
                            pInputText
                            max="1000"
                            formControlName="cost">
@@ -76,20 +76,20 @@
             </div>
             <div class="row">
                 <div  class="col-xs-6">
-                    <div *ngIf="!project.financialGoals.length && invalid" class="error-message">Проект должен содержать хотя бы одну финансовую цель</div>
+                    <div *ngIf="!project.financialGoals.length && invalid" class="error-message">{{'generalInfo.goalsErrorMsg' | translate:lang}}</div>
                 </div>
                 <div class="col-xs-6">
                     <a  class="btn  btn_subscribe btn_add"
-                        (click)="addGoal(financialGoalForm)">Добавить</a>
+                        (click)="addGoal(financialGoalForm)">{{'generalInfo.add' | translate:lang}}</a>
                 </div>
             </div>
         </form>
         <hr>
-        <p class="create-desc">Вы можете создавать несколько целей. Общая сумма проекта будет состоять из суммы всех целей</p>
+        <p class="create-desc">{{'generalInfo.finansialGoalsDesc' | translate:lang}}</p>
     </div>
 </form>
 <div class="block">
-    <div class="create-header"><p>Тэги проекта</p></div>
+    <div class="create-header"><p>{{'generalInfo.projectTags' | translate:lang}}</p></div>
     <i  *ngIf="!project.tags.length && invalid"
         class="fa fa-exclamation-triangle error-triangle error-triangle-tags"></i>
     <tag-input theme='minimal'
@@ -97,10 +97,10 @@
                [validators]="validators"
                [errorMessages]="errorMessages"
                [(ngModel)]="project.tags"
-               placeholder="Enter tags"
-               secondaryPlaceholder="Enter tags">
+               placeholder="{{'generalInfo.enterTags' | translate:lang}}"
+               secondaryPlaceholder="{{'generalInfo.enterTags' | translate:lang}}">
     </tag-input>
-    <p class="create-desc">Название должно быть лаконичным, уникальным и запоминающимся. Будьте уверены в том, что название проекта отражает его суть.</p>
+    <p class="create-desc">{{'generalInfo.projectTagsDesc' | translate:lang}}</p>
 </div>
 
 <div id="myModal" class="modal fade" role="dialog">
@@ -108,13 +108,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" #closeBtn>&times;</button>
-                <h4 class="modal-title">Upload</h4>
+                <h4 class="modal-title">{{'generalInfo.upload' | translate:lang}}</h4>
             </div>
             <div class="modal-body">
                 <drag-and-drop [project]="project" (download)="drop()"></drag-and-drop>
                 <input type="file" #fileSelect ng2FileSelect [uploader]="uploader"
                        accept="image/*;capture=camera" hidden="true" (change)="upload()"/>
-                <button class="btn btn-show-modal right" (click)="load()" style="margin-left: 40%">Выбрать файл</button>
+                <button class="btn btn-show-modal right" (click)="load()" style="margin-left: 40%">{{'generalInfo.selectFile' | translate:lang}}</button>
             </div>
 
         </div>

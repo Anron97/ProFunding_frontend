@@ -6,11 +6,11 @@
         <div class="fluid">
             <div class="title">
                 <a *ngIf="project.title" routerLink="/project/{{project.id}}" routerLinkActive="active"><p>{{project.title}}</p></a>
-                <a *ngIf="!project.title" routerLink="/project/{{project.id}}" routerLinkActive="active"><p >Название проекта</p></a>
+                <a *ngIf="!project.title" routerLink="/project/{{project.id}}" routerLinkActive="active"><p >{{'Preview.projectName' | translate:lang}}</p></a>
             </div>
             <div class="description">
                 <p *ngIf="project.description">{{project.description}}</p>
-                <p *ngIf="!project.description">Краткое описание проекта</p>
+                <p *ngIf="!project.description">{{'Preview.shortDesc' | translate:lang}}</p>
             </div>
         </div>
         <div class="total-progress">
@@ -22,11 +22,11 @@
             <div class="row">
                 <div class="col-xs-6">
                     <strong class="card-res-strong">{{project.currentSum}} BYN</strong>
-                    <div class="card-res-txt">Собрано (0%)</div>
+                    <div class="card-res-txt">{{'Preview.current' | translate:lang}} (0%)</div>
                 </div>
                 <div class="col-xs-6">
-                    <strong class="card-res-strong">{{project.leftDays}} Дней</strong>
-                    <div class="card-res-txt">осталось</div>
+                    <strong class="card-res-strong">{{project.leftDays}} {{'Preview.days' | translate:lang}}</strong>
+                    <div class="card-res-txt">{{'Preview.left' | translate:lang}}</div>
                 </div>
             </div>
 

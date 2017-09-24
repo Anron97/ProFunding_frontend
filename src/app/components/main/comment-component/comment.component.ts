@@ -3,6 +3,7 @@ import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
 import {Comment} from "../../../models/comment";
 import {CommentService} from "../../../services/comment.service";
+import {Language} from "angular-l10n";
 
 
 
@@ -13,6 +14,7 @@ import {CommentService} from "../../../services/comment.service";
 })
 
 export class CommentComponent implements OnInit {
+    @Language() lang;
     @Input() comments: Comment[];
     @Input() user: User;
     @Output() addComment = new EventEmitter<Comment>();

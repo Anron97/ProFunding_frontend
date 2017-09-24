@@ -11,14 +11,14 @@
             <form class="form-horizontal" [formGroup]="userForm">
 
                 <div class="form-group">
-                    <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                    <label for="name" class="cols-sm-2 control-label">{{'username' | translate:lang }}</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                             <input type="text"
                                    class="form-control"
                                    id="name"
-                                   placeholder="Enter your Name"
+                                   placeholder="{{'enterYouName' | translate:lang }}"
                                    formControlName="name"
                                    [(ngModel)]="user.username"
                                    [ngClass]="{'error' : userForm.controls['name'].hasError('required')
@@ -31,14 +31,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                    <label for="email" class="cols-sm-2 control-label">{{'email' | translate:lang }}</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                             <input type="text"
                                    class="form-control"
                                    id="email"
-                                   placeholder="Enter your Email"
+                                   placeholder="{{'enterYouEmail' | translate:lang }}"
                                    formControlName="email"
                                    [(ngModel)]="user.email"
                                    [ngClass]="{'error' : (userForm.controls['email'].hasError('required') || userForm.controls['email'].hasError('email'))
@@ -52,14 +52,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <label for="password" class="cols-sm-2 control-label">{{'password' | translate:lang }}</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                             <input type="password"
                                    class="form-control"
                                    id="password"
-                                   placeholder="Enter your Password"
+                                   placeholder="{{'enterYouPassword' | translate:lang }}"
                                    formControlName="password"
                                    [(ngModel)]="user.password"
                                    [ngClass]="{'error' : userForm.controls['password'].hasError('required')
@@ -71,10 +71,10 @@
                        class="fa fa-exclamation-triangle error-triangle"></i>
                 </div>
                 <div class="form-group ">
-                    <button type="button" class="btn btn-primary btn-lg btn-block login-button" (click)="register()">Register</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block login-button" (click)="register()">{{'signup' | translate:lang }}</button>
                 </div>
                 <div class="login-register">
-                    <a [routerLink]="['/login']">Login</a>
+                    <a [routerLink]="['/login']">{{'login' | translate:lang }}</a>
                 </div>
             </form>
         </div>
