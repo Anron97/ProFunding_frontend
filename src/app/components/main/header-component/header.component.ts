@@ -3,6 +3,8 @@ import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
 import {AuthenticationService} from "../../../services/authentication.service";
 import { LocaleService, Language } from 'angular-l10n';
+import {ProjectService} from "../../../services/project.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-header',
@@ -12,10 +14,13 @@ import { LocaleService, Language } from 'angular-l10n';
 export class HeaderComponent {
     @Language() lang;
     user: User;
+    content: string;
 
     language: boolean;
     constructor(private userService: UserService,
-                private authService: AuthenticationService, private locale: LocaleService) {
+                private authService: AuthenticationService,
+                private locale: LocaleService,
+                private projectService: ProjectService) {
         this.userService.currentUser.subscribe(user => this.user = user)
         if (localStorage && localStorage.getItem('language')) {
             this.language = localStorage.getItem('language') === 'en'
@@ -35,4 +40,5 @@ export class HeaderComponent {
         if ( this.user.role === 'ROLE_ADMIN') return true;
         return false;
     }
+
 }

@@ -13,6 +13,23 @@
                     <search-component></search-component>
                 </ul>
             </nav>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control input-lg"
+                                       placeholder="Search..." [(ngModel)]="content" />
+                                <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <a href="/projects/search/{{content}}"><i  class="glyphicon glyphicon-search"></i></a>
+                        </button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-xs-6 right-col" >
             <div *ngIf="user" class="right">
