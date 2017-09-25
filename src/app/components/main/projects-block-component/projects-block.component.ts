@@ -34,31 +34,36 @@ export class ProjectsBlockComponent implements OnInit {
             }
             if (this.type) {
                 this.type = '/' + this.type;
-            }else {
+            } else {
                 this.type = ""
             }
             if (this.value) {
                 this.value = '/' + this.value;
-            }else {
+            } else {
                 this.value = ""
             }
         })
     }
 
     ngOnInit() {
-        console.log(this.property);
-        console.log(this.type);
-        console.log(this.value);
-        this.projectService.getProjectNextPage(this.property, this.type, this.value).subscribe(
-            data => {
-                console.log(data);
-                if (data.last && data.last === true) {
-                    this.isLastPage = true;
+
+        if (this.property === 'search') {
+            this.value = this.value.substr(1);
+            console.log('search');
+            console.log(this.value);
+        } else {
+            this.projectService.getProjectNextPage(this.property, this.type, this.value).subscribe(
+                data => {
+                    console.log(data);
+                    if (data.last && data.last === true) {
+                        this.isLastPage = true;
+                    }
+                    if (data.page) {
+                        this.projects = this.projects.concat(data.page);
+                    }
                 }
-                if (data.page) {
-                    this.projects = this.projects.concat(data.page);
-                }
-            }
-        )
+            )
+        }
+
     }
 }
