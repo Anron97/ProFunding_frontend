@@ -140,7 +140,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
     subscribe() {
         this.userService.subscribe(this.currentUser.id, this.id).subscribe(
             response => {
-
+                console.log(response);
             }
         );
     }
