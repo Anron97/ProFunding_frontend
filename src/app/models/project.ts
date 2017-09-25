@@ -13,6 +13,7 @@ export class Project {
     financialGoals: FinancialGoal[] = [];
     totalCost = 0;
     currentSum = 0;
+    countOfPayments: number;
     userId: number;
     rating = 0;
     isRated = true;

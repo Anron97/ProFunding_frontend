@@ -13,6 +13,7 @@ import {RatingService} from "../../../services/rating.service";
 import {Message} from 'primeng/components/common/api';
 import {Language} from "angular-l10n";
 import {User} from "../../../models/user";
+import {PaymentService} from "../../../services/payment.service";
 
 @Component({
     selector: 'project',
@@ -37,7 +38,8 @@ export class ProjectComponent implements OnInit, OnDestroy {
                 private userService: UserService,
                 private router: Router,
                 private ratingService: RatingService,
-                private commentService: CommentService) {
+                private commentService: CommentService,
+                private paymentService: PaymentService) {
     }
 
     ngOnInit(): void {
@@ -131,10 +133,16 @@ export class ProjectComponent implements OnInit, OnDestroy {
     public addPurchase() {
         if (this.inputSum === 0) {
             this.msgs = [];
-            this.msgs.push({severity: 'error', summary: 'Error', detail: 'Error with purchasing'})
+            this.msgs.push({severity: 'error', summary: 'Error', detail: 'Error with purchasing'});
         } else {
-            this.msgs = [];
-            this.msgs.push({severity: 'success', summary: 'Success', detail: 'Saved success'})
+            this.paymentService.addPayment(this.currentUser.id, this.id, this.inputSum).subscribe(
+                response => {
+                    this.project.currentSum = response;
+                    this.project.countOfPayments++;
+                    this.msgs = [];
+                    this.msgs.push({severity: 'success', summary: 'Success', detail: 'Saved success'});
+                }
+            );
         }
     }
 

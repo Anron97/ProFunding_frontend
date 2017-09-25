@@ -8,6 +8,9 @@ import {ProfileComponent} from "./profile-component/profile.component";
 import {ProjectsBlockComponent} from "./projects-block-component/projects-block.component";
 import {AdminComponent} from "./admin/admin.component";
 import {ConfirmationComponent} from "./confirm-component/confirmation.component";
+import {ProofedUserGuard} from "../../guards/proofedUser.guard";
+import {NoProofedUserGuard} from "../../guards/noProofedUser.guard";
+import {AdminGuard} from "../../guards/admin.guard";
 
 
 @NgModule({
@@ -23,17 +26,18 @@ import {ConfirmationComponent} from "./confirm-component/confirmation.component"
                     },
                     {
                         path: 'draft',
-                        component: DraftComponent
+                        component: DraftComponent,
+                        canActivate: [ProofedUserGuard]
                     },
                     {
                         path: 'project/:id',
                         component: ProjectComponent,
-                        data: {preload: true}
+
                     },
                     {
                         path: 'profile/:id',
                         component: ProfileComponent,
-                        data: {preload: true}
+                        canActivate: [NoProofedUserGuard]
                     },
                     {
                         path: 'projects/:property/:value',
@@ -52,11 +56,13 @@ import {ConfirmationComponent} from "./confirm-component/confirmation.component"
                     },
                     {
                         path: 'admin',
-                        component: AdminComponent
+                        component: AdminComponent,
+                        canActivate: [AdminGuard]
                     },
                     {
                         path: 'confirmation',
-                        component: ConfirmationComponent
+                        component: ConfirmationComponent,
+                        canActivate: [NoProofedUserGuard]
                     }
 
 

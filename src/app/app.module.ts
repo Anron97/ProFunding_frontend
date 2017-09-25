@@ -8,6 +8,9 @@ import {AuthenticationService} from './services/authentication.service';
 import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LocaleService, TranslationModule, TranslationService} from "angular-l10n";
+import {AdminGuard} from "./guards/admin.guard";
+import {ProofedUserGuard} from "./guards/proofedUser.guard";
+import {NoProofedUserGuard} from "./guards/noProofedUser.guard";
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import {LocaleService, TranslationModule, TranslationService} from "angular-l10n
     ],
     providers: [
         UserService,
-        AuthenticationService
+        AuthenticationService,
+        AdminGuard,
+        ProofedUserGuard,
+        NoProofedUserGuard
     ],
     bootstrap: [AppComponent]
 })

@@ -34,6 +34,7 @@ import {AdminModule} from "./admin/admin.module";
 import {SearchComponent} from "./search-component/search.component";
 import {ConfirmationComponent} from "./confirm-component/confirmation.component";
 import {LocaleService, TranslationModule, TranslationService} from "angular-l10n";
+import {PaymentService} from "../../services/payment.service";
 
 
 
@@ -61,7 +62,8 @@ import {LocaleService, TranslationModule, TranslationService} from "angular-l10n
         DateService,
         TagsService,
         CommentService,
-        RatingService
+        RatingService,
+        PaymentService
     ],
     declarations: [
         MainComponent,
