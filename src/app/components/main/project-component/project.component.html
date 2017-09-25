@@ -38,7 +38,8 @@
                         <br>
                         {{'displayProject.time' | translate:lang }} — {{completionDate}}
                     </p>
-                    <a *ngIf="!myProject && !isGuest()" (click)="subscribe()" class="btn  btn_subscribe">{{'displayProject.follow' | translate:lang }}</a>
+                    <a *ngIf="!myProject && !isGuest() && !isFollowed()" (click)="subscribe()" class="btn  btn_subscribe">{{'displayProject.follow' | translate:lang }}</a>
+                    <a *ngIf="!myProject && !isGuest() && isFollowed()" (click)="unsubscribe()" class="btn  btn_subscribe">{{'displayProject.unfollow' | translate:lang }}</a>
                     <a *ngIf="myProject && !isGuest()" (click)="navigate()" class="btn  btn_subscribe">{{'displayProject.edit' | translate:lang }}</a>
                     <a href="#" class="btn  btn_support" *ngIf="!myProject && !isGuest()"  data-toggle="modal"
                        data-target="#purchase" style="cursor: pointer">{{'displayProject.subscribe' | translate:lang }}</a>

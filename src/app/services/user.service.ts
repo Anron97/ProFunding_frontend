@@ -74,7 +74,12 @@ export class UserService {
     }
 
     public subscribe(userId: number, projectId: number) {
-        return this.http.post(API_URL + '/project/subscribe', {projectId, userId}, this.jwt())
+        return this.http.post(API_URL + '/project/follow', {projectId, userId}, this.jwt())
+            .map(response => response.json());
+    }
+
+    public unsubscribe(userId: number, projectId: number) {
+        return this.http.post(API_URL + '/project/unfollow', {projectId, userId}, this.jwt())
             .map(response => response.json());
     }
 

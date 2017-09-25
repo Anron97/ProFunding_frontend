@@ -12,6 +12,7 @@ import {Rating} from "../../../models/rating";
 import {RatingService} from "../../../services/rating.service";
 import {Message} from 'primeng/components/common/api';
 import {Language} from "angular-l10n";
+import {User} from "../../../models/user";
 
 @Component({
     selector: 'project',
@@ -25,7 +26,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
     private completionDate: String;
     private subscription: Subscription;
     private myProject = false;
-    private currentUser;
+    private currentUser: User;
     private inputSum = 0;
     private msgs: Message[] = [];
 
@@ -137,11 +138,33 @@ export class ProjectComponent implements OnInit, OnDestroy {
         }
     }
 
+    isFollowed(): boolean {
+        for (let project of this.currentUser.followedProjects) {
+            if (project.id === this.id) return true
+        }
+        return false
+    }
+
     subscribe() {
         this.userService.subscribe(this.currentUser.id, this.id).subscribe(
             response => {
-                console.log(response);
+                if (response) {
+                    this.currentUser.followedProjects.push(this.project);
+                    this.userService.saveUser(this.currentUser);
+                    this.userService.setUser(this.currentUser);
+                }
             }
         );
+    }
+
+    unsubscribe() {
+        this.userService.unsubscribe(this.currentUser.id, this.id).subscribe(
+            response => {
+                let i = this.currentUser.followedProjects.indexOf(this.project);
+                this.currentUser.followedProjects.splice(i, 1);
+                this.userService.saveUser(this.currentUser);
+                this.userService.setUser(this.currentUser);
+            }
+        )
     }
 }
