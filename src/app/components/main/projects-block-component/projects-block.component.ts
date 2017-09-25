@@ -46,24 +46,19 @@ export class ProjectsBlockComponent implements OnInit {
     }
 
     ngOnInit() {
-
-        if (this.property === 'search') {
-            this.value = this.value.substr(1);
-            console.log('search');
-            console.log(this.value);
-        } else {
-            this.projectService.getProjectNextPage(this.property, this.type, this.value).subscribe(
-                data => {
-                    console.log(data);
-                    if (data.last && data.last === true) {
-                        this.isLastPage = true;
-                    }
-                    if (data.page) {
-                        this.projects = this.projects.concat(data.page);
-                    }
+        this.projectService.getProjectNextPage(this.property, this.type, this.value).subscribe(
+            data => {
+                console.log(data);
+                if (data.last && data.last === true) {
+                    this.isLastPage = true;
                 }
-            )
-        }
-
+                if (data.page) {
+                    this.projects = this.projects.concat(data.page);
+                }
+                if (this.property === 'search') {
+                    this.projects = this.projects.concat(data);
+                }
+            }
+        )
     }
 }
