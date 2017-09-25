@@ -13,10 +13,13 @@ export class HeaderComponent {
     @Language() lang;
     user: User;
 
-    language = false;
+    language: boolean;
     constructor(private userService: UserService,
                 private authService: AuthenticationService, private locale: LocaleService) {
         this.userService.currentUser.subscribe(user => this.user = user)
+        if (localStorage && localStorage.getItem('language')) {
+            this.language = localStorage.getItem('language') === 'en'
+        }
     }
     logOut() {
         this.authService.logout();
@@ -24,6 +27,7 @@ export class HeaderComponent {
     }
     changeLanguage() {
         this.locale.setCurrentLanguage((this.language) ? 'rus' : 'en');
+        localStorage.setItem('language', (this.language) ? 'rus' : 'en');
         this.language = !this.language;
     }
 }
