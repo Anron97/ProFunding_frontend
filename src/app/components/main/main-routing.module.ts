@@ -55,7 +55,7 @@ import {ConfirmationComponent} from "./confirm-component/confirmation.component"
                         component: AdminComponent
                     },
                     {
-                        path: 'confirm',
+                        path: 'confirmation',
                         component: ConfirmationComponent
                     }
 

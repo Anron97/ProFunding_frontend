@@ -6,7 +6,7 @@
             <div *ngFor="let comment of comments; let i = index">
                 <div class="media">
                     <div class="pull-right" *ngIf="checkRoleForDeleteComment(i)">
-                        <span title="Delete" (click)="deleteComment(i)" class="glyphicon glyphicon-trash"  ></span>
+                        <span title="Delete" (click)="deleteComment(i)" class="glyphicon glyphicon-trash delete"  ></span>
                     </div>
                     <a class="pull-left"><img class="media-object img-circle" style="height:100px" src={{comment.user.image}}></a>
                     <div class="media-body">
@@ -24,7 +24,7 @@
                 <fieldset>
                     <div class="row">
                         <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <p-editor [(ngModel)]="comment.content" [style]="{'min-height':'150px'}">
+                            <p-editor [(ngModel)]="content" [style]="{'min-height':'150px'}">
                                 <p-header>
                                 <span class="ql-formats">
                                     <select class="ql-header">

@@ -126,3 +126,6 @@
     background-color: white;
     margin-left: 16.7%;
 }
+.delete:hover {
+    cursor: pointer;
+}

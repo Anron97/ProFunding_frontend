@@ -44,7 +44,14 @@ export class AdminComponent implements OnInit {
             header: 'Delete users',
             icon: 'fa fa-trash',
             accept: () => {
-                this.adminService.deleteUsers(this.selectedUsers)
+                this.adminService.deleteUsers(this.selectedUsers).subscribe(
+                    response => {
+                        console.log(response);
+                    },
+                    error => {
+                        console.log(error);
+                    }
+                );
             },
             reject: () => {
             }

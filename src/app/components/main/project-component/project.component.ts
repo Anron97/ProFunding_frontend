@@ -10,6 +10,7 @@ import {CommentService} from "../../../services/comment.service";
 import {Comment} from "../../../models/comment";
 import {Rating} from "../../../models/rating";
 import {RatingService} from "../../../services/rating.service";
+import {Message} from 'primeng/components/common/api';
 import {Language} from "angular-l10n";
 
 @Component({
@@ -25,6 +26,8 @@ export class ProjectComponent implements OnInit, OnDestroy {
     private subscription: Subscription;
     private myProject = false;
     private currentUser;
+    private inputSum = 0;
+    private msgs: Message[] = [];
 
     constructor(private activateRoute: ActivatedRoute,
                 private projectService: ProjectService,
@@ -101,6 +104,11 @@ export class ProjectComponent implements OnInit, OnDestroy {
         );
     }
 
+    isGuest(): boolean {
+        if (!this.currentUser) return true;
+        return false;
+    }
+
     addRating() {
         if (!this.project.isRated) {
             console.log(this.project.rating);
@@ -117,5 +125,23 @@ export class ProjectComponent implements OnInit, OnDestroy {
                     console.log(error);
                 });
         }
+    }
+
+    public addPurchase() {
+        if (this.inputSum === 0) {
+            this.msgs = [];
+            this.msgs.push({severity: 'error', summary: 'Error', detail: 'Error with purchasing'})
+        } else {
+            this.msgs = [];
+            this.msgs.push({severity: 'success', summary: 'Success', detail: 'Saved success'})
+        }
+    }
+
+    subscribe() {
+        this.userService.subscribe(this.currentUser.id, this.id).subscribe(
+            response => {
+
+            }
+        );
     }
 }

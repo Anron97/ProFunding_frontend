@@ -52,7 +52,7 @@ export class UserService {
     }
 
     updateProfile(user: User) {
-        this.http.post(API_URL + '/users/update', user).subscribe();
+        this.http.post(API_URL + '/users/update', user, this.jwt()).subscribe();
     }
 
     addProjectToCurrentUser(project: Project) {
@@ -73,6 +73,10 @@ export class UserService {
         }
     }
 
+    public subscribe(userId: number, projectId: number) {
+        return this.http.post(API_URL + '/project/subscribe', {projectId, userId}, this.jwt())
+            .map(response => response.json());
+    }
 
     public jwt() {
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));

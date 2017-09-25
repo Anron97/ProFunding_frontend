@@ -18,7 +18,7 @@ export class AdminService {
     }
 
     deleteUsers(users: User[]) {
-        this.http.post(API_URL + '/admin/delete', users, this.userService.jwt())
+        return this.http.post(API_URL + '/admin/delete', users, this.userService.jwt())
             .map(response => response.json());
     }
 

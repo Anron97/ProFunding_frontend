@@ -19,7 +19,8 @@ export class CommentComponent implements OnInit {
     @Input() user: User;
     @Output() addComment = new EventEmitter<Comment>();
 
-    comment: Comment = new Comment();
+    content = "";
+    comment: Comment;
 
     constructor(private userService: UserService,
                 private commentService: CommentService) {
@@ -28,14 +29,16 @@ export class CommentComponent implements OnInit {
 
     ngOnInit(): void {
         this.user = this.userService.getCurrentUser();
-        this.comment.user = this.user;
     }
 
     sendComment() {
+        this.comment = new Comment();
+        this.comment.user = this.user;
+        this.comment.content = this.content;
         this.comment.dateCreated = new Date();
-        console.log(this.comment);
         this.comments.push(this.comment);
         this.addComment.emit(this.comment);
+        this.content = ""
     }
 
     public checkRoleForDeleteComment(i: number): boolean {
