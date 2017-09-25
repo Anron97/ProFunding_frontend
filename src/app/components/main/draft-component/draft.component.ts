@@ -84,6 +84,8 @@ export class DraftComponent implements OnInit, OnDestroy {
             this.projectService.create(this.project).subscribe(
                 data => {
                     this.userService.addProjectToCurrentUser(this.project);
+                    this.msgs = [];
+                    this.msgs.push({severity: 'success', summary: 'Success', detail: 'You project success published'})
                 },
                 error => console.log(error)
             );

@@ -30,4 +30,9 @@ export class HeaderComponent {
         localStorage.setItem('language', (this.language) ? 'rus' : 'en');
         this.language = !this.language;
     }
+
+    isAdmin(): boolean {
+        if ( this.user.role === 'ROLE_ADMIN') return true;
+        return false;
+    }
 }

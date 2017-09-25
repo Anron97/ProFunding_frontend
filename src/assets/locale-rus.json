@@ -4,7 +4,7 @@
   "language": "Язык",
   "profile": "Профиль",
   "createProject": "Создать проект",
-  "Admin": "Админ",
+  "admin": "Админ",
   "logout": "Выход",
   "login": "Вход",
   "signup": "Регистрация",
@@ -22,6 +22,7 @@
   "enterYouPassword": "Введите пароль",
   "enterYouEmail": "Введите email",
   "confirm": "Ваша почта подтверждена",
+  "clickSave": "Чтобы применить изменения нажмите Сохранить",
 
   "Profile": {
     "registration": "Регистрация",

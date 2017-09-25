@@ -36,6 +36,7 @@
   "enterYouPassword": "Enter you password",
   "enterYouEmail": "Enter you email",
   "confirm": "Your password successfully confirm",
+  "clickSave": "To apply the changes, click Save.",
   "Home": {
     "noSuccessProjects": "There are no successful projects",
     "noNewProjects": "There are no new projects",

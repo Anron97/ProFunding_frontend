@@ -57,11 +57,11 @@
                                         {{ 'successfullyCreateProject' | translate:lang }}
                                     </div>
                                     <div *ngIf="editProject" class="create-header">
-                                       Чтобы применить изменения нажмите Сохранить
+                                        {{ 'clickSave' | translate:lang }}
                                     </div>
                                     <div class="row" style="text-align: center">
                                         <a *ngIf="!editProject" class="btn btn_send" (click)="send()" >{{ 'send' | translate:lang }}<i style="margin-left: 10px" class="fa fa-check"></i></a>
-                                        <a *ngIf="editProject" class="btn btn_send" (click)="save()" >Сохранить <i style="margin-left: 10px" class="fa fa-check"></i></a>
+                                        <a *ngIf="editProject" class="btn btn_send" (click)="save()" >{{ 'save' | translate:lang }} <i style="margin-left: 10px" class="fa fa-check"></i></a>
                                     </div>
                                 </div>
                             </div>
